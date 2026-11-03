@@ -1,7 +1,7 @@
 """Open the two-arm scene without moving the robots or advancing physics.
 
 Run from the repository root:
-    mjpython -m experiments.arm_skill_blender.preview
+    mjpython -m arm_skill_blender.preview
 """
 
 import argparse
@@ -21,7 +21,7 @@ def main():
         parser.exit(
             1,
             f"Missing simulation packages: {', '.join(missing)}.\n"
-            "Activate .venv-arm-skills and run:\n"
+            "Activate your virtual environment and run:\n"
             "  python -m pip install -r requirements.txt\n",
         )
 

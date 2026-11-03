@@ -1,0 +1,16 @@
+# Python caches and virtual environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv*/
+venv/
+
+# Local experiment data and outputs.
+/data/
+/outputs/
+/checkpoints/
+/logs/
+/wandb/
+
+# macOS metadata.
+.DS_Store
