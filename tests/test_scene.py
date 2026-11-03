@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from arm_skill_blender.environment import make_env
+from src.envs import make_env
 
 
 def test_scene_loads_without_advancing_physics():

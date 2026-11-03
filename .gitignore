@@ -6,8 +6,10 @@ __pycache__/
 venv/
 
 # Local experiment data and outputs.
-/data/
-/outputs/
+/data/*
+!/data/.gitkeep
+/outputs/*
+!/outputs/.gitkeep
 /checkpoints/
 /logs/
 /wandb/

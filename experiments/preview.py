@@ -1,14 +1,14 @@
 """Open the two-arm scene without moving the robots or advancing physics.
 
 Run from the repository root:
-    mjpython -m arm_skill_blender.preview
+    mjpython -m experiments.preview
 """
 
 import argparse
 import importlib.util
 import time
 
-from .environment import make_env
+from src.envs import make_env
 
 
 def main():
