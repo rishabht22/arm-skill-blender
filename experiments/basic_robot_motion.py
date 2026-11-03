@@ -1,7 +1,7 @@
 """Open the scene and move robot arms up and down.
 
 Run from the repository root:
-    mjpython -m experiments.preview
+    mjpython -m experiments.basic_robot_motion
 """
 
 import argparse

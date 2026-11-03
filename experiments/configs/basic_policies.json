@@ -1,0 +1,13 @@
+{
+  "seed": 0,
+  "horizon": 500,
+  "total_timesteps": 100000,
+  "learning_rate": 0.0003,
+  "n_steps": 1024,
+  "batch_size": 64,
+  "n_epochs": 10,
+  "gamma": 0.99,
+  "hidden_sizes": [128, 128],
+  "checkpoint_every": 10000,
+  "device": "cpu"
+}
