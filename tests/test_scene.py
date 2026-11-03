@@ -11,6 +11,8 @@ def test_scene_loads_without_advancing_physics():
         env.reset()
 
         assert len(env.robots) == 2
+        assert [robot.name for robot in env.robots] == ["UR5e", "Jaco"]
+        assert [robot.action_dim for robot in env.robots] == [7, 7]
         assert env.action_dim == 14
         assert not env.has_renderer
         assert not env.has_offscreen_renderer
@@ -18,7 +20,7 @@ def test_scene_loads_without_advancing_physics():
         assert np.isfinite(env.sim.data.qpos).all()
         assert np.isfinite(env.sim.data.qvel).all()
 
-        # The static preview passes these native objects to MuJoCo's viewer.
+        # The preview passes these native objects to MuJoCo's viewer.
         import mujoco
 
         assert isinstance(env.sim.model._model, mujoco.MjModel)

@@ -1,4 +1,4 @@
-"""Open the two-arm scene without moving the robots or advancing physics.
+"""Open the scene and move robot arms up and down.
 
 Run from the repository root:
     mjpython -m experiments.preview
@@ -7,6 +7,7 @@ Run from the repository root:
 import argparse
 import importlib.util
 import time
+import numpy as np
 
 from src.envs import make_env
 
@@ -37,17 +38,38 @@ def main():
         data = env.sim.data._data
         with mujoco.viewer.launch_passive(model, data) as viewer:
             with viewer.lock():
+                # Draw the robot visuals without overlapping collision meshes.
+                viewer.opt.geomgroup[0] = 0
+                viewer.opt.geomgroup[1] = 1
                 viewer.cam.type = mujoco.mjtCamera.mjCAMERA_FREE
                 viewer.cam.lookat[:] = (0.0, 0.0, 0.9)
                 viewer.cam.distance = 2.5
                 viewer.cam.azimuth = 90
                 viewer.cam.elevation = -25
 
-            print("Scene open. Rotate or zoom the camera; close the window to exit.", flush=True)
+            print("Scene open: UR5e (arm 1), Jaco (arm 2). Close the window to exit.", flush=True)
+            step = 0
+
             while viewer.is_running():
-                # Refresh the display only. No env.step() or mj_step().
+                # Seven commands per arm, fourteen total.
+                action = np.zeros(env.action_dim)
+
+                # Reverse direction every 40 steps.
+                direction = 1 if (step // 40) % 2 == 0 else -1
+
+                action[2] = 0.9 * direction  # UR5e: move up or down.
+                action[9] = 0.6 * direction  # Jaco: move up or down.
+
+                with viewer.lock():
+                    _, _, done, _ = env.step(action)
+
+                    step += 1
+                    if done:
+                        env.reset()
+                        step = 0
+
                 viewer.sync()
-                time.sleep(1.0 / 30)
+                time.sleep(1.0 / env.control_freq)
     finally:
         env.close()
 
