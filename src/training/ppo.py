@@ -1,7 +1,7 @@
 """Build, check, and train the state-based PPO baseline."""
 
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -13,25 +13,34 @@ from stable_baselines3.common.logger import configure
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
-from src.envs.policy_env import PolicyEnv
+from src.envs.policy_env import describe_policy_env, make_policy_env
 from src.policies.basic import BasicPolicy
 
 
 @dataclass
 class PPOConfig:
+    task: str = "reach_handle"
     seed: int = 0
-    horizon: int = 500
+    horizon: int = 200
+    reach: dict = field(default_factory=dict)
     total_timesteps: int = 100000
     learning_rate: float = 0.0003
     n_steps: int = 1024
     batch_size: int = 64
-    n_epochs: int = 10
+    n_epochs: int = 5
     gamma: float = 0.99
+    target_kl: float = 0.02
     hidden_sizes: tuple = (128, 128)
     checkpoint_every: int = 10000
     device: str = "cpu"
 
     def __post_init__(self):
+        if self.task not in ("reach_handle", "two_arm_lift"):
+            raise ValueError(f"Unknown policy task: {self.task}")
+        if not isinstance(self.reach, dict):
+            raise ValueError("reach must contain a dictionary of environment settings")
+        if self.target_kl <= 0:
+            raise ValueError("target_kl must be positive")
         for name in ("horizon", "total_timesteps", "n_epochs", "checkpoint_every"):
             value = getattr(self, name)
             if not isinstance(value, int) or value < 1:
@@ -50,17 +59,13 @@ class PPOConfig:
 
 def run(config, *, train=False, output_root=Path("outputs/basic_policies")):
     """Default to an environment/inference check; only train when requested."""
-    raw_env = PolicyEnv(seed=config.seed, horizon=config.horizon)
+    raw_env = make_policy_env(
+        task=config.task, seed=config.seed, horizon=config.horizon, **config.reach
+    )
     vector_env = None
     logger = None
     try:
-        environment_info = {
-            "robots": raw_env.robot_names,
-            "observation_keys": raw_env.observation_keys,
-            "observation_dim": raw_env.observation_space.shape[0],
-            "action_dim": raw_env.action_space.shape[0],
-            "reward_shaping": True,
-        }
+        environment_info = describe_policy_env(raw_env)
         print(json.dumps(environment_info, indent=2), flush=True)
 
         run_dir = None
@@ -89,6 +94,7 @@ def run(config, *, train=False, output_root=Path("outputs/basic_policies")):
             batch_size=config.batch_size,
             n_epochs=config.n_epochs,
             gamma=config.gamma,
+            target_kl=config.target_kl,
             seed=config.seed,
             device=config.device,
             verbose=1,

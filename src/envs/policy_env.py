@@ -8,10 +8,11 @@ from .two_arm_lift import make_env
 
 
 class PolicyEnv(gym.Env):
-    """One policy observes both robots and the pot, then controls both arms."""
+    """Legacy joint lift environment, retained for existing saved models."""
 
     metadata = {"render_modes": []}
     render_mode = None
+    task = "two_arm_lift"
 
     def __init__(self, *, seed=0, horizon=500):
         super().__init__()
@@ -53,3 +54,29 @@ class PolicyEnv(gym.Env):
 
     def close(self):
         self.sim_env.close()
+
+
+def make_policy_env(*, task="reach_handle", seed=0, horizon=200, **reach_settings):
+    """Choose the task explicitly so training and evaluation use the same setup."""
+    if task == "reach_handle":
+        from .reach import ReachEnv
+
+        return ReachEnv(seed=seed, horizon=horizon, **reach_settings)
+    if task == "two_arm_lift":
+        return PolicyEnv(seed=seed, horizon=horizon)
+    raise ValueError(f"Unknown policy task: {task}")
+
+
+def describe_policy_env(env):
+    description = {
+        "task": env.task,
+        "robots": env.robot_names,
+        "observation_keys": env.observation_keys,
+        "observation_dim": env.observation_space.shape[0],
+        "action_dim": env.action_space.shape[0],
+    }
+    if env.task == "reach_handle":
+        description["reach"] = env.reach_settings
+    else:
+        description["reward_shaping"] = True
+    return description

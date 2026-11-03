@@ -4,7 +4,7 @@ from stable_baselines3.common.policies import ActorCriticPolicy
 
 
 class BasicPolicy(ActorCriticPolicy):
-    """Separate MLPs predict both arms' actions and the state's value."""
+    """Separate MLPs predict the task's actions and the state's value."""
 
     def __init__(self, *args, hidden_sizes=(128, 128), **kwargs):
         kwargs.setdefault(
