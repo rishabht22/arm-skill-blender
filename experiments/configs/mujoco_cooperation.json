@@ -1,0 +1,19 @@
+{
+  "task": "two_panda_hold_and_place_v1",
+  "skill_type": "fixed_feedback_controllers",
+  "robots": ["Panda", "Panda"],
+  "actions": ["wait", "start_holder", "start_placer", "release_holder"],
+  "frames_per_action": 10,
+  "max_decisions": 150,
+  "training_seed": 0,
+  "validation_seed": 10000,
+  "test_seed": 20000,
+  "warmstart_episodes": 12,
+  "bc_epochs": 150,
+  "timesteps": 4096,
+  "n_steps": 256,
+  "batch_size": 64,
+  "learning_rate": 0.0001,
+  "net_arch": [64, 64],
+  "evaluation_episodes": 5
+}

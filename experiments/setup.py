@@ -12,7 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--calvin", action="store_true", help="Install the previous CALVIN runtime explicitly")
     args = parser.parse_args()
+    if not args.calvin:
+        from experiments.setup_mujoco import main as setup_mujoco
+        setup_mujoco()
+        return
     if sys.platform not in ("darwin", "linux"):
         parser.error("This setup supports macOS and Linux")
     conda = shutil.which("conda") or os.environ.get("CONDA_EXE")
