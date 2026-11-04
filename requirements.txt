@@ -1,11 +1,27 @@
-# Simulation runtime, matched to the working local scene.
-numpy==1.26.4
-mujoco==3.3.0
-robosuite==1.5.1
-
-# Keep robosuite's numerical and image dependencies compatible with NumPy 1.x.
-scipy==1.13.1
-opencv-python==4.10.0.84
-
-# Environment smoke tests.
+# Single Python 3.10 runtime for frozen HULC skills and PPO composition training.
+-c experiments/configs/calvin_constraints.txt
+numpy
+torch
+torchvision
+pytorch-lightning
+torchmetrics
+hydra-core
+hydra-colorlog
+omegaconf
+opencv-python
+scipy
+numpy-quaternion
+gym
+gymnasium==0.29.1
+stable-baselines3==2.1.0
+# Install pybullet through conda-forge with experiments.setup (prebuilt on Mac).
+gitpython
+rich
+matplotlib
+moviepy<2
+tqdm
+termcolor
+wandb
+transformers
+imageio[ffmpeg]
 pytest==8.3.5

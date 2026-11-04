@@ -1,1 +1,1 @@
-"""Runnable scene previews and future training and evaluation experiments."""
+"""Skill composition setup, training, baselines, and held-out evaluation."""

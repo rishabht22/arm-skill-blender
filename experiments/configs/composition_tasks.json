@@ -1,0 +1,595 @@
+{
+  "active_skills": [
+    "open_drawer",
+    "close_drawer",
+    "lift_red_block_table",
+    "lift_blue_block_table",
+    "lift_pink_block_table",
+    "place_in_drawer",
+    "turn_on_led",
+    "turn_off_led",
+    "turn_on_lightbulb",
+    "turn_off_lightbulb",
+    "move_slider_left",
+    "move_slider_right"
+  ],
+  "tasks": [
+    {
+      "name": "single_open_drawer",
+      "split": "train",
+      "sequence": [
+        "open_drawer"
+      ],
+      "final_checks": [
+        "open_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_close_drawer",
+      "split": "train",
+      "sequence": [
+        "close_drawer"
+      ],
+      "final_checks": [
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "open",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_lift_red_block_table",
+      "split": "train",
+      "sequence": [
+        "lift_red_block_table"
+      ],
+      "final_checks": [
+        "lift_red_block_table"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_lift_blue_block_table",
+      "split": "train",
+      "sequence": [
+        "lift_blue_block_table"
+      ],
+      "final_checks": [
+        "lift_blue_block_table"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "table",
+        "pink_block": "slider_left"
+      }
+    },
+    {
+      "name": "single_lift_pink_block_table",
+      "split": "train",
+      "sequence": [
+        "lift_pink_block_table"
+      ],
+      "final_checks": [
+        "lift_pink_block_table"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_turn_on_led",
+      "split": "train",
+      "sequence": [
+        "turn_on_led"
+      ],
+      "final_checks": [
+        "turn_on_led"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_turn_off_led",
+      "split": "train",
+      "sequence": [
+        "turn_off_led"
+      ],
+      "final_checks": [
+        "turn_off_led"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 1,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_turn_on_lightbulb",
+      "split": "train",
+      "sequence": [
+        "turn_on_lightbulb"
+      ],
+      "final_checks": [
+        "turn_on_lightbulb"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_turn_off_lightbulb",
+      "split": "train",
+      "sequence": [
+        "turn_off_lightbulb"
+      ],
+      "final_checks": [
+        "turn_off_lightbulb"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 1,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_move_slider_left",
+      "split": "train",
+      "sequence": [
+        "move_slider_left"
+      ],
+      "final_checks": [
+        "move_slider_left"
+      ],
+      "initial_state": {
+        "slider": "right",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "single_move_slider_right",
+      "split": "train",
+      "sequence": [
+        "move_slider_right"
+      ],
+      "final_checks": [
+        "move_slider_right"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "drawer_cycle",
+      "split": "train",
+      "sequence": [
+        "open_drawer",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "led_cycle",
+      "split": "train",
+      "sequence": [
+        "turn_on_led",
+        "turn_off_led"
+      ],
+      "final_checks": [
+        "turn_off_led"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "bulb_cycle",
+      "split": "train",
+      "sequence": [
+        "turn_on_lightbulb",
+        "turn_off_lightbulb"
+      ],
+      "final_checks": [
+        "turn_off_lightbulb"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "slider_cycle",
+      "split": "train",
+      "sequence": [
+        "move_slider_right",
+        "move_slider_left"
+      ],
+      "final_checks": [
+        "move_slider_left"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "red_into_open_drawer",
+      "split": "train",
+      "sequence": [
+        "open_drawer",
+        "lift_red_block_table",
+        "place_in_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "red_store_and_close",
+      "split": "test",
+      "sequence": [
+        "open_drawer",
+        "lift_red_block_table",
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "blue_into_open_drawer",
+      "split": "train",
+      "sequence": [
+        "open_drawer",
+        "lift_blue_block_table",
+        "place_in_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "table",
+        "pink_block": "slider_left"
+      }
+    },
+    {
+      "name": "blue_store_and_close",
+      "split": "test",
+      "sequence": [
+        "open_drawer",
+        "lift_blue_block_table",
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "table",
+        "pink_block": "slider_left"
+      }
+    },
+    {
+      "name": "pink_into_open_drawer",
+      "split": "train",
+      "sequence": [
+        "open_drawer",
+        "lift_pink_block_table",
+        "place_in_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "pink_store_and_close",
+      "split": "test",
+      "sequence": [
+        "open_drawer",
+        "lift_pink_block_table",
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "led_then_drawer",
+      "split": "train",
+      "sequence": [
+        "turn_on_led",
+        "open_drawer"
+      ],
+      "final_checks": [
+        "turn_on_led",
+        "open_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "drawer_then_bulb",
+      "split": "train",
+      "sequence": [
+        "open_drawer",
+        "turn_on_lightbulb"
+      ],
+      "final_checks": [
+        "open_drawer",
+        "turn_on_lightbulb"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "lights_and_drawer",
+      "split": "test",
+      "sequence": [
+        "turn_on_led",
+        "open_drawer",
+        "turn_on_lightbulb",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "turn_on_led",
+        "turn_on_lightbulb",
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "led_then_red_store",
+      "split": "test",
+      "sequence": [
+        "turn_on_led",
+        "open_drawer",
+        "lift_red_block_table",
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "final_checks": [
+        "turn_on_led",
+        "place_in_drawer",
+        "close_drawer"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "led_and_bulb",
+      "split": "test",
+      "sequence": [
+        "turn_on_led",
+        "turn_on_lightbulb"
+      ],
+      "final_checks": [
+        "turn_on_led",
+        "turn_on_lightbulb"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "drawer_then_led",
+      "split": "test",
+      "sequence": [
+        "open_drawer",
+        "turn_on_led"
+      ],
+      "final_checks": [
+        "open_drawer",
+        "turn_on_led"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    },
+    {
+      "name": "pink_store_then_led",
+      "split": "test",
+      "sequence": [
+        "open_drawer",
+        "lift_pink_block_table",
+        "place_in_drawer",
+        "turn_on_led"
+      ],
+      "final_checks": [
+        "place_in_drawer",
+        "turn_on_led"
+      ],
+      "initial_state": {
+        "slider": "left",
+        "drawer": "closed",
+        "lightbulb": 0,
+        "led": 0,
+        "red_block": "table",
+        "blue_block": "slider_left",
+        "pink_block": "table"
+      }
+    }
+  ]
+}
