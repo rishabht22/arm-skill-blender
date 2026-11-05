@@ -1,10 +1,8 @@
-ALTER: Residual Denoising Enables Sample-Efficient Multi-Agent Coordination on Demand
-Authors: Dayi Dong, Maulik Bhatt, Aayushi Shrivastava, Lasse Peters, Negar Mehr.
+This rebuilt project includes a subset of the Franka Emika Panda model from
+MuJoCo Menagerie under Apache 2.0.
+See assets/panda/LICENSE and assets/panda/SOURCE.json.
 
-THIS SOFTWARE AND/OR DATA WAS DEPOSITED IN THE BAIR OPEN RESEARCH COMMONS REPOSITORY ON SEPTEMBER 30, 2026.
-
-The Apache-2.0 declaration covers original ALTER research source and release
-utilities. The paper, website and its media/logos, datasets, and third-party
-components are outside this source declaration. Original released simulation
-datasets use CC BY 4.0; see the dataset repository's license and notices.
-Existing third-party notices and terms remain applicable.
+The runtime scene builder modifies the model representation as described in
+assets/panda/README.md. No original RoboFactory source code is included.
+The separately downloaded RoboFactory demonstrations are attributed in
+data/DATASET.md and remain subject to their publisher's license.

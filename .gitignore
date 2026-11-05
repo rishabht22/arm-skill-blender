@@ -1,24 +1,12 @@
-# Python caches and virtual environments.
+.venv*/
 __pycache__/
 *.py[cod]
+*.egg-info/
 .pytest_cache/
-.venv*/
-venv/
-
-# Local experiment data and outputs.
-/data/*
-!/data/.gitkeep
+.DS_Store
+/data/raw/*
+/data/processed/*
 /outputs/*
 !/outputs/.gitkeep
-/checkpoints/
-/logs/
-/wandb/
-
-# macOS metadata.
-.DS_Store
-
-# Retired code and expensive previous experiment assets.
-/archive/
-
-# Native simulator diagnostics from rejected reset candidates.
-MUJOCO_LOG.TXT
+!/data/raw/.gitkeep
+!/data/processed/.gitkeep

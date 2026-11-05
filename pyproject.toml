@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arm-skill-composer"
+version = "0.1.0"
+description = "A RoboFactory-data baseline for coordinating two frozen arm skill executors"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<3",
+  "torch>=2.2,<3",
+  "h5py>=3.11,<4",
+  "mujoco>=3.3,<4",
+  "imageio>=2.34,<3",
+  "pillow>=10.1,<14",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+skill-compose = "skill_composer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
