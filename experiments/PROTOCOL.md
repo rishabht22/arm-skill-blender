@@ -1,203 +1,225 @@
-# Frozen-skill composition experiment
+# Precision assembly and efficient skill composition
 
-This project trains a skill selector over the released HULC_D_D controller in
-CALVIN-D. The base controller stays frozen. It is a language-conditioned latent
-plan policy, not a diffusion policy. The selector is a single-arm baseline with
-privileged simulator state and a supplied goal graph. It does not yet study
-decentralized coordination, learned task dependencies, interruption, or recovery.
+The active project is a two-station production cell in one MuJoCo world. Two
+Panda arms execute released, learned assembly behaviors. A small coordination
+head chooses which ready job to start and when the arms should work in parallel.
+The bucket/cube project is preserved in `archive/milestones/basic_project/` and
+`archive/milestones/before_precision_assembly.zip`.
 
-## Setup and commands
+## Run now
 
-Run from the project root on either macOS or Linux. Conda must be installed.
+The assets, native contact plugin, qualification report and initial trained head
+are already available on this Mac. Watch a short batch from a normal terminal:
+
+```bash
+python -m experiments.run evaluate --episodes 1 --kits 2
+```
+
+Train a new head, then compare it against the scheduling baselines:
+
+```bash
+python -m experiments.run train
+python -m experiments.run benchmark --headless --episodes 3 --kits 3
+```
+
+The launcher uses `mjpython` for Mac viewing commands. Physics and display-model
+synchronization were tested headlessly. The native window must be opened from a
+terminal with a working graphics connection.
+
+## What changed
+
+The base controller is the released [AssembleNIST expert](https://github.com/suniique/assembly-nist),
+an independent implementation of AlphaNIST/SGS. It performs grasping,
+reorientation, precision insertion, gear seating, connector mating and nut
+threading through learned joint actions. Our adapter adds timed entry and
+release/retreat motions; their time counts toward task completion.
+
+Both arms reuse one frozen multi-task backbone, with disjoint allowed catalogs.
+These are twelve assembly variants across five families, not twelve unrelated
+networks or twelve completely different behavior families.
+
+| Arm 0 | Arm 1 |
+| --- | --- |
+| R4: 4 mm round rod | Gs: small gear |
+| R12: 12 mm round rod | Gm: medium gear |
+| P4: 4 mm keyed rectangular peg | Gl: large gear |
+| P12: 12 mm keyed rectangular peg | N8: M8 threaded nut |
+| BNC: coaxial connector | N12: M12 threaded nut |
+| USB: USB-A connector | RJ45: network connector |
+
+The policy receives point clouds reconstructed from meshes and simulator poses,
+plus proprioceptive history. It is state-based, not a camera or VLA policy.
+The actual assembly is performed by the released neural network, without
+scripted assembly phases or a teacher-action fallback.
+
+## Task and environment
+
+Each kit follows four work-order stages:
+
+1. Arm 0 inserts a rod or keyed peg.
+2. Arm 1 seats a gear.
+3. Arm 0 mates a connector.
+4. Arm 1 finishes a threaded-nut or connector component.
+
+Several kits arrive at different times. Because each kit returns to both
+stations, job order affects waiting and total batch completion time.
+
+These are **kit work-order dependencies**, not physical handovers of the same
+part between arms. Stations have separated workspaces. Shared-workspace contact
+coordination and arm-to-arm collision avoidance are outside this benchmark.
+The first coordination head is centralized.
+
+Both active robots and workpieces run in one MuJoCo model. Controls run at
+25 Hz; physics uses 0.5 ms steps. Native gains, limits and task geometry are
+preserved. The combined timestep is finer than the source's coarse-task setting,
+so expert transfer is tested in this scene rather than assumed.
+
+A new workpiece is supplied at dispatch. Robot joints, velocities, the other
+station's part, policy history and simulation clock are preserved when the
+contact model changes. No robot teleports, welded grasps, action replays or
+within-skill object resets are used. Room walls are absent; task fixtures remain.
+A persistent display model copies poses from the contact simulation and never
+drives its physics.
+
+## Qualification and freezing
+
+```bash
+python -m experiments.run preflight --samples 5
+python -m experiments.run freeze
+```
+
+Qualification executes each variant five times with its partner parked. The
+source reset generator rejects invalid candidate poses before execution; all
+executed trials and failures remain in the report. The native assembly goal is
+1 mm. After release and withdrawal, the part must remain within 2 mm. Timeouts
+and native safety violations fail the attempt. Every variant must pass at least
+80% of its attempts before training is allowed.
+
+Initial qualification passed **59/60** attempts. P12 passed 4/5; the other variants
+passed 5/5. This is a small qualification sample, not a reliability guarantee.
+The expert stays in eval mode with gradients disabled. Parameter and checkpoint
+hashes are checked after physical runs. The head optimizer never owns the expert.
+
+The pinned upstream revision is
+`eb5d15e004591d380c0d521da67e025ebee37703`. The released checkpoint is
+`e8192_it12500.pt`, SHA-256
+`eb2cd4e9aacda2d26d23c059570522559e9fcd812a64f0aef60daea83408581e`.
+All upstream files are downloaded locally with Git-blob and SHA-256 checks.
+Their original source and notices remain in `data/vendor/assembly_nist/`.
+
+For Mac compatibility, a generated C++ source replaces the x86-only FP16
+conversion with a portable equivalent, checked against all 65,536 encodings.
+The plugin registration macro is adapted to MuJoCo 3.3. Original upstream
+files and learned weights are unchanged.
+
+## How the new head trains
+
+The method is **lookahead-planning distillation with DAgger**, not PPO.
+
+1. Use measured skill times and variability from physical qualification.
+2. Generate work orders with different skills, release times and batch sizes.
+3. Search expected-duration schedules to label useful dispatch decisions.
+4. Fit a small set-based dispatch network.
+5. Collect states visited by that network, relabel them with lookahead, and fit
+   again. Validation selects the saved checkpoint.
+
+Training uses a cheap duration surrogate, not full robot physics. The head sees
+job status, readiness, expected durations, uncertainty and remaining work. It
+cannot inspect sampled future completion times. Action masks enforce resources,
+release and precedence constraints; they do not identify the best action.
+
+The initial head has **16,514 parameters**. It used 100 planning problems per
+round, 40 fitting epochs and two DAgger rounds: 3,220 labeled decisions and about
+68 seconds of training locally. The default is 180 problems. Training includes
+two to six kits, or eight to twenty-four operations. The default physics test
+uses three kits. This is generalization within one production template.
+
+```bash
+python -m experiments.run train --problems 180 --epochs 40 --rounds 2
+python -m experiments.run evaluate --checkpoint outputs/assembly/RUN/best_head.pt --headless --kits 4
+```
+
+Training seeds start at 0, validation at 10000, held-out physics testing at
+20000. The `evaluate --proxy` diagnostic is explicitly labeled as a duration
+surrogate. It must not be used as evidence of robot speed or success.
+
+## Measure efficiency in physics
+
+```bash
+python -m experiments.run benchmark --headless --episodes 10 --kits 3
+python -m experiments.run baseline --scheduler johnson --headless --episodes 3
+```
+
+Every scheduler receives the same work orders and incoming part states. The
+standard suite compares serial execution, parallel FIFO, critical-path priority,
+an aggregate Johnson-style heuristic, and the learned head. Johnson's rule has
+no optimality guarantee for this four-stage problem. Shortest-processing-time
+and lookahead baselines are also available through `baseline --scheduler`.
+
+Reports retain success rates, simulated completion time, utilization, job
+traces, failures, dispatch compute time and paired comparisons. Failed batches
+receive a 180 s penalty in the aggregate metric, not a fast completion. Simulator
+wall time and simulated robot execution time are reported separately.
+
+Initial three-batch physics pilot, twelve operations per batch; all five
+schedulers succeeded on all three batches:
+
+| Scheduler | Mean simulated completion time |
+| --- | ---: |
+| Serial | 54.56 s |
+| Parallel FIFO | 35.76 s |
+| Critical-path | 37.44 s |
+| Aggregate Johnson heuristic | 34.36 s |
+| Learned head | 35.57 s |
+
+The head was about 35% faster than serial execution, approximately tied with
+FIFO, and slower than the best heuristic. It has **not established an advantage
+over strong classical scheduling**. Three batches do not support a broad
+statistical claim. The larger benchmark is intended to expose that distinction.
+
+## Files and settings
+
+| Location | Purpose |
+| --- | --- |
+| `experiments/configs/assembly.json` | Training budgets and evaluation defaults |
+| `src/assembly/experts.py` | Released backbone and disjoint task catalogs |
+| `src/assembly/world.py` | Shared contact model and state preservation |
+| `src/assembly/service.py` | Timed entry/exit and neural skill execution |
+| `src/assembly/profiles.py` | Qualification, measured durations, frozen manifest |
+| `src/assembly/scheduling.py` | Work orders, constraints, surrogate and physics task |
+| `src/assembly/planner.py` | Classical baselines and bounded lookahead |
+| `src/assembly/head.py` | Variable-batch head and DAgger training |
+| `src/assembly/benchmark.py` | Paired native-physics comparisons |
+| `src/assembly/visualization.py` | Persistent display synchronized from physics |
+| `data/assembly/` | Qualification, frozen manifest and cached incoming states |
+| `outputs/assembly/RUN/` | Head weights, validation, duration model and contract |
+| `outputs/assembly/benchmark_RUN/` | Raw episodes and comparison summary |
+
+## Another Mac or the lab server
 
 ```bash
 python -m experiments.setup
-python -m experiments.run list
-python -m experiments.run check
-python -m experiments.run preflight --split train
-python -m experiments.run train
-python -m experiments.run evaluate --video
 ```
 
-Setup creates a project-local Python 3.10 environment. The launcher chooses it
-without requiring activation. Both machines use the same dependency versions,
-config files, action order, scene, and entry points. Install each machine's own
-environment; never copy an environment directory between operating systems.
+Setup installs the local runtime, downloads about 176 MB of pinned source,
+models and assets, and builds the contact plugin. A C++17 compiler is required:
+`clang++` on Mac or `g++` on Linux. Everything runs on CPU. No GPU or GPU-waiting
+process is required. Mac was tested here; Linux builds must run local verification.
 
-On the shared server, select a GPU you are permitted to use with
-`CUDA_VISIBLE_DEVICES` before starting. `auto` uses the selected visible GPU;
-without a selection it uses CPU. It does not check occupancy or wait for a GPU.
-`--device cpu` explicitly runs on CPU on either machine. Nothing queues jobs.
-
-## Files and assets
-
-| Location | Responsibility |
-| --- | --- |
-| `experiments/configs/composition_training.json` | Training budgets and optimizer settings |
-| `experiments/configs/composition_tasks.json` | Active skills, train/test compositions, starting states, final checks |
-| `experiments/configs/calvin_skills.json` | All 34 released task instructions |
-| `src/policies/calvin.py` | Load official weights and original transforms |
-| `src/policies/frozen_skills.py` | Inference-only option execution and freeze verification |
-| `src/envs/calvin_portable.py` | Native CALVIN scene with selectable rendering |
-| `src/envs/composition.py` | Shared training and evaluation environment |
-| `src/coordination/tasks.py` | Task definitions and split validation |
-| `src/training/composition.py` | Graph warm-start, PPO, checkpoints, and evaluation |
-| `outputs/composition/` | Run snapshots, metrics, heads, baseline results, and videos |
-
-The original 34 tasks share one model. The starter experiment activates 12
-skills and has 11 single-skill training cases, 9 candidate training compositions,
-and 8 held-out compositions. Add tasks
-and active skill IDs in the task config; changing the action order or goal
-encoding requires a new head. Old reaching checkpoints remain on disk but are
-not used by this project.
-
-Assets live in `data/calvin/`:
-
-* `models/HULC_D_D/`: official checkpoint and its original Hydra configuration.
-* `datasets/task_D_D/validation/`: original scene configuration, statistics, and
-  matching MiniLM language embeddings.
-* `datasets/task_D_D/training/statistics.yaml`: original normalization metadata.
-* `vendor/`: pinned official CALVIN and HULC source trees.
-
-Setup downloads the authors' released assets. It fetches only inference metadata
-from the approximately 177 GB dataset ZIP using HTTP ranges. Demonstration
-episodes are not required for this experiment. Source and weights are not
-modified by the head training code. See `CALVIN_LICENSE.txt` for attribution.
-
-## Environment fidelity
-
-The loader uses the released D scene, Panda model, cameras, native relative
-7-dimensional actions, control frequency, original validation transforms,
-normalization statistics, language embeddings, and task-success oracle. Neither
-the head nor the reward code changes the low-level action coordinates or scale.
-
-Training and evaluation instantiate the same `CompositionEnv` and base-policy
-loader. Episodes start from explicit poses adapted from the native evaluation
-utility. Only the episode reset changes the scene. A skill boundary resets the
-controller's latent plan, not the robot, objects, or scene.
-
-The default renderer is PyBullet's software renderer (`tiny`) on both platforms,
-so switching between CPU and CUDA does not silently change the image backend.
-The original policy was evaluated with hardware rendering. Software-rendered
-pixels can differ, even though the scene geometry and camera settings match.
-This is why real frozen-policy baselines are required, not assumed.
-Linux can use `--renderer egl` for comparison. That changes the saved experiment
-contract and requires its own baseline; evaluation rejects renderer mismatches.
-CPU architecture and physics builds can also introduce small numerical changes.
-This is not claimed to reproduce the official 1000-sequence CALVIN results.
-
-## What the head learns
-
-Each action selects one active skill. The base model receives its corresponding
-released language instruction and controls the arm until native success or the
-360-frame limit. The head does not produce joint commands.
-
-The head observes the physical robot/scene state, required skill indicators,
-completed event indicators, a prerequisite adjacency matrix, and remaining
-budgets. The starter tasks are chains represented as goal graphs. The supplied
-graph exposes the desired ordering. This tests learned graph-conditioned skill
-selection and physical handoffs, not discovery of an unknown plan.
-
-An invalid selection receives a penalty and consumes a head decision without
-moving the robot. No action mask supplies the correct answer to the actor.
-Successful skills receive +1, full completion +5, failed options -1, invalid
-selections -0.25, and executed frames cost 0.0001 each. The discount is per head
-decision, not per simulation frame. A failed frozen option ends the episode.
-Final predicates are checked again to catch outcomes lost after later skills.
-
-The head first receives supervised warm-start updates using training graphs
-only, then PPO on real frozen-skill rollouts. Warm-start uses synthetic progress
-states and is not a replacement for simulator validation. No held-out task
-graph is used for warm-start or checkpoint selection.
-
-## Checks before expensive training
-
-`check` loads the actual model, resets the real scene, executes ten frozen-policy
-frames, checks finite observations/actions, and verifies unchanged base weights.
-It does not optimize any policy. Ten frames do not establish task success.
-
-`preflight --split train` runs a scripted selector through every training recipe.
-Each recipe has a per-task success threshold, so easy successes cannot hide a
-broken skill chain. `train` repeats this check before optimization. By default,
-only chains with at least 80% success across the three qualification seeds enter
-training. The full report and excluded tasks are saved in `qualified_tasks.json`;
-at least two qualified tasks, including a multi-skill chain, are required. Warm-start and checkpoint validation
-use the same qualified training set. Held-out tasks are not filtered to hide
-failures. Set `qualify_training_tasks` to false for strict all-task gating.
-Three seeds are still a small reliability sample; increase `preflight_seeds`
-before a research run.
-
-`--allow-weak-base` explicitly uses the unqualified chains for diagnostics and is
-recorded in the run status. It cannot fix a broken low-level controller. Do not
-interpret such a run's failures as evidence against the composition head alone.
-
-To inspect one physical chain:
+Copy `data/assembly/profiles.json`, `data/assembly/frozen.json` and the desired
+`outputs/assembly/RUN/` folder to use the same trained head. Verify the new
+machine without replacing the trained duration model:
 
 ```bash
-python -m experiments.run baseline --split train --task drawer_cycle --seeds 9000 --video
+python -m experiments.run preflight --samples 5 --verify-only
+python -m experiments.run evaluate --checkpoint outputs/assembly/RUN/best_head.pt --headless
 ```
 
-## Training and evaluation records
-
-`total_timesteps` counts head selections. Each valid selection can execute up
-to 360 simulation frames, so 4096 head steps can be much slower than 4096 physics
-steps. PPO can round the requested budget up to a complete rollout batch; the
-actual count is saved. A small MLP does not necessarily train faster on CUDA;
-image-policy inference and rendering dominate many of these runs.
-
-Every run saves configs, task/catalog snapshots, checkpoint/scene/statistics/
-embedding hashes, dependency versions, a frozen-parameter digest, preflight
-results, Monitor CSV, PPO progress CSV, periodic head checkpoints, a final head,
-and the best head selected using training-task validation seeds only. A separate
-validation process prevents evaluation from resetting or changing the training
-scene. This also avoids native CALVIN calls that implicitly address physics
-client 0. Its RNG changes are isolated from the training RNG. The base model's parameters are
-excluded from the head optimizer and checked before and after optimization.
-
-`evaluate` defaults to held-out compositions and the best saved head. The
-warm-started head is included in best-checkpoint selection, so PPO is not assumed
-to improve it. The final head is a fallback if a best checkpoint is missing. It loads the saved
-configs and checks the environment contract. CPU/CUDA selection may change;
-skill order, policy assets, renderer, and observation/reward definitions may not.
-Initial and final heads can also be compared with `--checkpoint initial` and
-`--checkpoint final`. Results include per-task success, valid-selection rate, conditional frozen-skill
-success, low-level frame counts, failure reasons, and a full decision trace.
-
-Compare against both baselines on the same split and seeds:
+Normal `preflight` refreshes profiles. Changed physics, catalogs, experts,
+duration estimates, features or planner code require matching contracts and,
+when appropriate, new qualification and training. Never copy virtualenvs or
+compiled plugins between operating systems.
 
 ```bash
-python -m experiments.run baseline --split test
-python -m experiments.run evaluate --policy random --split test
-python -m experiments.run evaluate --split test --video
+.venv-mujoco/bin/python -m pytest
 ```
-
-To continue a run on either machine after copying its output directory:
-
-```bash
-python -m experiments.run train --resume outputs/composition/RUN --timesteps 4096
-```
-
-This restores the head and optimizer into a new run directory. It starts fresh
-episodes/RNG, so continuation is not bit-identical to an uninterrupted run.
-Periodic checkpoints can resume an interrupted run. Failed runs are never
-silently selected as completed evaluation models.
-
-## Tests
-
-```bash
-.venv-calvin/bin/python -m pytest
-```
-
-The unit suite checks Gymnasium termination/truncation, scene continuity,
-selection penalties, failure propagation, persistent final conditions,
-train/test separation, RNG preservation, frozen-weight mutation detection, the
-training gate, head checkpoint round trips, device selection, and portability.
-The tiny head-training test uses a fake simulator and never updates the released
-robot controller. Real simulator checks and frozen-skill baselines are separate
-from these unit tests. No test result guarantees successful policy learning.
-
-Initial software-rendered checks exposed low-level failures and sensitivity to
-episode history. Episode resets now reload the native world to clear physics
-and controller caches. Skills within one episode still share a continuous scene.
-Always use the current reset protocol's preflight results for qualification.
-These diagnostics are not a reproduction of the official model's reported score.

@@ -16,3 +16,9 @@ venv/
 
 # macOS metadata.
 .DS_Store
+
+# Retired code and expensive previous experiment assets.
+/archive/
+
+# Native simulator diagnostics from rejected reset candidates.
+MUJOCO_LOG.TXT

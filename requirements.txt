@@ -1,27 +1,7 @@
-# Single Python 3.10 runtime for frozen HULC skills and PPO composition training.
--c experiments/configs/calvin_constraints.txt
-numpy
-torch
-torchvision
-pytorch-lightning
-torchmetrics
-hydra-core
-hydra-colorlog
-omegaconf
-opencv-python
-scipy
-numpy-quaternion
-gym
-gymnasium==0.29.1
-stable-baselines3==2.1.0
-# Install pybullet through conda-forge with experiments.setup (prebuilt on Mac).
-gitpython
-rich
-matplotlib
-moviepy<2
-tqdm
-termcolor
-wandb
-transformers
-imageio[ffmpeg]
-pytest==8.3.5
+numpy==1.26.4
+mujoco==3.3.0
+scipy==1.13.1
+torch==2.15.0
+imageio==2.38.1
+pillow==13.0.0
+pytest==9.2.0
