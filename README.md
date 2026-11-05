@@ -1,154 +1,229 @@
-# Arm Skill Composer
+# RoboFactory Skill Composition
 
-A minimal hierarchical imitation-learning experiment using **150 published
-RoboFactory LiftBarrier demonstrations**. A shared neural head selects the next
-skill for two arms; the individual arm executors stay frozen.
+A multi-task imitation-learning coordinator for two Panda robot arms in MuJoCo.
+It trains on **published RoboFactory recordings only** and executes new supplied
+skill graphs with **up to 17 operations**, using reusable frozen manipulation
+skills. No generated expert demonstrations or RL training are used.
 
-```text
-Published demonstrations → skill annotations → behavior cloning → composition head
-                                                                     ↓
-Current arm states + skill completion signals → next skill for each arm → MuJoCo
-```
+## Watch it
 
-## Run
-
-The data, trained checkpoint, and `.venv-mujoco` environment already exist in
-this checkout. From the project directory:
+The published data, prepared training set, trained policy, and previews are
+already present in this checkout.
 
 ```bash
+cd /Users/risha/Github/arm-skill-blender
 source .venv-mujoco/bin/activate
 
-# Watch the trained head coordinate the two arms (macOS).
-mjpython -m skill_composer rollout --viewer
+# New task: transfer parts between arms, open a container, build a tower inside.
+mjpython -m skill_composer rollout --task relay_container --parts 3 --viewer
 
-# Inspect either arm's individual frozen skills, at one third speed.
+# Longer 17-operation version.
+mjpython -m skill_composer rollout --task relay_container --parts 4 --viewer
+
+# Pipelined handoff + stacking, with both arms working in parallel.
+mjpython -m skill_composer rollout --task relay_stack --parts 4 --viewer
+
+# Each arm's frozen pick, place, stack, and open-lid skills, in isolation.
 mjpython -m skill_composer skills --arm 0 --viewer
 mjpython -m skill_composer skills --arm 1 --viewer
-
-# Inspect predictions on an actual held-out RoboFactory demonstration.
-python -m skill_composer preview
-open outputs/baseline/held_out_demo.gif
+mjpython -m skill_composer skills --arm 1 --skill stack --viewer
 ```
 
-For a fresh environment, use Python 3.10+ (3.12 tested):
+Use `python` instead of `mjpython` for the viewer on Linux. Physics-only execution
+omits `--viewer`. A graphics context is required for windows and GIFs.
 
 ```bash
+# Pre-rendered previews (macOS).
+open outputs/cell/individual_skills.gif
+open outputs/cell/relay_container.gif
+open outputs/cell/relay_stack.gif
+open outputs/cell/coordination_comparison.gif
+
+# Regenerate all galleries from actual evaluation episodes.
+python -m skill_composer demo
+
+# Render a new rollout; the movie is accelerated, while its HUD shows sim time.
+python -m skill_composer rollout --task relay_container --parts 4 \
+  --gif outputs/cell/relay_container.gif
+
+# Original public recording images, clearly separate from our MuJoCo scene.
+python -m skill_composer preview --task PassShoe --episode 0
+open outputs/cell/published_PassShoe.gif
+```
+
+## Training data and learning
+
+The training bank contains **750 original published episodes / 169,215 frames**
+from five RoboFactory tasks:
+
+| Published task | Episodes | Reusable behavior |
+| --- | ---: | --- |
+| PickMeat | 150 | Reach, grasp, lift |
+| StackCube | 150 | Pick and place on a support |
+| PassShoe | 150 | Cross-workspace staging and receiving |
+| PlaceFood | 150 | Parallel object pickup and lid opening |
+| TwoRobotsStackCube | 150 | Parallel pickup and ordered stacking |
+
+Of these episodes, **525 train / 110 validate / 115 test**. Whole trajectories
+stay in one partition. The original files total about **5.6 GB**, verified against
+pinned upstream SHA256 hashes. [Provenance and annotation details](data/DATASET.md).
+
+The coordinator is a shared permutation-equivariant neural actor. Each candidate
+operation has its type, assigned arm, execution status, dependency progress,
+target properties, and both arms' measured joint positions/velocities. The actor
+scores pending operations and WAIT for each arm, with shared weights across
+objects, candidate order, and arm roles. It has no task-name or node-index input.
+
+Supervision comes from **weak semantic annotations of the published joint/gripper
+commands**, informed by the official source task programs. Pick includes the
+post-grasp lift; place includes release and clearance/retreat where the source
+expert performs it. Goal graphs and dependencies are hand annotated. These are
+not publisher-provided skill labels or automatically discovered plans.
+
+The 54-dimensional candidate representation includes actual recorded
+proprioception. Candidate shuffling, arm exchange, and proprioception dropout
+augment those same recordings; they do not create or count extra demonstrations.
+Training uses categorical behavior cloning with AdamW. Checkpoint selection uses
+held-out source episodes and checks performance both with and without motor-state
+inputs. The selected checkpoint matches all **289 held-out annotated decisions**;
+these simple source graph templates make that an infrastructure measure, not a
+physical success rate or evidence of broad general intelligence.
+
+```bash
+# Fresh environment: Python 3.10+; 3.12 tested.
 python3 -m venv .venv-mujoco
 source .venv-mujoco/bin/activate
 python -m pip install -e '.[dev]'
-```
 
-On Linux use `python` for the viewer. Physics-only runs omit `--viewer` and
-`--gif`; rendering requires a working graphics context. `open` is macOS-specific.
-
-## Data and training
-
-```bash
-# Fetch or verify the original public files (~988 MB).
+# Download or verify the five ORIGINAL published task files.
 python -m skill_composer download
-
-# Infer skill boundaries and split whole trajectories.
 python -m skill_composer prepare
-
-# Train only the composition head, then evaluate the held-out episodes.
-python -m skill_composer train --epochs 100
+python -m skill_composer train --epochs 200
 python -m skill_composer evaluate
 ```
 
-The source contains 15,077 frames. Offline heuristics annotate
-**approach → grasp → lift → hold**, producing 673 decision events. The head acts
-when either executor reports completion; ongoing skills are non-preemptive.
-Its 48 inputs are both arms' measured joint positions/velocities, active skill
-IDs, and completion flags. A shared two-layer MLP outputs four skill logits per
-arm. Training uses class-weighted cross-entropy and AdamW.
+## What is new about the evaluation tasks
 
-Whole episodes are split into **105 training / 22 validation / 23 test**.
-Normalization and frozen executor target calibration use only training episodes;
-checkpoint selection uses validation episodes. Recorded actions create offline
-labels, but actions, future observations, episode IDs, clocks, and success flags
-are not head inputs. Online skill termination is scripted, not learned.
+The training programs have at most four operations. The two evaluation families
+combine those known skills into longer graphs, with two to four parts:
 
-The saved head achieves **95.1% joint next-skill accuracy** on held-out annotated
-events. A fixed-sequence baseline scores **100%**. These are weak-label imitation
-scores, not physical task success rates. [Data provenance and annotation rules](data/DATASET.md).
+- **Relay stack:** supplier picks parts and stages them in separate shared docks;
+  receiver fetches staged parts and builds a tower. Supplier and receiver can
+  overlap work. Three parts require 12 operations; four require 16.
+- **Relay container:** the supplier first stages all required parts, then opens
+  and holds the container lid. The receiver can prefetch a part, wait for access,
+  and stack the parts inside. Three parts require 13 operations; four require 17.
 
-## Compare individual skills and coordination
+These full graphs are excluded from supervised training and checkpoint
+selection. They are **new compositions of known operations**, supplied as goal
+programs. Dependencies and arm roles are inputs. The head learns dispatch and
+waiting; it does not infer a plan from a new natural-language instruction or
+invent new physical skills. Evaluation scenes and controllers were developed
+using this task family, so this is a structural transfer demonstration rather
+than a preregistered unseen-benchmark claim.
+
+Only executor availability, arm ownership, and completed/running status mask
+candidate actions. **Unmet graph dependencies are observations, not policy
+masks.** A bad dispatch is rejected by the executor and counted; there is no
+expert scheduler fallback for the learned controller.
+
+## Fair comparisons
 
 ```bash
-# Nominal scene: six controllers use identical frozen skills and initial state.
-python -m skill_composer compare --gif outputs/baseline/comparison/comparison.gif
-open outputs/baseline/comparison/individual_skills.gif
-open outputs/baseline/comparison/comparison.gif
+# Same scenes, objects, seeds, and frozen skills for every controller.
+python -m skill_composer compare --seeds 20 --seed-start 3000 --parts 3
 
-# Apply the same 1.5-second arm-1 motor-start delay in every trial.
-python -m skill_composer compare --delay-arm1 1.5 \
-  --output outputs/baseline/comparison_delayed \
-  --gif outputs/baseline/comparison_delayed/comparison.gif
-open outputs/baseline/comparison_delayed/comparison.gif
+# Individual-controller inspection.
+mjpython -m skill_composer rollout --task relay_stack --parts 3 \
+  --controller serial --viewer
+mjpython -m skill_composer rollout --task relay_stack --parts 3 \
+  --controller greedy --viewer
+
+# Either arm alone on the shared task (the other arm stays parked).
+mjpython -m skill_composer rollout --task relay_stack --controller arm0 --viewer
 ```
 
-Omit `--gif` to print results and save traces without rendering.
+The report compares the learned head with a serial coordinator and a strong
+hand-written greedy graph coordinator. Serial performs one operation at a time;
+greedy dispatches ready operations for both arms. Every controller uses identical
+IK skills, grasp models, placements, and task criteria.
 
-| Controller | Nominal | Arm 1 delayed 1.5 s |
-| --- | --- | --- |
-| Either arm alone | Fails shared task | Fails shared task |
-| Independent local skill queues | Passes | Fails |
-| Learned head without guard | Passes | Fails |
-| Learned head with temporal guard | Passes | Passes |
-| Fixed sequence with the same guard | Passes | Passes |
+Physical success requires every operation to finish, no tracking failure, and
+all final objects within 2.5 cm of their target centers. **Strict success** also
+requires zero rejected dispatches and zero sampled arm-contact frames. Both are
+reported; tower instability and contacts are not hidden. Timings are simulated
+completion times on successful episodes. Performance against serial demonstrates
+parallel execution, while the greedy control tests whether learning adds an
+advantage. This version does not establish superiority over that strong control.
 
-Each solo arm completes its local skills, but cannot lift the bar level alone.
-The shared goal requires both grasps, a height gain above 0.15 m, handle height
-difference below 0.04 m, and no sampled arm-arm contacts for at least 0.5 seconds.
-The temporal guard blocks lift/hold until both arms grasp the bar. The fixed
-coordinator also succeeds, so the delayed-case improvement comes from this
-explicit synchronization rule; a benefit from learning has not been established.
-These are deterministic development examples, not aggregate benchmark results.
+## Measured results
 
-For a single episode, `rollout --no-guard` runs the raw head and `rollout --oracle`
-runs the fixed coordinator. `--randomization 0.01 --seed 3` adds a small object
-position perturbation. All rollouts, skill inspections, and comparisons share
-one execution implementation.
+Final three-part evaluation: **20 fresh seeds per task and controller**
+(seeds 3000–3019). This report contains 300 physical episodes across five tasks
+and three controllers. These figures use the same frozen controller and goal
+criteria for all comparisons.
 
-## Files
+| New composition | Controller | Physical success | Strict success | Mean sim time |
+| --- | --- | ---: | ---: | ---: |
+| relay_container | learned | 100% | 100% | 32.67 s |
+| relay_container | serial | 100% | 55% | 35.61 s |
+| relay_container | greedy | 100% | 100% | 32.48 s |
+| relay_stack | learned | 100% | 80% | 23.58 s |
+| relay_stack | serial | 100% | 55% | 33.11 s |
+| relay_stack | greedy | 100% | 95% | 22.89 s |
 
-| Path | Purpose |
+The learned coordinator reduces relay-stack completion time by **28.8%**
+versus serial execution. The dependency-aware greedy coordinator is slightly
+faster and has a higher strict success rate on that task. This is a demonstration
+of learned skill recomposition and parallel dispatch, not an improvement over
+hand-written graph scheduling. Four-part variants are reported separately in
+`outputs/cell/variant_evaluation_parts4.json` and remain more demanding.
+
+## Skills and simulator limits
+
+Each frozen skill is an object/target-conditioned closed-loop controller with
+Cartesian IK waypoints, gripper control, measured joint-target convergence,
+termination, and failure reporting. `stack` is the place skill with a support
+height target. The arm controllers are scripted, not separately pretrained neural
+policies. Only the composition actor is optimized.
+
+Props are dynamic MuJoCo bodies under gravity and collide with the workbench,
+fixtures, and other props. **Grasping uses proximity-gated idealized welds**, not
+validated friction contacts. Robot-to-prop contact is simplified, joint-space
+interpolation is not a complete collision planner, and brief arm contacts can
+still occur. This is a procedural MuJoCo manipulation cell, not a validated port
+of RoboFactory's original ManiSkill environments or a sim-to-real result. No
+NVIDIA SimReady objects are included.
+
+## Important files
+
+| Path | Contents |
 | --- | --- |
-| `src/skill_composer/data.py`, `download.py` | Published data, annotations, episode splits |
-| `src/skill_composer/model.py`, `train.py` | Composition head, behavior cloning, evaluation |
-| `src/skill_composer/skills.py`, `sim.py` | Frozen skill interface and MuJoCo physics |
-| `src/skill_composer/execution.py`, `comparison.py` | Shared execution, viewer, controlled comparisons |
-| `src/skill_composer/preview.py` | Real-demo prediction preview |
-| `data/raw/` | Full original HDF5/JSON files and checksum manifest |
-| `data/processed/` | Training arrays, annotation audit, frozen target calibration |
-| `outputs/baseline/` | Checkpoint, frozen skills, training/evaluation records, demo GIF |
-| `outputs/baseline/comparison*/` | Comparison traces and representative animations |
-| `assets/panda/` | Necessary robot model, collision meshes, license, provenance |
-| `tests/` | Data alignment, split isolation, executor and comparison checks |
+| `src/skill_composer/cell/dataset.py` | Verified published downloads, temporal annotations, source splits |
+| `src/skill_composer/cell/program.py` | Shared goal-program and candidate observation contract |
+| `src/skill_composer/cell/policy.py` | Shared actor, behavior cloning, held-out evaluation |
+| `src/skill_composer/cell/world.py` | Dynamic cell, frozen IK executors, physical preconditions |
+| `src/skill_composer/cell/experiment.py` | Viewer, rendering, matched closed-loop evaluation |
+| `src/skill_composer/robot.py` | Licensed Panda scene construction |
+| `data/robofactory/` | Full original five-task HDF5/JSON files and checksum manifest |
+| `data/processed/multitask.*` | Training observations, annotations, and source episode audit |
+| `outputs/cell/policy.pt` | Trained composition actor |
+| `outputs/cell/training.json` | Training loss and source validation history |
+| `outputs/cell/imitation_evaluation.json` | Original-recording held-out imitation metrics |
+| `outputs/cell/closed_loop_evaluation.json` | Matched physical results, strict metrics, and dispatch traces |
+| `outputs/cell/*.gif` | Individual skills, new compositions, and original-data preview |
 
-Raw data, processed arrays, outputs, and the Python environment are kept locally
-and ignored by Git. Commands above recreate the data and training artifacts.
-`head.pt` and `skills.json` are required for execution; checksums prevent loading
-a mismatched frozen skill library. `rollout.json` records the latest standalone
-episode. Each comparison stores its complete trace in `results.json`.
+Data, trained outputs, and the Python environment remain local and Git-ignored.
+The downloader and training commands reproduce them. The committed v1 lift
+baseline remains accessible via `python -m skill_composer baseline ...`; it is
+not used to train the new multi-task coordinator.
 
 ```bash
 python -m pytest -q
 ```
 
-## Limits and sources
-
-This is a **separate MuJoCo proxy**, not a port of RoboFactory's ManiSkill
-benchmark. The frozen scripts use median training-demo endpoint configurations;
-they are replaceable placeholders, not independently pretrained grasp policies.
-The barrier and supports are calibrated to those targets. Proximity-gated point
-attachments approximate grasps; this does not establish friction-based grasping,
-compositional generalization, or sim-to-real transfer. A branching task and
-stronger object-conditioned skills are needed to test a learned coordination
-advantage. NVIDIA SimReady objects and a USD importer are not included.
-
-- [RoboFactory paper](https://arxiv.org/abs/2503.16408),
-  [official implementation](https://github.com/MARS-EAI/RoboFactory),
-  [published LiftBarrier data](https://huggingface.co/datasets/FACEONG/RoboFactory_Dataset/tree/main/LiftBarrier) (publisher marks MIT).
-- [MuJoCo Menagerie Panda](https://github.com/google-deepmind/mujoco_menagerie/tree/98a70c569c4c1b6da467a20012f766ee1f8dc521/franka_emika_panda)
-  (Apache 2.0). Model changes and licensing are recorded in `assets/panda/` and `NOTICE`.
+Sources: [RoboFactory paper](https://arxiv.org/abs/2503.16408),
+[official task planners](https://github.com/MARS-EAI/RoboFactory/tree/main/robofactory/planner/solutions),
+[published dataset](https://huggingface.co/datasets/FACEONG/RoboFactory_Dataset),
+[MuJoCo Menagerie Panda](https://github.com/google-deepmind/mujoco_menagerie/tree/98a70c569c4c1b6da467a20012f766ee1f8dc521/franka_emika_panda).
+The Panda model license and modifications are recorded in `assets/panda/`.

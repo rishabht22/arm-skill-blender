@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arm-skill-composer"
-version = "0.1.0"
-description = "A RoboFactory-data baseline for coordinating two frozen arm skill executors"
+version = "0.2.0"
+description = "Multi-task robot skill composition trained on published RoboFactory demonstrations"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.26,<3",

@@ -10,3 +10,4 @@ __pycache__/
 !/outputs/.gitkeep
 !/data/raw/.gitkeep
 !/data/processed/.gitkeep
+/data/robofactory/*
