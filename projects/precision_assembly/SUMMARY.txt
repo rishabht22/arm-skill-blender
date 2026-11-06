@@ -1,0 +1,18 @@
+Precision assembly scheduling
+
+Two Panda stations share one MuJoCo simulation. Each kit visits both stations
+for rod or peg insertion, gear seating, connector mating, and final assembly.
+Multiple kits arrive at different times. The scheduler decides which ready
+job each station starts.
+
+The pinned AssembleNIST release supplies a frozen, multi-task joint-action
+expert, workpiece meshes, and the native contact plugin. The two arms have
+disjoint catalogs covering 12 variants. Physical qualification measured skill
+durations and passed 59 of 60 trials. A duration surrogate uses those
+measurements to generate randomized work orders. The head learns from
+lookahead scheduling labels, then DAgger adds labels at states it visits.
+
+In the original three-batch physical pilot, the learned head averaged 35.57
+simulated seconds versus 54.56 for serial and 34.36 for a Johnson-style
+heuristic. Show two jobs running in parallel, then compare all schedulers using
+the same work orders.

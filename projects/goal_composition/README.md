@@ -19,12 +19,12 @@ The prepared data has **600 decisions from 150 source episodes**. There are 105 
 
 ## Run it
 
-From the repository root, using the existing MuJoCo environment:
+Run from this project folder after installing the shared editable environment
+from the [repository README](../../README.md). The saved single-block checkpoint
+and tower checkpoint are in `outputs/demo/` and `outputs/demo/tower/`.
 
 ```bash
-source .venv-mujoco/bin/activate
-
-# For a fresh checkout. The verified raw and prepared files are already here.
+# Fetch and prepare the source recordings before training.
 python -m skill_composer compose download
 python -m skill_composer compose prepare
 
@@ -38,11 +38,11 @@ Training writes `outputs/composer.pt`, `outputs/training.json`, and `outputs/imi
 # Reference search can be viewed before training.
 mjpython -m skill_composer compose rollout --layout relay --controller search --viewer
 
-# After training, watch the learned policy make the choices.
-mjpython -m skill_composer compose rollout --layout direct --viewer
-mjpython -m skill_composer compose rollout --layout relay --viewer
-mjpython -m skill_composer compose rollout --layout relay-swapped --viewer
-mjpython -m skill_composer compose rollout --layout direct --goal source --viewer
+# Use the bundled checkpoint to watch the learned policy make the choices.
+mjpython -m skill_composer compose rollout --layout direct --run outputs/demo --viewer
+mjpython -m skill_composer compose rollout --layout relay --run outputs/demo --viewer
+mjpython -m skill_composer compose rollout --layout relay-swapped --run outputs/demo --viewer
+mjpython -m skill_composer compose rollout --layout direct --goal source --run outputs/demo --viewer
 
 # Evaluate the same seeds and goals with learned and shortest-plan controllers.
 python -m skill_composer compose compare --seeds 5
@@ -68,12 +68,11 @@ optimizer steps, elapsed time, and checkpoint weight change.
 python -m skill_composer compose tower train --epochs 100
 python -m skill_composer compose tower compare --seeds 5
 mjpython -m skill_composer compose tower rollout --layout occupied-dock \
-  --order yellow red blue --controller guided --viewer
+  --order yellow red blue --controller guided --run outputs/demo/tower --viewer
 ```
 
 Use `compose tower download` and `compose tower prepare` to rebuild the training
-inputs in a fresh checkout. The prepared data is already available locally.
-The default `learned` controller selects one action at a time from model scores.
+inputs in a fresh checkout. The default `learned` controller selects one action at a time from model scores.
 `guided` runs symbolic search with learned scores breaking ties. `search` uses
 the same symbolic search and can run before training. The comparison separates
 all three results. Tower checkpoints and reports go in `outputs/tower/`.

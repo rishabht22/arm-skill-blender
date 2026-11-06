@@ -1,0 +1,30 @@
+# Python caches and virtual environments.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv*/
+venv/
+
+# Local experiment data and outputs.
+/data/*
+!/data/.gitkeep
+/outputs/*
+!/outputs/.gitkeep
+/checkpoints/
+/logs/
+/wandb/
+
+# macOS metadata.
+.DS_Store
+
+# Retired code and expensive previous experiment assets.
+/archive/
+
+# Native simulator diagnostics from rejected reset candidates.
+MUJOCO_LOG.TXT
+
+!/outputs/demo/
+/outputs/demo/*
+!/outputs/demo/best_head.pt
+!/outputs/demo/profiles.json
+!/outputs/demo/run.json

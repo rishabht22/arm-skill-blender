@@ -1,0 +1,22 @@
+{
+  "task": "reach_handle",
+  "seed": 0,
+  "horizon": 200,
+  "reach": {
+    "robot_index": 0,
+    "action_scale": 0.2,
+    "success_distance": 0.03,
+    "hold_seconds": 3.0,
+    "target_height": 0.03
+  },
+  "total_timesteps": 100000,
+  "learning_rate": 0.0003,
+  "n_steps": 1024,
+  "batch_size": 64,
+  "n_epochs": 5,
+  "gamma": 0.99,
+  "target_kl": 0.02,
+  "hidden_sizes": [128, 128],
+  "checkpoint_every": 10000,
+  "device": "cpu"
+}

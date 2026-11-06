@@ -1,0 +1,7 @@
+# Additional dependencies for the released Spatial Intention Maps simulator.
+# Install alongside the existing requirements.txt.
+pybullet==3.2.7
+scikit-image==0.24.0
+tifffile==2024.9.20
+PyYAML==6.0.2
+Cython==3.0.12

@@ -1,0 +1,15 @@
+RoboFactory LiftBarrier
+
+Two Panda arms face a shared bar. Each arm can approach and grasp its own
+handle, but a level lift requires both ends to rise together.
+
+The training source was 150 published RoboFactory LiftBarrier demonstrations,
+pinned to dataset revision 63f8a85. Gripper commands and changes in joint targets
+mark approach, grasp, lift, and hold boundaries. Whole episodes are split
+105/22/23. A two-layer MLP is trained with weighted behavior cloning on current
+joint position, velocity, and executor completion signals. The MuJoCo demo uses
+fixed joint-target scripts calibrated from training-episode endpoints.
+
+The head matched 95.1% of held-out joint decisions. A fixed sequence matched
+100%. With one arm delayed, waiting for both grasps before lifting let both
+guarded controllers succeed. outputs/demo/preview.mp4 shows the comparison.

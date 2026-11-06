@@ -1,0 +1,17 @@
+MuJoCo manipulation
+
+Watch a Panda pick up a red cube, set it on a green cube, then lift it again
+and put it at a separate table position. Robosuite provides the Stack scene.
+A seeded reset places the cubes, and MuJoCo contact physics determines what
+happens as the fingers close, lift, and release.
+
+The single-arm demo uses fixed Cartesian feedback controllers for reach,
+grasp, lift, carry, place, release, and retreat. It uses neither a recording
+dataset nor an optimizer. The historical ten-seed stack-and-relocate run
+succeeded on all ten seeds.
+
+The same milestone also contains a two-Panda prototype. One arm holds a
+container while the second puts a block inside. A scripted teacher supplies
+online observations for behavior-cloning warm-start, followed by PPO on the
+coordination head. Qualification and source hashes protect the frozen arm
+controllers. Start the single-arm demo with experiments.run demo.

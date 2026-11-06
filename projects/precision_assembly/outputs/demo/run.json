@@ -1,0 +1,46 @@
+{
+  "contract": {
+    "experts": {
+      "checkpoint_sha256": "eb2cd4e9aacda2d26d23c059570522559e9fcd812a64f0aef60daea83408581e",
+      "catalogs": {
+        "0": [
+          "R4",
+          "R12",
+          "P4",
+          "P12",
+          "BNC",
+          "USB"
+        ],
+        "1": [
+          "Gs",
+          "Gm",
+          "Gl",
+          "N8",
+          "N12",
+          "RJ45"
+        ]
+      },
+      "adapter_sha256": {
+        "world.py": "df8884e505eae64ecf9cb8678b51959bb3d7f1ec0b74426849d912cff3c90070",
+        "service.py": "b3e365442054f74242691aef6a4a98321ce2dd8de266d8c0fde1e328c53aba2d",
+        "assets.py": "62cce2d3ce4cc1dfac900e06b1a1eb9cb131eecd68e9beddbcdb4b0cfcabf90b",
+        "experts.py": "1e5b722b1ec98fa0c88fe57685328687e30c78d4447d90310bc5912b622eef05"
+      }
+    },
+    "profiles_sha256": "5ee2be859491986e9af2b222fd662356bf960be64a025a88533fc201ed5c7cfe",
+    "features": 29,
+    "method": "lookahead_distillation_dagger",
+    "sources": {
+      "scheduling.py": "f184ccbf1177a39f507de24eab661d7c0a09ac41f4d18c35c4c3b59ee0b38909",
+      "planner.py": "7aedc95eee6aa5e36bd7cc7ac9f91f3ae75086da202618e71021bb4763ad9533",
+      "head.py": "b9924c4363d75454a97b792adba4be437c4911144e53d2a1ac8f2ac730f3ef11"
+    }
+  },
+  "problems": 100,
+  "epochs": 40,
+  "rounds": 2,
+  "examples": 3220,
+  "trainable_parameters": 16514,
+  "seconds": 64.06333262502449,
+  "training_backend": "measured duration surrogate; no robot expert gradients"
+}

@@ -1,0 +1,16 @@
+Planar pushing and lifting dispatch
+
+Two mobile robots collect yellow cubes into a red corner receptacle. The
+pusher and lifter use separate released Spatial Intention Maps checkpoints.
+Each network scores actions on its own overhead observation map. The PyBullet
+simulator executes the chosen action before the next dispatch.
+
+The source simulator and weights are downloaded at pinned revisions and verified
+by hash. Training data for the 1,764-parameter head came from live simulator
+episodes. PPO learned to choose push, lift, or both, with reward for delivery
+and distance progress and costs for elapsed simulation time and decisions.
+
+The one-cube demo took five dispatches and 4.57 simulated seconds. In the
+five-seed two-cube pilot, lifting alone succeeded three times and the learned
+head succeeded zero times. Watch the robots interfere when dispatched together.
+The one-cube recording is in outputs/demo/preview.mp4.

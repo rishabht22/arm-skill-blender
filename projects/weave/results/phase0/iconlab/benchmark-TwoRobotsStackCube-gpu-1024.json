@@ -1,0 +1,61 @@
+{
+  "mode": "benchmark",
+  "git_sha": "de1f3a492066485ddb1f78c1dee287dc2a5c4722",
+  "config_sha256": "e20fe68b10c3ee0371650843476f6fcdeec5d86852a101427364b3d744d43570",
+  "implementation_sha256": "c7ce8eb5fca818d70e04f48b88c795c27db83f09b4298b0541c1f478c7ac100c",
+  "benchmark_plan": {
+    "tasks": [
+      "TwoRobotsStackCube",
+      "PassShoe",
+      "PlaceFood"
+    ],
+    "env_counts": [
+      1,
+      64,
+      256,
+      1024
+    ]
+  },
+  "checkpoint_sha256": {},
+  "seeds": [
+    2025,
+    2026,
+    2027
+  ],
+  "result": {
+    "task": "TwoRobotsStackCube",
+    "backend": "gpu",
+    "num_envs": 1024,
+    "runtime": {
+      "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+      "versions": {
+        "mani_skill": "3.0.0b12",
+        "sapien": "3.0.0b1",
+        "torch": "2.6.0"
+      },
+      "robofactory_revision": "37426a4c67cd307dbff8009c95080975105e0b51",
+      "asset_revision": "58ad250efb3de75f956c852ba8ad50e7ca30409f",
+      "asset_sha256": {
+        "scenes/table/table.glb": "cb0ebd8ad6438c1160f095d902bf55415f9d643f8c6990a186a052251fe7951a",
+        "objects/pot_annotated/mobility.urdf": "91cbd25302dea15bcadad27a684156d97b4b97a7c441d164d9f0a8c500f4b5fa"
+      }
+    },
+    "gpu": "NVIDIA L40S",
+    "control_hz": 20,
+    "sim_hz": 100,
+    "env_steps_per_second": [
+      3200.77258835926,
+      3200.8727804794808,
+      3213.055921375268
+    ],
+    "median_env_steps_per_second": 3200.8727804794808,
+    "process_gpu_mib": 2284,
+    "incremental_gpu_mib_per_env": 2.23046875,
+    "contact_probe": {
+      "pair_count": 225,
+      "challenged_peak_n": 625059072.0,
+      "unmodified_peak_n": 0.0,
+      "passed": true
+    }
+  }
+}

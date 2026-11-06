@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "arm-skill-composer"
 version = "0.2.0"
-description = "Multi-task robot skill composition trained on published RoboFactory demonstrations"
+description = "RoboFactory skill composition and WEAVE coordination experiments"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.26,<3",
@@ -23,9 +23,32 @@ weave = ["hydra-core==1.3.2"]
 [project.scripts]
 skill-compose = "skill_composer.cli:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = [
+  "skill_composer",
+  "skill_composer.cell",
+  "skill_composer.compose",
+  "weave",
+  "weave.envs",
+  "weave.eval",
+]
+
+[tool.setuptools.package-dir]
+skill_composer = "projects/robofactory_lift/src/skill_composer"
+"skill_composer.cell" = "projects/robofactory_cell/src/skill_composer/cell"
+"skill_composer.compose" = "projects/goal_composition/src/skill_composer/compose"
+weave = "projects/weave/src/weave"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = ["tests"]
+pythonpath = [
+  "projects/robofactory_lift/src",
+  "projects/robofactory_cell/src",
+  "projects/goal_composition/src",
+  "projects/weave/src",
+]
+testpaths = [
+  "projects/robofactory_lift/tests",
+  "projects/robofactory_cell/tests",
+  "projects/goal_composition/tests",
+  "projects/weave/tests",
+]

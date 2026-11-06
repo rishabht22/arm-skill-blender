@@ -1,0 +1,17 @@
+RoboFactory multi-task cell
+
+Two Panda arms work across a shared table. One stages parts for the other,
+which stacks them or places them inside a container after the lid opens.
+The longer evaluation graphs contain up to 17 operations.
+
+The data are 750 original published RoboFactory episodes across PickMeat,
+StackCube, PassShoe, PlaceFood, and TwoRobotsStackCube. Task programs and
+recorded joint and gripper commands supply weak operation labels. A shared
+candidate scorer learns dispatch and WAIT by categorical behavior cloning.
+Goal dependencies and arm roles are supplied. Scripted IK controllers and
+proximity-gated grasp welds execute the skills in the MuJoCo proxy.
+
+On 20 three-part relay-stack seeds, the learned head succeeded physically on
+all seeds and averaged 23.58 simulated seconds. Serial averaged 33.11 seconds
+and greedy averaged 22.89. The stricter collision-and-dispatch criterion was
+met on 80% of learned trials. See outputs/demo/preview.mp4 for a relay.

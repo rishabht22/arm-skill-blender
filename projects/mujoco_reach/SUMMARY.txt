@@ -1,0 +1,15 @@
+MuJoCo reach and lift
+
+The first scene put a UR5e and a Jaco on opposite sides of a handled container.
+The motion preview drives the arms up and down. The later reaching demo has each
+arm move to a point 3 cm above its handle and try to hold there for three seconds.
+
+Robosuite TwoArmLift supplies the simulator state, rewards, and randomized resets.
+There was no external recording dataset. The first PPO pilot observed both arms
+and drove them jointly. The later version trained one state-based policy per arm
+with the partner idle, using a 128-by-128 MLP and saved observation normalization.
+The combined evaluator loads both policies and measures their simultaneous hold.
+
+The joint lift pilot struggled. Reaching isolates the approach before grasping
+and lifting. Show experiments.basic_robot_motion first, then compare per-arm and
+combined evaluation using the commands in README.md.

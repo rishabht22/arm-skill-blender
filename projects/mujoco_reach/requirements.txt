@@ -1,0 +1,11 @@
+# Simulation runtime, matched to the working local scene.
+numpy==1.26.4
+mujoco==3.3.0
+robosuite==1.5.1
+
+# Keep robosuite's numerical and image dependencies compatible with NumPy 1.x.
+scipy==1.13.1
+opencv-python==4.10.0.84
+
+# Environment smoke tests.
+pytest==8.3.5

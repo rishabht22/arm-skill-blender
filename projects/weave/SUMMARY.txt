@@ -1,0 +1,16 @@
+WEAVE native GPU audit and cell
+
+WEAVE moves the coordination experiments into a native RoboFactory two-Panda
+scene on the lab GPU. The cell includes a hinged lid, randomized objects and
+resets, contact checks, and per-environment rollout monitoring.
+
+Phase 0 verified the five published RoboFactory task archives and sampled
+training episodes only. It replayed absolute and normalized joint commands
+and measured simulator throughput and contact behavior at several batch
+sizes. Every task missed the behavior-cloning precheck. The GPU benchmarks
+and contact probes supported the native backend choice.
+
+Phase 1 adds the shared cell and a random-action integrity smoke test. The
+next gate requires a supported NVIDIA Linux host. There is no trained WEAVE
+policy yet. Show the historical replay and throughput results in
+results/phase0/iconlab/report.md.

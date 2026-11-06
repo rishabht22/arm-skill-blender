@@ -1,0 +1,17 @@
+Goal-conditioned workbench and tower
+
+Ask the arms to move a block to a goal. When the picking arm can reach the
+goal it can place directly. When reach is split, the block can pass through a
+shared dock. The tower adds three colored blocks, support relations, and a
+layout where the shared dock starts occupied.
+
+The single-block data came from 150 published LongPipelineDelivery episodes.
+Gripper and joint commands supply timestamps, and source task programs guide
+goal and reach annotations. The tower adds ThreeRobotsStackCube for 300 source
+episodes and 1,500 decision rows. Supervised scoring learns which legal call
+to make. MuJoCo measures state and runs the pick, place, and stack controllers.
+
+The learned single-block controller succeeded on all 20 trials in the saved
+layout comparison. The tower's greedy learned controller failed all 25 trials.
+Guided search and plain search each succeeded on all 25. The guided
+occupied-dock demo shows how the extra staging constraint changes the plan.

@@ -1,8 +1,7 @@
-This rebuilt project includes a subset of the Franka Emika Panda model from
-MuJoCo Menagerie under Apache 2.0.
-See assets/panda/LICENSE and assets/panda/SOURCE.json.
+This repository includes a subset of the Franka Emika Panda model from
+MuJoCo Menagerie under Apache 2.0. The model license, source revision, and
+scene-builder changes are recorded under projects/robofactory_lift/assets/panda/.
 
-The runtime scene builder modifies the model representation as described in
-assets/panda/README.md. No original RoboFactory source code is included.
-The separately downloaded RoboFactory demonstrations are attributed in
-data/DATASET.md and remain subject to their publisher's license.
+The RoboFactory recordings are downloaded from the publisher. Dataset sources
+and annotation methods are recorded in each project's README or data directory.
+Historical projects retain their own NOTICE files.

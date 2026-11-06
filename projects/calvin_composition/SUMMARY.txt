@@ -1,0 +1,19 @@
+CALVIN frozen-skill composition
+
+A single Panda in the CALVIN-D play scene carries out language-conditioned
+skills such as opening a drawer and moving blocks. A high-level selector calls
+one skill at a time in a continuous scene. The drawer and objects stay where
+the last skill left them.
+
+The official HULC_D_D checkpoint, CALVIN scene and normalization metadata, and
+released MiniLM language embeddings come from the CALVIN and HULC authors.
+Inference uses RGB and robot state. The selector sees privileged simulator
+progress and a supplied goal graph. It warms up on synthetic progress states
+from the training recipes, then uses PPO over live frozen-HULC rollouts. A
+scripted selector qualifies tasks before optimization.
+
+Twelve of the released instructions are active in this experiment. Train and
+test recipes are separated in experiments/configs/composition_tasks.json.
+Some chained skills fail when the second skill starts from the state left by
+the first. The clip in outputs/demo/preview.mp4 shows the native scene on a
+successful single-skill LED rollout.
