@@ -1,0 +1,81 @@
+{
+  "source": "FACEONG/RoboFactory_Dataset",
+  "revision": "63f8a85",
+  "tasks": [
+    {
+      "task": "PickMeat",
+      "files": [
+        {
+          "file": "PickMeat.json",
+          "bytes": 34584,
+          "sha256": "45d7330c71be59e848c082f8f80c14f09253a9643434861a98075b33660b2838"
+        },
+        {
+          "file": "PickMeat.h5",
+          "bytes": 230847995,
+          "sha256": "7ede3079f213921c31df299ee1f76fd9db1c2220fcdbba3a49942ff1a318e2a5"
+        }
+      ]
+    },
+    {
+      "task": "StackCube",
+      "files": [
+        {
+          "file": "StackCube.json",
+          "bytes": 34753,
+          "sha256": "cc8f1e55260a800c6c3eda0d79ffc0acca5624e211d2a165100293335a32e12c"
+        },
+        {
+          "file": "StackCube.h5",
+          "bytes": 266445234,
+          "sha256": "57d6b7beac139fbc6a4349274de7c5ab778ef04aca529c5d69a5e9692cf9228b"
+        }
+      ]
+    },
+    {
+      "task": "PassShoe",
+      "files": [
+        {
+          "file": "PassShoe.json",
+          "bytes": 44403,
+          "sha256": "290004b6cffc8d6b3a83efd8a3f8ce487fd60dc9ab964c909c24311e1a29ba00"
+        },
+        {
+          "file": "PassShoe.h5",
+          "bytes": 1869703974,
+          "sha256": "13d8264fa8809216a0db271e8e5933239910d43d062c3412d6d8d6a8c705fb72"
+        }
+      ]
+    },
+    {
+      "task": "PlaceFood",
+      "files": [
+        {
+          "file": "PlaceFood.json",
+          "bytes": 44338,
+          "sha256": "d5d0e07e17da125c72324157b96f686608e23e2369c321dfb045fd3878550379"
+        },
+        {
+          "file": "PlaceFood.h5",
+          "bytes": 1590607246,
+          "sha256": "1606c85f5fc91bc35a58674dfb5e3a91bfbaf1be7028ef5f61a72bc121e79de2"
+        }
+      ]
+    },
+    {
+      "task": "TwoRobotsStackCube",
+      "files": [
+        {
+          "file": "TwoRobotsStackCube.json",
+          "bytes": 44371,
+          "sha256": "986f1d25e0786db45ea753f7a956e4150d5cbe449f2e31aec9ed8387a5321f3a"
+        },
+        {
+          "file": "TwoRobotsStackCube.h5",
+          "bytes": 1682515074,
+          "sha256": "76641c6a8bb944fb5eacfec51bd5174f34553d11851aae89383044f323130510"
+        }
+      ]
+    }
+  ]
+}

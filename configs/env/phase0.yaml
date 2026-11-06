@@ -1,0 +1,49 @@
+robofactory_revision: 37426a4c67cd307dbff8009c95080975105e0b51
+asset_revision: 58ad250efb3de75f956c852ba8ad50e7ca30409f
+maniskill_version: 3.0.0b12
+sapien_version: 3.0.0b1
+split_seed: 7
+replay:
+  selection_seed: 41
+  episodes_per_task: 50
+  repeat_atol: 0.00001
+  max_conversion_gap: 0.10
+  min_bc_raw_success: 0.70
+  joint_delta_limit: 0.10
+benchmark:
+  tasks: [TwoRobotsStackCube, PassShoe, PlaceFood]
+  env_counts: [1, 64, 256, 1024]
+  seed: 2025
+  warmup_steps: 32
+  measure_steps: 128
+  repeats: 3
+  contact_probe_steps: 4
+  contact_probe_offset_m: 0.04
+  contact_threshold_n: 1.0
+tasks:
+  PickMeat:
+    recorded_id: PickMeat
+    native_id: PickMeat-rf
+    pose_entities: [meat]
+    arms: 1
+  StackCube:
+    recorded_id: StackCube
+    native_id: StackCube-rf
+    pose_entities: [cubeA, cubeB]
+    arms: 1
+  PassShoe:
+    recorded_id: BrushShoe
+    native_id: PassShoe-rf
+    pose_entities: [shoe, goal_region]
+    arms: 2
+  PlaceFood:
+    recorded_id: IngredientsPlace
+    native_id: PlaceFood-rf
+    pose_entities: [pot, meat]
+    pose_articulations: [pot]
+    arms: 2
+  TwoRobotsStackCube:
+    recorded_id: TwoRobotStackCube
+    native_id: TwoRobotsStackCube-rf
+    pose_entities: [cubeA, cubeB, goal_region]
+    arms: 2
