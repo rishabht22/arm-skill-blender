@@ -3,7 +3,10 @@ import sys
 
 
 def main():
-    if len(sys.argv)>1 and sys.argv[1]=='baseline':
+    if len(sys.argv)>1 and sys.argv[1]=='compose':
+        sys.argv.pop(1)
+        from .compose.cli import main as run
+    elif len(sys.argv)>1 and sys.argv[1]=='baseline':
         sys.argv.pop(1)
         from .baseline_cli import main as run
     else:

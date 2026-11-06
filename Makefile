@@ -1,9 +1,12 @@
 WEAVE_REMOTE ?=
 WEAVE_REMOTE_DIR ?= arm-skill-blender
 
-.PHONY: phase0-audit sync audit-remote fetch-results
+.PHONY: phase0-audit phase1-smoke sync audit-remote fetch-results
 phase0-audit:
 	./scripts/run_phase0.sh
+
+phase1-smoke:
+	./scripts/run_phase1.sh
 
 sync:
 	@test -n "$(WEAVE_REMOTE)" || { echo "Set WEAVE_REMOTE to your SSH host alias."; exit 1; }

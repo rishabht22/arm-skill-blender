@@ -16,12 +16,16 @@ DEFAULT_RESULTS = ROOT / "results/phase0"
 DEFAULT_DATA = ROOT / "data/robofactory"
 
 
-def load_config() -> dict[str, Any]:
+def _compose_config(name: str) -> dict[str, Any]:
     from hydra import compose, initialize_config_dir
     from omegaconf import OmegaConf
 
     with initialize_config_dir(config_dir=str(CONFIGS), version_base="1.3"):
-        config = OmegaConf.to_container(compose(config_name="phase0"), resolve=True)
+        return OmegaConf.to_container(compose(config_name=name), resolve=True)
+
+
+def load_config() -> dict[str, Any]:
+    config = _compose_config("phase0")
     if config["replay"]["episodes_per_task"] < 50:
         raise ValueError(
             "The Phase 0 protocol requires at least 50 train episodes per task."
@@ -59,22 +63,27 @@ def _write_result(
         git_sha = subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip()
-    if len(git_sha) not in (40, 64) or any(c not in "0123456789abcdef" for c in git_sha):
-        raise ValueError("Invalid source Git revision. Run make sync from the source checkout.")
+    if len(git_sha) not in (40, 64) or any(
+        c not in "0123456789abcdef" for c in git_sha
+    ):
+        raise ValueError(
+            "Invalid source Git revision. Run make sync from the source checkout."
+        )
     config_bytes = json.dumps(config, sort_keys=True, separators=(",", ":")).encode()
     payload = {
         "mode": mode,
         "git_sha": git_sha,
         "config_sha256": hashlib.sha256(config_bytes).hexdigest(),
         "implementation_sha256": _implementation_hash(),
-        "benchmark_plan": {
-            "tasks": config["benchmark"]["tasks"],
-            "env_counts": config["benchmark"]["env_counts"],
-        },
         "checkpoint_sha256": {},
         "seeds": seeds,
         "result": result,
     }
+    if "benchmark" in config:
+        payload["benchmark_plan"] = {
+            "tasks": config["benchmark"]["tasks"],
+            "env_counts": config["benchmark"]["env_counts"],
+        }
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".json.tmp")
     temporary.write_text(json.dumps(payload, indent=2, allow_nan=False) + "\n")
@@ -146,6 +155,21 @@ def _audit(args: argparse.Namespace) -> int:
     return int(failed)
 
 
+def _phase1_smoke(results_dir: Path) -> int:
+    config = _compose_config("phase1")
+    config["runtime"] = load_config()
+    seeds = [config["smoke"]["seed"]]
+    try:
+        from .phase1 import smoke
+
+        result = smoke(config, results_dir)
+    except Exception as exc:  # noqa: BLE001 - preserve failed validation evidence
+        result = {"error": f"{type(exc).__name__}: {exc}"}
+        traceback.print_exc()
+    _write_result(results_dir / "smoke.json", "phase1-smoke", config, result, seeds)
+    return int("error" in result)
+
+
 def main(argv: Optional[list[str]] = None) -> int:  # noqa: UP045 - Python 3.9 compatibility
     parser = argparse.ArgumentParser(prog="weave")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -162,6 +186,11 @@ def main(argv: Optional[list[str]] = None) -> int:  # noqa: UP045 - Python 3.9 c
     audit.add_argument("--num-envs", type=int, default=1)
     audit.add_argument("--backend", choices=("cpu", "gpu"), default="gpu")
 
+    phase1 = commands.add_parser(
+        "phase1-smoke", help="Validate the batched WEAVE cell."
+    )
+    phase1.add_argument("--results-dir", type=Path, default=ROOT / "results/phase1")
+
     download = commands.add_parser(
         "download-data", help="Fetch and verify the pinned demo files."
     )
@@ -176,6 +205,8 @@ def main(argv: Optional[list[str]] = None) -> int:  # noqa: UP045 - Python 3.9 c
     args = parser.parse_args(argv)
     if args.command == "phase0-audit":
         return _audit(args)
+    if args.command == "phase1-smoke":
+        return _phase1_smoke(args.results_dir)
     if args.command == "download-data":
         from .phase0_data import verify_files
 

@@ -1,0 +1,1 @@
+"""WEAVE tabletop simulation components."""

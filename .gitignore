@@ -11,3 +11,5 @@ __pycache__/
 !/data/raw/.gitkeep
 !/data/processed/.gitkeep
 /data/robofactory/*
+/projects/goal_composition/data/
+/projects/goal_composition/outputs/

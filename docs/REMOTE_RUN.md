@@ -72,3 +72,22 @@ python -m pip install -e '.[weave]'
 python -m weave.cli phase0-audit --mode inventory
 python -m weave.cli report --output results/phase0/report.md
 ```
+
+## Phase 1 smoke test
+
+Use the environment from the completed Phase 0 run. Sync the current WEAVE files
+from your workstation and connect to the host. In the remote checkout, check
+availability with `nvtop` and set `CUDA_VISIBLE_DEVICES` to one free card.
+
+```bash
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+export CUDA_VISIBLE_DEVICES=6  # Use 6 if it is still free.
+export MS_ASSET_DIR="/ICONAS/users/$USER/weave/maniskill"
+export WEAVE_PHASE1_RESULTS="/ICONAS/users/$USER/weave/phase1"
+make phase1-smoke
+```
+
+The runner downloads the ManiSkill YCB pack into the asset directory if needed.
+It uses the existing `.venv-weave` and Phase 0 RoboFactory assets. The output
+directory contains `smoke.json` and `rollout.jsonl` for review. The smoke test
+uses random controls and does not train a model.

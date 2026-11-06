@@ -1,5 +1,7 @@
 # RoboFactory Skill Composition
 
+This repository also contains a separate [goal-conditioned workbench experiment](projects/goal_composition/README.md), available through `python -m skill_composer compose`. It uses its own RoboFactory recordings, data directory, and checkpoints.
+
 A multi-task imitation-learning coordinator for two Panda robot arms in MuJoCo.
 It trains on **published RoboFactory recordings only** and executes new supplied
 skill graphs with **up to 17 operations**, using reusable frozen manipulation

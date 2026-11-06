@@ -37,3 +37,17 @@ measurements are planning inputs and must be remeasured with WEAVE instrumentati
 The reviewed report identifies Git `de1f3a492066485ddb1f78c1dee287dc2a5c4722`
 and implementation `c7ce8eb5fca818d70e04f48b88c795c27db83f09b4298b0541c1f478c7ac100c`.
 The stamped JSON and generated report were imported under `results/phase0/iconlab` and verified.
+
+## Phase 1 cell
+
+- Subclass the native two-Panda stack environment to reuse the RoboFactory
+  table, Panda placement, and GPU scene lifecycle. Replace its task-specific
+  primitives and use per-lane reset RNGs for WEAVE. The existing native
+  comparison remains intact.
+- Convert the pot lid joint in a temporary copy of its pinned URDF and keep
+  the original mesh files. Locate the passive hinge near the back edge of the
+  lid collision mesh and retain the closed geometry. Verify the articulation
+  on the target GPU before using it in skills.
+- Use the configured training objects and GPU batch for the Phase 1 smoke
+  run. Rebenchmarked throughput includes the contact instrumentation and
+  rollout guards. It is separate from the native Phase 0 throughput.
