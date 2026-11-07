@@ -1,0 +1,4 @@
+robosuite==1.5.2
+mujoco==3.3.0
+numpy==1.26.4
+h5py==3.16.0

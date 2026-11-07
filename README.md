@@ -16,6 +16,8 @@ and training commands. The commits identify the original versions.
 | [Goal-conditioned workbench](projects/goal_composition/) | Direct versus relay routing and a three-block tower | `7658d01` |
 | [WEAVE](projects/weave/) | Native replay audit and the GPU cell smoke test | `7d052b4`–`7658d01` |
 
+[Single-arm skill composition](projects/single_arm_composition/) generates standalone Panda tabletop skill trials in robosuite.
+
 ## Run the RoboFactory demos
 
 Use Python 3.10 or newer. From the repository root, install the three MuJoCo
