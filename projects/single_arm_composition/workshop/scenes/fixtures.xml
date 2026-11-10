@@ -1,0 +1,51 @@
+<mujoco>
+<worldbody>
+    <geom type="box" pos=".02 -.24 .814" size=".038 .038 .014" rgba=".35 .42 .52 1" group="1"/>
+    <body name="button" pos=".02 -.24 .858">
+        <joint name="button" type="slide" axis="0 0 -1" limited="true" range="0 .026" stiffness="230" damping="5"/>
+        <geom name="button" type="cylinder" size=".024 .009" rgba=".9 .24 .16 1" group="1"/>
+    </body>
+
+    <geom type="box" pos=".185 -.13 .822" size=".05 .052 .022" rgba=".35 .42 .52 1" group="1"/>
+    <body name="drawer" pos=".145 -.13 .861">
+        <joint name="drawer" type="slide" axis="-1 0 0" limited="true" range="0 .11" damping="8" frictionloss="2"/>
+        <geom type="box" pos=".021 0 0" size=".042 .043 .007" rgba=".38 .60 .78 1" group="1" mass=".18"/>
+        <geom name="drawer" type="box" pos="-.022 0 .038" size=".015 .017 .018" rgba=".23 .44 .66 1" group="1"/>
+        <geom type="box" pos="-.022 0 .018" size=".007 .008 .013" rgba=".23 .44 .66 1" group="1"/>
+    </body>
+
+    <geom type="box" pos=".11 .12 .812" size=".055 .025 .012" rgba=".35 .42 .52 1" group="1"/>
+    <body name="slider" pos=".08 .12 .845">
+        <joint name="slider" type="slide" axis="1 0 0" limited="true" range="0 .070" damping="6" frictionloss="1"/>
+        <geom name="slider" type="box" size=".014 .017 .017" rgba=".3 .68 .39 1" group="1"/>
+    </body>
+
+    <geom type="box" pos=".20 .24 .825" size=".035 .032 .025" rgba=".35 .42 .52 1" group="1"/>
+    <body name="latch" pos=".20 .24 .874" gravcomp="1">
+        <joint name="latch" type="slide" axis="0 0 1" limited="true" range="0 .055" damping="6" frictionloss="2"/>
+        <geom name="latch" type="box" size=".014 .016 .019" rgba=".83 .62 .18 1" group="1"/>
+    </body>
+
+    <geom type="cylinder" pos=".05 -.005 .812" size=".037 .012" rgba=".35 .42 .52 1" group="1"/>
+    <body name="dial" pos=".05 -.005 .861">
+        <joint name="dial" type="hinge" axis="0 0 1" limited="true" range="-.04 1.5" damping=".09" frictionloss=".06"/>
+        <geom name="dial" type="box" size=".019 .012 .016" rgba=".7 .36 .79 1" group="1"/>
+        <geom type="cylinder" pos="0 0 -.022" size=".018 .006" rgba=".52 .26 .6 1" group="1"/>
+    </body>
+
+    <geom type="cylinder" pos="-.10 .16 .814" size=".022 .014" rgba=".35 .42 .52 1" group="1"/>
+    <body name="gate" pos="-.10 .16 .845">
+        <joint name="gate" type="hinge" axis="0 0 1" limited="true" range="-.04 1.32" damping=".07" frictionloss=".05"/>
+        <geom type="box" pos="0 .045 0" size=".007 .045 .012" rgba=".46 .67 .74 1" group="1"/>
+        <geom name="gate" type="box" pos="0 .075 .039" size=".014 .014 .018" rgba=".25 .52 .65 1" group="1"/>
+        <geom type="box" pos="0 .075 .02" size=".006 .006 .013" rgba=".25 .52 .65 1" group="1"/>
+    </body>
+
+    <geom type="box" pos="-.13 -.13 .816" size=".032 .037 .016" rgba=".35 .42 .52 1" group="1"/>
+    <body name="toggle" pos="-.13 -.13 .845" gravcomp="1">
+        <joint name="toggle" type="hinge" axis="0 1 0" limited="true" range="-.04 .87" damping=".07" frictionloss=".05"/>
+        <geom type="capsule" fromto="0 0 0 0 0 .045" size=".007" rgba=".74 .47 .22 1" group="1"/>
+        <geom name="toggle" type="sphere" pos="0 0 .052" size=".017" rgba=".9 .62 .24 1" group="1"/>
+    </body>
+</worldbody>
+</mujoco>

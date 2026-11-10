@@ -1,0 +1,35 @@
+<mujoco>
+<worldbody>
+    <body name="red" pos="-0.13 -0.12 0.821">
+        <freejoint name="red"/>
+        <geom name="red" type="box" size=".019 .019 .019" rgba=".85 .18 .16 1" group="1"/>
+    </body>
+    <body name="blue" pos="-0.13 0.10 0.821">
+        <freejoint name="blue"/>
+        <geom name="blue" type="box" size=".019 .024 .019" rgba=".18 .46 .88 1" group="1"/>
+    </body>
+    <body name="green" pos="-0.02 -0.12 0.818">
+        <freejoint name="green"/>
+        <geom name="green" type="box" size=".017 .017 .016" rgba=".21 .65 .32 1" group="1"/>
+    </body>
+    <body name="tower" pos=".05 .12 .858">
+        <freejoint name="tower"/>
+        <geom name="tower" type="box" size=".015 .017 .057" rgba=".85 .65 .18 1" group="1"/>
+    </body>
+    <body name="roller" pos="-.04 -.255 .821" quat=".7071067811865476 .7071067811865476 0 0">
+        <freejoint name="roller"/>
+        <geom name="roller" type="cylinder" size=".02 .034" rgba=".56 .29 .76 1" group="1" condim="6" friction=".85 .005 .004"/>
+    </body>
+    <body name="puck" pos="-.13 .245 .814">
+        <freejoint name="puck"/>
+        <geom name="puck" type="cylinder" size=".019 .013" rgba=".85 .44 .15 1" group="1"/>
+    </body>
+    <geom name="pedestal" type="box" pos=".17 -.13 .826" size=".037 .035 .026" rgba=".35 .42 .52 1" group="1"/>
+    <geom name="barrier" type="box" pos=".062 -.13 .845" size=".010 .048 .045" rgba=".47 .48 .51 1" group="1"/>
+    <geom name="stop" type="box" pos=".145 .025 .824" size=".009 .048 .024" rgba=".47 .48 .51 1" group="1"/>
+    <geom name="channel_left" type="box" pos=".004 .215 .813" size=".086 .005 .013" rgba=".35 .42 .52 1" group="1"/>
+    <geom name="channel_right" type="box" pos=".004 .275 .813" size=".086 .005 .013" rgba=".35 .42 .52 1" group="1"/>
+    <geom name="mat" type="box" pos=".17 .12 .801" size=".035 .032 .001" rgba=".9 .82 .49 1" group="1"/>
+    <geom name="buffer" type="box" pos="-.17 .012 .801" size=".037 .035 .001" rgba=".61 .73 .52 1" group="1"/>
+</worldbody>
+</mujoco>

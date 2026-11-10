@@ -13,11 +13,11 @@ from .skill_names import MOTION_SKILLS
 TOP_DOWN = Rotation.from_matrix([[0, 1, 0], [1, 0, 0], [0, 0, -1]])
 
 
-def make_env(seed):
+def make_env(seed, environment="Lift", **kwargs):
     config = load_composite_controller_config(robot="Panda")
     config["body_parts"]["right"].update(input_type="absolute", input_ref_frame="world")
     return robosuite.make(
-        "Lift",
+        environment,
         robots="Panda",
         controller_configs=config,
         control_freq=20,
@@ -27,6 +27,7 @@ def make_env(seed):
         has_renderer=False,
         has_offscreen_renderer=False,
         use_camera_obs=False,
+        **kwargs,
     )
 
 
@@ -50,7 +51,7 @@ class Rollout:
     states: np.ndarray
 
 
-class PandaSkills:
+class PandaArm:
     def __init__(self, env):
         self.env = env
         self.robot = env.robots[0]
@@ -68,6 +69,25 @@ class PandaSkills:
         matrix = self.env.sim.data.site_xmat[self.site].reshape(3, 3)
         return Rotation.from_matrix(matrix.copy())
 
+    def robot_observation(self):
+        data = self.env.sim.data
+        return {
+            "eef_position": self.position,
+            "eef_quaternion_xyzw": self.rotation.as_quat(),
+            "joint_position": data.qpos[self.robot._ref_joint_pos_indexes].copy(),
+            "joint_velocity": data.qvel[self.robot._ref_joint_vel_indexes].copy(),
+            "finger_position": data.qpos[self.fingers].copy(),
+            "gripper_command": self.grip_command,
+        }
+
+    def action_for(self, position, rotation):
+        return self.robot.create_action_vector({
+            "right": np.concatenate((position, rotation.as_rotvec())),
+            "right_gripper": np.array([self.grip_command]),
+        })
+
+
+class PandaSkills(PandaArm):
     @property
     def object_position(self):
         return self.env.sim.data.body_xpos[self.env.cube_body_id].copy()
@@ -122,17 +142,11 @@ class PandaSkills:
         return SkillCall("close_gripper", self.position, self.rotation, max_steps=60, grasp=grasp)
 
     def observe(self):
-        data = self.env.sim.data
         return {
-            "eef_position": self.position,
-            "eef_quaternion_xyzw": self.rotation.as_quat(),
-            "joint_position": data.qpos[self.robot._ref_joint_pos_indexes].copy(),
-            "joint_velocity": data.qvel[self.robot._ref_joint_vel_indexes].copy(),
-            "finger_position": data.qpos[self.fingers].copy(),
+            **self.robot_observation(),
             "object_position": self.object_position,
-            "object_quaternion_wxyz": data.body_xquat[self.env.cube_body_id].copy(),
+            "object_quaternion_wxyz": self.env.sim.data.body_xquat[self.env.cube_body_id].copy(),
             "grasped": self.grasped,
-            "gripper_command": self.grip_command,
         }
 
     def execute(self, call):
@@ -148,10 +162,7 @@ class PandaSkills:
             raise ValueError(f"Unknown skill: {call.skill}")
 
         target = call.position
-        action = self.robot.create_action_vector({
-            "right": np.concatenate((target, call.rotation.as_rotvec())),
-            "right_gripper": np.array([self.grip_command]),
-        })
+        action = self.action_for(target, call.rotation)
         if call.min_push:
             direction = (target - self.position)[:2]
             distance = np.linalg.norm(direction)

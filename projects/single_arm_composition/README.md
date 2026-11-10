@@ -4,7 +4,117 @@ Can a model learn which reusable skill to call, and on which object or target,
 from demonstrations of whole tasks? Start with one Panda arm in robosuite and
 use simulator state for object poses, gripper state, and goal checks.
 
-## Watch all the individual skills
+## Multi-scene Panda workshop
+
+The workshop has 35 callable primitives and 15 scripted task sequences across
+three single-Panda workcells. Each primitive issues one gripper command or
+follows one continuous Cartesian path. The scripted tasks sequence those
+calls, and the isolated trials start from a prepared state and record only
+the selected call for playback.
+
+| Workcell | Objects and fixtures | Example primitives |
+| --- | --- | --- |
+| Tabletop | Three graspable blocks, a tower, a roller, a puck, a barrier, and placement stations | `yaw_in_hand`, `topple`, `roll_cylinder`, `slide_in_channel`, `clear_obstacle` |
+| Fixtures | Drawer, button, slider, latch, dial, gate, and toggle | `pull_drawer`, `press_button`, `lift_latch`, `swing_gate` |
+| Assembly | Keyed peg and socket, rail-guided key, press-fit pin, and a captive screw plug | `insert_peg`, `extract_peg`, `slide_key_in`, `twist_in_socket` |
+
+Use the existing `.venv-single-arm` from the repository root, or create a
+Python 3.12 environment and install
+[`individual_skill_generation/requirements.txt`](individual_skill_generation/requirements.txt).
+From the repository root with the environment active:
+
+```sh
+cd projects/single_arm_composition
+python -m workshop list
+python -m workshop skill insert_peg
+mjpython -m workshop skill insert_peg --live
+mjpython -m workshop task sort_three --live
+python -m workshop check
+```
+
+Use `mjpython` for the viewer on macOS and `python` on Linux. The skill
+command prints the number of control steps and whether the physical
+completion check passed. Use `--live` to watch the controller step
+through setup and execution, or `--view` to replay the resulting clip.
+Use `--seed` to vary the reset and `--speed 0.5` to slow the viewer.
+The task command prints each call and verifies the final goal. The check
+command exercises the entire catalog and exits with a failure status if
+any run fails. Use `mjpython -m workshop check --live` to watch the full
+suite, with one window per workcell.
+
+### Generate composition data
+
+```sh
+python -m workshop generate --trials-per-skill 2 --episodes-per-task 2
+```
+
+This writes `data/raw/panda_workshop.h5`. Use `--out` to write another
+file. Standalone trials cover all 35 primitives and go in `trials`.
+Full-task episodes go in `train`, `validation`, and `recombination`.
+The recombination split holds out `sort_three` (new object-to-station
+pairings), `stack_blue_on_red` (a placement that depends on a previous
+placement), `dial_latch_drawer` (a new sequence of fixture goals), and
+`fit_key_and_peg` (both assembly goals in one episode). The fixture
+layouts are fixed, with seeded variation in the Panda reset and free
+object positions.
+
+Each episode includes its reset seed, setup actions, and success or
+failure. For full tasks, `goal` stores object placement or fixture
+conditions sorted by object name. Each ordered call stores the primitive
+ID, arguments, and outcome, plus actions, simulator states, and
+observations. Row zero is the observation before the call. The
+`scenes` group stores the object and joint names for each observation
+array. For a future selector, use the first observation of each call
+with the episode goal and supervise `STOP` from the final observation of
+a successful full task. The CLI generates scripted rollouts only.
+
+### Train the selector
+
+From the repository root, use the PyTorch environment for the training
+command. Generate `data/raw/panda_workshop.h5` first if it does not exist.
+
+```sh
+cd projects/single_arm_composition
+../../.venv-mujoco/bin/python -m workshop.train --epochs 100
+```
+
+The command fits one small behavior-cloning model per workcell and saves
+`outputs/workshop_selector.pt`. It uses the validation split to select a
+checkpoint and reports next-call accuracy on the held-out recombination
+split. The reported accuracy uses recorded observations at skill boundaries.
+For a learning curve, use `--demos-per-task 2`, `4`, or `8`, with a
+distinct `--out` path for each run. Add `--dry-run` to check data and label
+coverage before fitting.
+
+### Evaluate full rollouts
+
+With the workshop simulator dependencies and PyTorch in the active
+environment, run this from the single-arm project directory:
+
+```sh
+python -m workshop.evaluate --episodes 5 --seed 1001 --trace
+```
+
+The evaluator defaults to the four held-out tasks. At each skill
+boundary it passes the current simulator observation and task goal to
+the selector, then executes the predicted call. A successful rollout
+requires the selector to issue `STOP` after satisfying the goal. The
+scripted expert runs from the same seeded reset for comparison.
+
+On macOS, with this repository's separate simulator and training
+environments, run one held-out test live from the single-arm project
+directory:
+
+```sh
+PYTHONPATH="../../.venv-single-arm/lib/python3.12/site-packages:../../.venv-mujoco/lib/python3.12/site-packages" \
+  ../../.venv-single-arm/bin/mjpython -m workshop.evaluate --task fit_key_and_peg --episodes 1 --live
+```
+
+The window updates during execution and the terminal prints each
+selected primitive before it runs. Close the window to stop the test.
+Use `--view` in place of `--live` to replay a single finished rollout.
+
+## Watch the original single-cube skills
 
 Run this from the repository root with the existing macOS environment:
 
