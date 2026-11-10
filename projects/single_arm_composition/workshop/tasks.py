@@ -15,21 +15,20 @@ class Task:
     held_out: bool = False
 
     def succeeded(self, arm):
-        for goal in self.goals:
-            obj = goal["object"]
-            if "joint" in goal:
-                if abs(arm.joint(obj) - goal["joint"]) > goal["tolerance"]:
-                    return False
-                continue
-            position = arm.location(obj)
-            if (arm.holding(obj) or np.linalg.norm(position[:2] - goal["xy"]) > goal["xy_tolerance"]
-                    or abs(position[2] - goal["z"]) > goal["z_tolerance"]):
-                return False
-            if "support" in goal and not arm.contact(obj, goal["support"]):
-                return False
-            if "upright" in goal and arm.orientation(obj).magnitude() > goal["upright"]:
-                return False
-        return True
+        return all(goal_satisfied(arm, goal) for goal in self.goals)
+
+
+def goal_satisfied(arm, goal):
+    obj = goal["object"]
+    if "joint" in goal:
+        return abs(arm.joint(obj) - goal["joint"]) <= goal["tolerance"]
+    position = arm.location(obj)
+    if (arm.holding(obj) or np.linalg.norm(position[:2] - goal["xy"]) > goal["xy_tolerance"]
+            or abs(position[2] - goal["z"]) > goal["z_tolerance"]):
+        return False
+    if "support" in goal and not arm.contact(obj, goal["support"]):
+        return False
+    return "upright" not in goal or arm.orientation(obj).magnitude() <= goal["upright"]
 
 
 STATIONS = {

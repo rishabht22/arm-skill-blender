@@ -114,6 +114,42 @@ The window updates during execution and the terminal prints each
 selected primitive before it runs. Close the window to stop the test.
 Use `--view` in place of `--live` to replay a single finished rollout.
 
+### Paired composition benchmark
+
+Run from this directory with the same simulator and PyTorch environments
+used for selector evaluation:
+
+```sh
+PYTHONPATH="../../.venv-single-arm/lib/python3.12/site-packages:../../.venv-mujoco/lib/python3.12/site-packages" \
+  ../../.venv-single-arm/bin/python -m workshop.benchmark --episodes 24 --workers 7
+```
+
+The benchmark uses one fixed checkpoint and the same primitive
+controllers for all three methods. The selector chooses a call from live
+state and the task goal. The fixed-script baseline selects the closest
+successful training plan by goal overlap and binds its goal arguments
+once. The scripted expert uses the reference plan for the test case or
+the corresponding continuation for a partially completed start.
+
+The cases include familiar goals, the four original held-out tasks,
+three pairs of new two-object goals, and starts with one predicate
+already satisfied. Each matched pair keeps the objects and reference
+call count fixed and changes one familiar object-to-station pairing to
+an unseen pairing. For partial starts, the benchmark sets the relevant
+object pose or fixture joint, keeps the seeded Panda reset, and checks
+which predicates are true before any policy acts.
+
+Each method receives the same simulator state and a budget of 40 calls.
+Success requires all goal predicates to hold when the policy stops.
+The report records the fraction of pending goals completed, premature
+stops, failed primitives, and each call's arguments and goal progress.
+For partial starts it also reports how often the first named action
+targets an already completed object. The JSON in
+`outputs/composition_benchmark.json` contains paired episode records,
+per-case Wilson intervals over reset seeds, and checkpoint and dataset
+hashes. The intervals describe reset variation within each case.
+Use `--case` to run a subset and `--out` to choose a new report path.
+
 ## Watch the original single-cube skills
 
 Run this from the repository root with the existing macOS environment:
