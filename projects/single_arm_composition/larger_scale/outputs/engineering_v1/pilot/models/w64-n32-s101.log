@@ -1,0 +1,211 @@
+{"epoch": 1, "fit": {"eligible_top1": 0.4584511023176936, "teacher_top1": 0.4041831543244771, "loss": 2.9667267798029684, "decisions": 1769}, "dev": {"eligible_top1": 0.5736208236208237, "teacher_top1": 0.48445998445998445, "loss": 1.961639808515476, "decisions": 5148}, "seconds": 1.1718810829916038}
+{"epoch": 2, "fit": {"eligible_top1": 0.7817976257772753, "teacher_top1": 0.6964386659129451, "loss": 1.1266846054351014, "decisions": 1769}, "dev": {"eligible_top1": 0.9895104895104895, "teacher_top1": 0.8628593628593628, "loss": 0.3968262274133761, "decisions": 5148}, "seconds": 1.0188367920345627}
+{"epoch": 3, "fit": {"eligible_top1": 0.9903900508762012, "teacher_top1": 0.8773318258903335, "loss": 0.19889389985088846, "decisions": 1769}, "dev": {"eligible_top1": 0.9957264957264957, "teacher_top1": 0.8622766122766122, "loss": 0.10416866045245479, "decisions": 5148}, "seconds": 1.0941482500056736}
+{"epoch": 4, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.891464104013567, "loss": 0.07916335416183827, "decisions": 1769}, "dev": {"eligible_top1": 0.9998057498057498, "teacher_top1": 0.87995337995338, "loss": 0.0681733586177774, "decisions": 5148}, "seconds": 0.9572193750063889}
+{"epoch": 5, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.8852459016393442, "loss": 0.04213681869069825, "decisions": 1769}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8733488733488733, "loss": 0.03296906468635765, "decisions": 5148}, "seconds": 0.95171074999962}
+{"epoch": 6, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.8982475975127191, "loss": 0.0233350356439536, "decisions": 1769}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8881118881118881, "loss": 0.023885708559874704, "decisions": 5148}, "seconds": 1.1378083750023507}
+{"epoch": 7, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.8976823063877897, "loss": 0.013741179347541573, "decisions": 1769}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8863636363636364, "loss": 0.01440113401742364, "decisions": 5148}, "seconds": 1.2365190419950522}
+{"epoch": 8, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.899943470887507, "loss": 0.009325108667777682, "decisions": 1769}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8883061383061384, "loss": 0.00935093133269629, "decisions": 5148}, "seconds": 1.098963583004661}
+{
+  "manifest": "5337ea1e123ed8bda52476f710127391c10ce7ddbe406f51b8e2c8b21edb5007",
+  "controller": "ad290d49a7bdaec1c00d0a12c5e5357f1b306776b3ecd8cf4b26d31edbf6a5c4",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "feature_version": 1,
+  "selector_code": "a2bdc49d59eb1aa6c0859df51cf4ccd3faa1977f7cefc7fd69f59b1fdf79dc59",
+  "device": "cpu",
+  "width": 64,
+  "seed": 101,
+  "parameters": 12737,
+  "fit": {
+    "episodes": 32,
+    "successes": 32,
+    "decisions": 1769,
+    "instances": 32,
+    "graphs": 32,
+    "families": 28,
+    "executed_primitives": {
+      "read_load": 128,
+      "read": 128,
+      "read_return": 128,
+      "load": 179,
+      "close": 179,
+      "latch": 179,
+      "index": 179,
+      "unlatch": 179,
+      "open": 179,
+      "unload": 179,
+      "release": 72,
+      "reject": 56,
+      "reseat": 4
+    }
+  },
+  "dev": {
+    "episodes": 96,
+    "successes": 96,
+    "decisions": 5148,
+    "instances": 96,
+    "graphs": 63,
+    "families": 22,
+    "executed_primitives": {
+      "read_load": 384,
+      "read": 384,
+      "read_return": 384,
+      "release": 190,
+      "reject": 194,
+      "load": 516,
+      "close": 516,
+      "latch": 516,
+      "index": 516,
+      "unlatch": 516,
+      "open": 516,
+      "unload": 516
+    }
+  },
+  "fit_hashes": {
+    "00000000-00000016.jsonl.gz": "cdf8d7cc5ccd952e292fa1ca53b1ff693276ff941ae56eae801c8c525ae6c2e1",
+    "00000016-00000032.jsonl.gz": "8b0b1b30f6bc63c391280bd7b6be1d266656ec6fd776dfbb82c095995fef5e3b"
+  },
+  "dev_hashes": {
+    "00000000-00000016.jsonl.gz": "f3df94658fcb823349ca9f69cb9b7ac3ccf1bf13c20d44272c9846c08737ca76",
+    "00000016-00000032.jsonl.gz": "141d090a7491373773348a6a46fec2224afb4a81240c9dde4e86c1fc0680940a",
+    "00000032-00000048.jsonl.gz": "310ad83faca339a8850790b7d96040481a7f380be3af215bd9a461ae74220852",
+    "00000048-00000064.jsonl.gz": "cb67e3fe47f723b16ef827ee04efc7b8984bfbecbbb2dbe30d99133dc18d5ae0",
+    "00000064-00000080.jsonl.gz": "a83e02067d2f13d9c4b20bc8e0c8f6c038f1f5722676d55d484671ee460a2959",
+    "00000080-00000096.jsonl.gz": "f4351f7a3478fb7fe4a31c46a24a500c9e33d1c6c18068a56e770feae9480d4e"
+  },
+  "epoch_budget": 8,
+  "batch": 64,
+  "checkpoint": "larger_scale/outputs/pilot/models/w64-n32-s101.pt",
+  "sha256": "f3b2fbf96d98c00bbe9c6ee787bc1f43f7e46dc9088479b65d7617feebff457c",
+  "seconds": 9.93595583300339,
+  "history": [
+    {
+      "epoch": 1,
+      "fit": {
+        "eligible_top1": 0.4584511023176936,
+        "teacher_top1": 0.4041831543244771,
+        "loss": 2.9667267798029684,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 0.5736208236208237,
+        "teacher_top1": 0.48445998445998445,
+        "loss": 1.961639808515476,
+        "decisions": 5148
+      },
+      "seconds": 1.1718810829916038
+    },
+    {
+      "epoch": 2,
+      "fit": {
+        "eligible_top1": 0.7817976257772753,
+        "teacher_top1": 0.6964386659129451,
+        "loss": 1.1266846054351014,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 0.9895104895104895,
+        "teacher_top1": 0.8628593628593628,
+        "loss": 0.3968262274133761,
+        "decisions": 5148
+      },
+      "seconds": 1.0188367920345627
+    },
+    {
+      "epoch": 3,
+      "fit": {
+        "eligible_top1": 0.9903900508762012,
+        "teacher_top1": 0.8773318258903335,
+        "loss": 0.19889389985088846,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 0.9957264957264957,
+        "teacher_top1": 0.8622766122766122,
+        "loss": 0.10416866045245479,
+        "decisions": 5148
+      },
+      "seconds": 1.0941482500056736
+    },
+    {
+      "epoch": 4,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.891464104013567,
+        "loss": 0.07916335416183827,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 0.9998057498057498,
+        "teacher_top1": 0.87995337995338,
+        "loss": 0.0681733586177774,
+        "decisions": 5148
+      },
+      "seconds": 0.9572193750063889
+    },
+    {
+      "epoch": 5,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8852459016393442,
+        "loss": 0.04213681869069825,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8733488733488733,
+        "loss": 0.03296906468635765,
+        "decisions": 5148
+      },
+      "seconds": 0.95171074999962
+    },
+    {
+      "epoch": 6,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8982475975127191,
+        "loss": 0.0233350356439536,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8881118881118881,
+        "loss": 0.023885708559874704,
+        "decisions": 5148
+      },
+      "seconds": 1.1378083750023507
+    },
+    {
+      "epoch": 7,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8976823063877897,
+        "loss": 0.013741179347541573,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8863636363636364,
+        "loss": 0.01440113401742364,
+        "decisions": 5148
+      },
+      "seconds": 1.2365190419950522
+    },
+    {
+      "epoch": 8,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.899943470887507,
+        "loss": 0.009325108667777682,
+        "decisions": 1769
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8883061383061384,
+        "loss": 0.00935093133269629,
+        "decisions": 5148
+      },
+      "seconds": 1.098963583004661
+    }
+  ]
+}

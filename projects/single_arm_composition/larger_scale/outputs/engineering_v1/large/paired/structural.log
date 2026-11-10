@@ -1,0 +1,23 @@
+{"attempts": {"retrieval": 8, "symbolic": 8, "expert": 8, "learned": 24}, "seconds": 150.5}
+{"attempts": {"retrieval": 16, "symbolic": 16, "expert": 16, "learned": 48}, "seconds": 150.5}
+{"attempts": {"retrieval": 24, "symbolic": 24, "expert": 24, "learned": 72}, "seconds": 160.11}
+{"attempts": {"retrieval": 32, "symbolic": 32, "expert": 32, "learned": 96}, "seconds": 160.11}
+{"attempts": {"retrieval": 40, "symbolic": 40, "expert": 40, "learned": 120}, "seconds": 160.11}
+{"attempts": {"retrieval": 48, "symbolic": 48, "expert": 48, "learned": 144}, "seconds": 160.11}
+{"attempts": {"retrieval": 56, "symbolic": 56, "expert": 56, "learned": 168}, "seconds": 160.11}
+{"attempts": {"retrieval": 64, "symbolic": 64, "expert": 64, "learned": 192}, "seconds": 258.88}
+{"attempts": {"retrieval": 72, "symbolic": 72, "expert": 72, "learned": 216}, "seconds": 263.96}
+{"attempts": {"retrieval": 80, "symbolic": 80, "expert": 80, "learned": 240}, "seconds": 266.57}
+{"attempts": {"retrieval": 88, "symbolic": 88, "expert": 88, "learned": 264}, "seconds": 273.54}
+{"attempts": {"retrieval": 96, "symbolic": 96, "expert": 96, "learned": 288}, "seconds": 293.38}
+{"attempts": {"retrieval": 104, "symbolic": 104, "expert": 104, "learned": 312}, "seconds": 293.38}
+{"attempts": {"retrieval": 112, "symbolic": 112, "expert": 112, "learned": 336}, "seconds": 306.73}
+{"attempts": {"retrieval": 120, "symbolic": 120, "expert": 120, "learned": 360}, "seconds": 470.55}
+{"attempts": {"retrieval": 128, "symbolic": 128, "expert": 128, "learned": 384}, "seconds": 470.55}
+{"attempts": {"retrieval": 136, "symbolic": 136, "expert": 136, "learned": 408}, "seconds": 477.17}
+{"attempts": {"retrieval": 144, "symbolic": 144, "expert": 144, "learned": 432}, "seconds": 477.17}
+{"attempts": {"retrieval": 152, "symbolic": 152, "expert": 152, "learned": 456}, "seconds": 493.25}
+{"attempts": {"retrieval": 160, "symbolic": 160, "expert": 160, "learned": 480}, "seconds": 510.16}
+{"attempts": {"retrieval": 168, "symbolic": 168, "expert": 168, "learned": 504}, "seconds": 510.16}
+/opt/miniconda3/envs/mlbook/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

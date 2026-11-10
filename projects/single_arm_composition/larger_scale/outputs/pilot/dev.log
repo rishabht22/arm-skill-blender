@@ -1,0 +1,12 @@
+{"episodes": 16, "successes": 16, "decisions": 907, "elapsed_seconds": 52.95, "target": 96}
+{"episodes": 32, "successes": 32, "decisions": 1751, "elapsed_seconds": 52.95, "target": 96}
+{"episodes": 48, "successes": 48, "decisions": 2609, "elapsed_seconds": 52.95, "target": 96}
+{"episodes": 64, "successes": 64, "decisions": 3390, "elapsed_seconds": 52.95, "target": 96}
+{"episodes": 80, "successes": 80, "decisions": 4241, "elapsed_seconds": 52.95, "target": 96}
+{"episodes": 96, "successes": 96, "decisions": 5085, "elapsed_seconds": 86.28, "target": 96}
+{
+  "episodes": 96,
+  "successes": 96,
+  "decisions": 5085,
+  "seconds": 86.36638125003083
+}

@@ -1,0 +1,330 @@
+{
+  "task_id": "2d0e7d94ea8a1c03906fb56d",
+  "graph": "bc6060033f02943013ebcbe2",
+  "family": "ebb6e8509c144589",
+  "split": "structural",
+  "layout": 21,
+  "reset": 0,
+  "seed": 6182513522730254752,
+  "start": "eddbc2ce825906a8c782bd45b7f4031a6c8fdec1b0d007c3afc630bccf828cf2",
+  "final_physics": "45b8a482f1e8f61de0e6408d92420ed476ee2692bd4ad4bd526f2e8685fcba7a",
+  "rank": null,
+  "manifest": "f352d4dacfa9648ce68532a35f8982a236ad8c34cee2408aaf17bfd02b7181c9",
+  "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "method": "learned",
+  "success": true,
+  "physical_goal": true,
+  "completed": 44,
+  "subgoals": 44,
+  "violations": 0,
+  "skill_failures": 0,
+  "reason": "",
+  "recovered": 0,
+  "recovery_goals": 0,
+  "locations": [
+    "reject1",
+    "release2",
+    "release3",
+    "release0"
+  ],
+  "goal_locations": [
+    "reject1",
+    "release2",
+    "release3",
+    "release0"
+  ],
+  "cycles": [
+    2,
+    2,
+    0,
+    0
+  ],
+  "target_cycles": [
+    2,
+    2,
+    0,
+    0
+  ],
+  "reads": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "attempts": [
+    [
+      0,
+      "load",
+      true,
+      ""
+    ],
+    [
+      1,
+      "close",
+      true,
+      ""
+    ],
+    [
+      2,
+      "latch",
+      true,
+      ""
+    ],
+    [
+      3,
+      "index",
+      true,
+      ""
+    ],
+    [
+      4,
+      "unlatch",
+      true,
+      ""
+    ],
+    [
+      5,
+      "open",
+      true,
+      ""
+    ],
+    [
+      6,
+      "unload",
+      true,
+      ""
+    ],
+    [
+      36,
+      "read_load",
+      true,
+      ""
+    ],
+    [
+      37,
+      "read",
+      true,
+      ""
+    ],
+    [
+      38,
+      "read_return",
+      true,
+      ""
+    ],
+    [
+      39,
+      "release",
+      true,
+      ""
+    ],
+    [
+      18,
+      "load",
+      true,
+      ""
+    ],
+    [
+      19,
+      "close",
+      true,
+      ""
+    ],
+    [
+      20,
+      "latch",
+      true,
+      ""
+    ],
+    [
+      21,
+      "index",
+      true,
+      ""
+    ],
+    [
+      22,
+      "unlatch",
+      true,
+      ""
+    ],
+    [
+      23,
+      "open",
+      true,
+      ""
+    ],
+    [
+      24,
+      "unload",
+      true,
+      ""
+    ],
+    [
+      25,
+      "load",
+      true,
+      ""
+    ],
+    [
+      26,
+      "close",
+      true,
+      ""
+    ],
+    [
+      27,
+      "latch",
+      true,
+      ""
+    ],
+    [
+      28,
+      "index",
+      true,
+      ""
+    ],
+    [
+      29,
+      "unlatch",
+      true,
+      ""
+    ],
+    [
+      30,
+      "open",
+      true,
+      ""
+    ],
+    [
+      31,
+      "unload",
+      true,
+      ""
+    ],
+    [
+      40,
+      "read_load",
+      true,
+      ""
+    ],
+    [
+      41,
+      "read",
+      true,
+      ""
+    ],
+    [
+      42,
+      "read_return",
+      true,
+      ""
+    ],
+    [
+      43,
+      "release",
+      true,
+      ""
+    ],
+    [
+      7,
+      "load",
+      true,
+      ""
+    ],
+    [
+      8,
+      "close",
+      true,
+      ""
+    ],
+    [
+      9,
+      "latch",
+      true,
+      ""
+    ],
+    [
+      10,
+      "index",
+      true,
+      ""
+    ],
+    [
+      11,
+      "unlatch",
+      true,
+      ""
+    ],
+    [
+      12,
+      "open",
+      true,
+      ""
+    ],
+    [
+      13,
+      "unload",
+      true,
+      ""
+    ],
+    [
+      14,
+      "read_load",
+      true,
+      ""
+    ],
+    [
+      15,
+      "read",
+      true,
+      ""
+    ],
+    [
+      16,
+      "read_return",
+      true,
+      ""
+    ],
+    [
+      17,
+      "reject",
+      true,
+      ""
+    ],
+    [
+      32,
+      "read_load",
+      true,
+      ""
+    ],
+    [
+      33,
+      "read",
+      true,
+      ""
+    ],
+    [
+      34,
+      "read_return",
+      true,
+      ""
+    ],
+    [
+      35,
+      "release",
+      true,
+      ""
+    ]
+  ],
+  "sim_seconds": 93.28400000002208,
+  "checkpoint": {
+    "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+    "width": 64,
+    "seed": 17,
+    "episodes": 512,
+    "parameters": 12737
+  },
+  "lock": "5029ab9b0adad52f8ccb0c880101eda3bcd7985a678db88b850bed2d0a59f1b8"
+}

@@ -20,3 +20,5 @@ __pycache__/
 /projects/goal_composition/outputs/demo/tower/*
 !/projects/goal_composition/outputs/demo/tower/tower.pt
 /projects/weave/.weave-source-revision
+
+/projects/single_arm_composition/*/data/raw/*.h5

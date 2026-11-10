@@ -1,0 +1,11 @@
+{"attempts": {"retrieval": 8, "symbolic": 8, "expert": 8, "learned": 24}, "seconds": 222.15}
+{"attempts": {"retrieval": 16, "symbolic": 16, "expert": 16, "learned": 48}, "seconds": 392.08}
+{
+  "attempts": {
+    "retrieval": 16,
+    "symbolic": 16,
+    "expert": 16,
+    "learned": 48
+  },
+  "seconds": 393.03014908300247
+}

@@ -1,0 +1,147 @@
+{
+  "manifest": "f352d4dacfa9648ce68532a35f8982a236ad8c34cee2408aaf17bfd02b7181c9",
+  "splits": {
+    "train": {
+      "graphs": 24000,
+      "instances": 72000,
+      "families": 108,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "reseat",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "dev": {
+      "graphs": 2400,
+      "instances": 7200,
+      "families": 33,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "structural": {
+      "graphs": 2400,
+      "instances": 7200,
+      "families": 35,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "binding": {
+      "graphs": 1200,
+      "instances": 3600,
+      "families": 6,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "layout": {
+      "graphs": 1200,
+      "instances": 3600,
+      "families": 6,
+      "layouts": 104,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "horizon": {
+      "graphs": 1200,
+      "instances": 3600,
+      "families": 15,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "unlatch",
+        "unload"
+      ]
+    },
+    "recovery": {
+      "graphs": 1200,
+      "instances": 3600,
+      "families": 13,
+      "layouts": 24,
+      "primitives": [
+        "close",
+        "index",
+        "latch",
+        "load",
+        "open",
+        "read",
+        "read_load",
+        "read_return",
+        "reject",
+        "release",
+        "reseat",
+        "unlatch",
+        "unload"
+      ]
+    }
+  }
+}

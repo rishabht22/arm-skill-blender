@@ -1,0 +1,233 @@
+{"epoch": 1, "fit": {"eligible_top1": 0.8870232068567991, "teacher_top1": 0.7753997293368754, "loss": 0.7895346289745854, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8834498834498834, "loss": 0.02725589348013399, "decisions": 5148}, "seconds": 2.5244307910325006}
+{"epoch": 2, "fit": {"eligible_top1": 0.9993484035887925, "teacher_top1": 0.8902310661119743, "loss": 0.016842582895806587, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8947163947163947, "loss": 0.011266802720184255, "decisions": 5148}, "seconds": 2.3691519999993034}
+{"epoch": 3, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.8967470302240489, "loss": 0.0055467143978925985, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9267676767676768, "loss": 0.00464132465979355, "decisions": 5148}, "seconds": 2.258056959020905}
+{"epoch": 4, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9158438173525136, "loss": 0.0020889833474012545, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9256021756021756, "loss": 0.0010811820281038122, "decisions": 5148}, "seconds": 2.3663168749772012}
+{"epoch": 5, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9330359380482182, "loss": 0.0005565159134946296, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9300699300699301, "loss": 0.00042452982555350857, "decisions": 5148}, "seconds": 2.221655625035055}
+{"epoch": 6, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9352914640870131, "loss": 0.00024582455174653974, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.929098679098679, "loss": 0.00020612384489766938, "decisions": 5148}, "seconds": 2.2537792500224896}
+{"epoch": 7, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.93569244649391, "loss": 0.00013954255348700358, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.925019425019425, "loss": 0.00012418352192162486, "decisions": 5148}, "seconds": 2.3073785830056295}
+{"epoch": 8, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9335371660568392, "loss": 9.636351522443187e-05, "decisions": 19951}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9224941724941725, "loss": 8.237823332852479e-05, "decisions": 5148}, "seconds": 2.3418026249855757}
+{
+  "manifest": "5337ea1e123ed8bda52476f710127391c10ce7ddbe406f51b8e2c8b21edb5007",
+  "controller": "ad290d49a7bdaec1c00d0a12c5e5357f1b306776b3ecd8cf4b26d31edbf6a5c4",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "feature_version": 1,
+  "selector_code": "a2bdc49d59eb1aa6c0859df51cf4ccd3faa1977f7cefc7fd69f59b1fdf79dc59",
+  "device": "cpu",
+  "width": 16,
+  "seed": 59,
+  "parameters": 1649,
+  "fit": {
+    "episodes": 384,
+    "successes": 381,
+    "decisions": 19951,
+    "instances": 384,
+    "graphs": 264,
+    "families": 80,
+    "executed_primitives": {
+      "read_load": 1531,
+      "read": 1531,
+      "read_return": 1531,
+      "load": 1968,
+      "close": 1968,
+      "latch": 1968,
+      "index": 1968,
+      "unlatch": 1968,
+      "open": 1968,
+      "unload": 1968,
+      "release": 775,
+      "reject": 752,
+      "reseat": 52
+    }
+  },
+  "dev": {
+    "episodes": 96,
+    "successes": 96,
+    "decisions": 5148,
+    "instances": 96,
+    "graphs": 63,
+    "families": 22,
+    "executed_primitives": {
+      "read_load": 384,
+      "read": 384,
+      "read_return": 384,
+      "release": 190,
+      "reject": 194,
+      "load": 516,
+      "close": 516,
+      "latch": 516,
+      "index": 516,
+      "unlatch": 516,
+      "open": 516,
+      "unload": 516
+    }
+  },
+  "fit_hashes": {
+    "00000000-00000016.jsonl.gz": "cdf8d7cc5ccd952e292fa1ca53b1ff693276ff941ae56eae801c8c525ae6c2e1",
+    "00000016-00000032.jsonl.gz": "8b0b1b30f6bc63c391280bd7b6be1d266656ec6fd776dfbb82c095995fef5e3b",
+    "00000032-00000048.jsonl.gz": "d881974ececd751b22a3fa0be7b1e2cbb0dc14f35bff4d690fd0832cc462a469",
+    "00000048-00000064.jsonl.gz": "ae82e566c1f25c46391c9cd4e2c78d51ff0a36ef70b14889392aeb77647dddac",
+    "00000064-00000080.jsonl.gz": "a94a68d7179da216e3db6d629cd8f82c27b9051ac581b481fd1e03d823772c6e",
+    "00000080-00000096.jsonl.gz": "b3f480a86765b9120190ab3f6dc14b3ac9bec42390e0b58b77a9d42405fc4ca9",
+    "00000096-00000112.jsonl.gz": "afc52e16750ecd3b615c7092adee0d8149b69d807e8877c3975ef19a08120cb7",
+    "00000112-00000128.jsonl.gz": "9d9b16c9f2e62ef9b5c083001c762fe7bba3b8d36d49f47de96eb2e450a68762",
+    "00000128-00000144.jsonl.gz": "ae7b1286005c6ff22819681f0af230ee9c73960d88ec06feab740446ef51cea2",
+    "00000144-00000160.jsonl.gz": "34ecfb0d68fe8427f5d29b6054f8c2dcab582da87cacecd75fd34b7536bec843",
+    "00000160-00000176.jsonl.gz": "327d5a3148e96a430668801896d1dc440a7cf46ccf3114a32b08a7ac3cd1295a",
+    "00000176-00000192.jsonl.gz": "fa3959469efeb39c72f1b4da478ad6f97eb56abb1ba7b497be3b3a1903605d67",
+    "00000192-00000208.jsonl.gz": "0b53badc6ae1629d3bffcb93c19c89b3698b7fcff22f69b99a58b1517c9c6b5c",
+    "00000208-00000224.jsonl.gz": "978497b1429792a26a3f2af812cc1fc238d55fdfef6ff84093bdaf70e97ec252",
+    "00000224-00000240.jsonl.gz": "4c7c1e19af69160461ad17b2a2220b45c1d30e56ee8b06565f45be1a7b4ab405",
+    "00000240-00000256.jsonl.gz": "85c5a410553ae617ca4cd188f79008d7bb7f0236952955a597de6b6660a659ac",
+    "00000256-00000272.jsonl.gz": "0e64d5acae25418e46c47c719b8de9857243ae958869712ba482fda4e1fe7608",
+    "00000272-00000288.jsonl.gz": "e12ef4d42709ee6f63ab262730bcd8a20fa53993331d2da35976611c2b02af9b",
+    "00000288-00000304.jsonl.gz": "2ca789c71e1cedb79f5423546aadeb4acc25c86bacd9c07eca0fd4bb0935448f",
+    "00000304-00000320.jsonl.gz": "2565df6cc7005ef6416552a9fc5dd48dfe3e1f0a982eb40c832993a5c8e76af9",
+    "00000320-00000336.jsonl.gz": "61f5365f86763d6046c2749b631928cd59854b2e9d81ea21cb80be2e10edbb62",
+    "00000336-00000352.jsonl.gz": "7b17a36353a56e894707ffdce3cabdd50912f394436a1b7d114d473b0da7a4b8",
+    "00000352-00000368.jsonl.gz": "93e30d127e62a0ba91cdce1016ea3d8aaa0129dcccfe48ffefee96be2f603304",
+    "00000368-00000384.jsonl.gz": "e5e6ab904ab0f231c7aa518d85541c604693bae2e2c4588d8de3cd8326338b32"
+  },
+  "dev_hashes": {
+    "00000000-00000016.jsonl.gz": "f3df94658fcb823349ca9f69cb9b7ac3ccf1bf13c20d44272c9846c08737ca76",
+    "00000016-00000032.jsonl.gz": "141d090a7491373773348a6a46fec2224afb4a81240c9dde4e86c1fc0680940a",
+    "00000032-00000048.jsonl.gz": "310ad83faca339a8850790b7d96040481a7f380be3af215bd9a461ae74220852",
+    "00000048-00000064.jsonl.gz": "cb67e3fe47f723b16ef827ee04efc7b8984bfbecbbb2dbe30d99133dc18d5ae0",
+    "00000064-00000080.jsonl.gz": "a83e02067d2f13d9c4b20bc8e0c8f6c038f1f5722676d55d484671ee460a2959",
+    "00000080-00000096.jsonl.gz": "f4351f7a3478fb7fe4a31c46a24a500c9e33d1c6c18068a56e770feae9480d4e"
+  },
+  "epoch_budget": 8,
+  "batch": 64,
+  "checkpoint": "larger_scale/outputs/pilot/models/w16-n384-s59.pt",
+  "sha256": "e8ace70eb33c08ec2db352e0ffb5ba0a1e2b1f183f17902c2ea3ee3226d5e380",
+  "seconds": 19.43242625001585,
+  "history": [
+    {
+      "epoch": 1,
+      "fit": {
+        "eligible_top1": 0.8870232068567991,
+        "teacher_top1": 0.7753997293368754,
+        "loss": 0.7895346289745854,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8834498834498834,
+        "loss": 0.02725589348013399,
+        "decisions": 5148
+      },
+      "seconds": 2.5244307910325006
+    },
+    {
+      "epoch": 2,
+      "fit": {
+        "eligible_top1": 0.9993484035887925,
+        "teacher_top1": 0.8902310661119743,
+        "loss": 0.016842582895806587,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8947163947163947,
+        "loss": 0.011266802720184255,
+        "decisions": 5148
+      },
+      "seconds": 2.3691519999993034
+    },
+    {
+      "epoch": 3,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8967470302240489,
+        "loss": 0.0055467143978925985,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9267676767676768,
+        "loss": 0.00464132465979355,
+        "decisions": 5148
+      },
+      "seconds": 2.258056959020905
+    },
+    {
+      "epoch": 4,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9158438173525136,
+        "loss": 0.0020889833474012545,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9256021756021756,
+        "loss": 0.0010811820281038122,
+        "decisions": 5148
+      },
+      "seconds": 2.3663168749772012
+    },
+    {
+      "epoch": 5,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9330359380482182,
+        "loss": 0.0005565159134946296,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9300699300699301,
+        "loss": 0.00042452982555350857,
+        "decisions": 5148
+      },
+      "seconds": 2.221655625035055
+    },
+    {
+      "epoch": 6,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9352914640870131,
+        "loss": 0.00024582455174653974,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.929098679098679,
+        "loss": 0.00020612384489766938,
+        "decisions": 5148
+      },
+      "seconds": 2.2537792500224896
+    },
+    {
+      "epoch": 7,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.93569244649391,
+        "loss": 0.00013954255348700358,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.925019425019425,
+        "loss": 0.00012418352192162486,
+        "decisions": 5148
+      },
+      "seconds": 2.3073785830056295
+    },
+    {
+      "epoch": 8,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9335371660568392,
+        "loss": 9.636351522443187e-05,
+        "decisions": 19951
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9224941724941725,
+        "loss": 8.237823332852479e-05,
+        "decisions": 5148
+      },
+      "seconds": 2.3418026249855757
+    }
+  ]
+}

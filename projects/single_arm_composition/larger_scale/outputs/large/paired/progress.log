@@ -1,0 +1,1318 @@
+{
+  "manifest": "f352d4dacfa9648ce68532a35f8982a236ad8c34cee2408aaf17bfd02b7181c9",
+  "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "lock": "5029ab9b0adad52f8ccb0c880101eda3bcd7985a678db88b850bed2d0a59f1b8",
+  "splits": {
+    "structural": {
+      "split": "structural",
+      "matched_starts": 1840,
+      "families": 34,
+      "graphs": 1402,
+      "layouts": 24,
+      "horizon": [
+        16,
+        72
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 1840,
+          "successes": 1840,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 9899,
+            "close": 9899,
+            "latch": 9899,
+            "index": 9899,
+            "unlatch": 9899,
+            "open": 9899,
+            "unload": 9899,
+            "read_load": 7360,
+            "read": 7360,
+            "read_return": 7360,
+            "reject": 3644,
+            "release": 3716
+          },
+          "primitive_successes": {
+            "load": 9899,
+            "close": 9899,
+            "latch": 9899,
+            "index": 9899,
+            "unlatch": 9899,
+            "open": 9899,
+            "unload": 9899,
+            "read_load": 7360,
+            "read": 7360,
+            "read_return": 7360,
+            "reject": 3644,
+            "release": 3716
+          },
+          "seed_successes": {
+            "expert": 1840
+          }
+        },
+        "learned-w64-n512": {
+          "rollouts": 5520,
+          "successes": 5520,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 29697,
+            "close": 29697,
+            "latch": 29697,
+            "index": 29697,
+            "unlatch": 29697,
+            "open": 29697,
+            "unload": 29697,
+            "read_load": 22080,
+            "read": 22080,
+            "read_return": 22080,
+            "reject": 10932,
+            "release": 11148
+          },
+          "primitive_successes": {
+            "load": 29697,
+            "close": 29697,
+            "latch": 29697,
+            "index": 29697,
+            "unlatch": 29697,
+            "open": 29697,
+            "unload": 29697,
+            "read_load": 22080,
+            "read": 22080,
+            "read_return": 22080,
+            "reject": 10932,
+            "release": 11148
+          },
+          "seed_successes": {
+            "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09": 1840,
+            "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e": 1840,
+            "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c": 1840
+          },
+          "joint_successes_with_expert": 5520,
+          "different_successful_order_from_expert": 5230,
+          "paired_delta_vs_retrieval": {
+            "micro": 0.7217391304347827,
+            "family_seed_ci95": [
+              0.795745855494533,
+              0.9097816120082876
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 1840,
+          "successes": 512,
+          "micro_success": 0.2782608695652174,
+          "family_balanced_success": 0.14186608595208586,
+          "family_seed_ci95": [
+            0.08690622024305847,
+            0.20570875913097722
+          ],
+          "mean_subgoal_progress": 0.4159209400156526,
+          "dependency_violations": 1328,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 1328
+          },
+          "primitive_attempts": {
+            "load": 4157,
+            "close": 4157,
+            "latch": 4157,
+            "index": 4157,
+            "unlatch": 4157,
+            "open": 4157,
+            "unload": 4157,
+            "read_load": 2867,
+            "read": 2867,
+            "read_return": 2867,
+            "release": 1189,
+            "reject": 1189
+          },
+          "primitive_successes": {
+            "load": 4157,
+            "close": 4157,
+            "latch": 4157,
+            "index": 4157,
+            "unlatch": 4157,
+            "open": 4157,
+            "unload": 4157,
+            "read_load": 2867,
+            "read": 2867,
+            "read_return": 2867,
+            "release": 1189,
+            "reject": 1189
+          },
+          "seed_successes": {
+            "retrieval": 512
+          }
+        },
+        "symbolic": {
+          "rollouts": 1840,
+          "successes": 1840,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 9899,
+            "close": 9899,
+            "latch": 9899,
+            "index": 9899,
+            "unlatch": 9899,
+            "open": 9899,
+            "unload": 9899,
+            "read_load": 7360,
+            "read": 7360,
+            "read_return": 7360,
+            "reject": 3644,
+            "release": 3716
+          },
+          "primitive_successes": {
+            "load": 9899,
+            "close": 9899,
+            "latch": 9899,
+            "index": 9899,
+            "unlatch": 9899,
+            "open": 9899,
+            "unload": 9899,
+            "read_load": 7360,
+            "read": 7360,
+            "read_return": 7360,
+            "reject": 3644,
+            "release": 3716
+          },
+          "seed_successes": {
+            "symbolic": 1840
+          }
+        }
+      },
+      "declared_starts": 2048,
+      "complete": false,
+      "checkpoints": [
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09",
+          "width": 64
+        }
+      ]
+    },
+    "binding": {
+      "split": "binding",
+      "matched_starts": 16,
+      "families": 4,
+      "graphs": 16,
+      "layouts": 10,
+      "horizon": [
+        37,
+        65
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "load": 94,
+            "close": 94,
+            "latch": 94,
+            "index": 94,
+            "unlatch": 94,
+            "open": 94,
+            "unload": 94,
+            "reject": 34,
+            "release": 30
+          },
+          "primitive_successes": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "load": 94,
+            "close": 94,
+            "latch": 94,
+            "index": 94,
+            "unlatch": 94,
+            "open": 94,
+            "unload": 94,
+            "reject": 34,
+            "release": 30
+          },
+          "seed_successes": {
+            "expert": 16
+          }
+        },
+        "learned-w64-n512": {
+          "rollouts": 48,
+          "successes": 48,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 282,
+            "close": 282,
+            "latch": 282,
+            "index": 282,
+            "unlatch": 282,
+            "open": 282,
+            "unload": 282,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 102,
+            "release": 90
+          },
+          "primitive_successes": {
+            "load": 282,
+            "close": 282,
+            "latch": 282,
+            "index": 282,
+            "unlatch": 282,
+            "open": 282,
+            "unload": 282,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 102,
+            "release": 90
+          },
+          "seed_successes": {
+            "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09": 16,
+            "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e": 16,
+            "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c": 16
+          },
+          "joint_successes_with_expert": 48,
+          "different_successful_order_from_expert": 46,
+          "paired_delta_vs_retrieval": {
+            "micro": 0.9375,
+            "family_seed_ci95": [
+              0.8636363636363638,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 16,
+          "successes": 1,
+          "micro_success": 0.0625,
+          "family_balanced_success": 0.022727272727272728,
+          "family_seed_ci95": [
+            0.0,
+            0.13636363636363635
+          ],
+          "mean_subgoal_progress": 0.21346780252713315,
+          "dependency_violations": 15,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 15
+          },
+          "primitive_attempts": {
+            "load": 23,
+            "close": 23,
+            "latch": 23,
+            "index": 23,
+            "unlatch": 23,
+            "open": 23,
+            "unload": 23,
+            "read_load": 9,
+            "read": 9,
+            "read_return": 9,
+            "release": 3,
+            "reject": 2
+          },
+          "primitive_successes": {
+            "load": 23,
+            "close": 23,
+            "latch": 23,
+            "index": 23,
+            "unlatch": 23,
+            "open": 23,
+            "unload": 23,
+            "read_load": 9,
+            "read": 9,
+            "read_return": 9,
+            "release": 3,
+            "reject": 2
+          },
+          "seed_successes": {
+            "retrieval": 1
+          }
+        },
+        "symbolic": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 94,
+            "close": 94,
+            "latch": 94,
+            "index": 94,
+            "unlatch": 94,
+            "open": 94,
+            "unload": 94,
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "reject": 34,
+            "release": 30
+          },
+          "primitive_successes": {
+            "load": 94,
+            "close": 94,
+            "latch": 94,
+            "index": 94,
+            "unlatch": 94,
+            "open": 94,
+            "unload": 94,
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "reject": 34,
+            "release": 30
+          },
+          "seed_successes": {
+            "symbolic": 16
+          }
+        }
+      },
+      "declared_starts": 256,
+      "complete": false,
+      "checkpoints": [
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09",
+          "width": 64
+        }
+      ]
+    },
+    "layout": {
+      "split": "layout",
+      "matched_starts": 16,
+      "families": 4,
+      "graphs": 16,
+      "layouts": 16,
+      "horizon": [
+        37,
+        58
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "release": 32,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "reject": 32
+          },
+          "primitive_successes": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "release": 32,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "reject": 32
+          },
+          "seed_successes": {
+            "expert": 16
+          }
+        },
+        "learned-w64-n512": {
+          "rollouts": 48,
+          "successes": 48,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "release": 96,
+            "load": 225,
+            "close": 225,
+            "latch": 225,
+            "index": 225,
+            "unlatch": 225,
+            "open": 225,
+            "unload": 225,
+            "reject": 96
+          },
+          "primitive_successes": {
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "release": 96,
+            "load": 225,
+            "close": 225,
+            "latch": 225,
+            "index": 225,
+            "unlatch": 225,
+            "open": 225,
+            "unload": 225,
+            "reject": 96
+          },
+          "seed_successes": {
+            "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09": 16,
+            "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e": 16,
+            "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c": 16
+          },
+          "joint_successes_with_expert": 48,
+          "different_successful_order_from_expert": 44,
+          "paired_delta_vs_retrieval": {
+            "micro": 0.8125,
+            "family_seed_ci95": [
+              0.42499999999999993,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 16,
+          "successes": 3,
+          "micro_success": 0.1875,
+          "family_balanced_success": 0.175,
+          "family_seed_ci95": [
+            0.0,
+            0.575
+          ],
+          "mean_subgoal_progress": 0.35046769120678856,
+          "dependency_violations": 13,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 13
+          },
+          "primitive_attempts": {
+            "read_load": 21,
+            "read": 21,
+            "read_return": 21,
+            "release": 6,
+            "load": 27,
+            "close": 27,
+            "latch": 27,
+            "index": 27,
+            "unlatch": 27,
+            "open": 27,
+            "unload": 27,
+            "reject": 9
+          },
+          "primitive_successes": {
+            "read_load": 21,
+            "read": 21,
+            "read_return": 21,
+            "release": 6,
+            "load": 27,
+            "close": 27,
+            "latch": 27,
+            "index": 27,
+            "unlatch": 27,
+            "open": 27,
+            "unload": 27,
+            "reject": 9
+          },
+          "seed_successes": {
+            "retrieval": 3
+          }
+        },
+        "symbolic": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "release": 32,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "reject": 32
+          },
+          "primitive_successes": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "release": 32,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "reject": 32
+          },
+          "seed_successes": {
+            "symbolic": 16
+          }
+        }
+      },
+      "declared_starts": 256,
+      "complete": false,
+      "checkpoints": [
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09",
+          "width": 64
+        }
+      ]
+    },
+    "horizon": {
+      "split": "horizon",
+      "matched_starts": 16,
+      "families": 7,
+      "graphs": 16,
+      "layouts": 12,
+      "horizon": [
+        93,
+        135
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "load": 244,
+            "close": 244,
+            "latch": 244,
+            "index": 244,
+            "unlatch": 244,
+            "open": 244,
+            "unload": 244,
+            "reject": 43,
+            "release": 21
+          },
+          "primitive_successes": {
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "load": 244,
+            "close": 244,
+            "latch": 244,
+            "index": 244,
+            "unlatch": 244,
+            "open": 244,
+            "unload": 244,
+            "reject": 43,
+            "release": 21
+          },
+          "seed_successes": {
+            "expert": 16
+          }
+        },
+        "learned-w64-n512": {
+          "rollouts": 48,
+          "successes": 48,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 732,
+            "close": 732,
+            "latch": 732,
+            "index": 732,
+            "unlatch": 732,
+            "open": 732,
+            "unload": 732,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 129,
+            "release": 63
+          },
+          "primitive_successes": {
+            "load": 732,
+            "close": 732,
+            "latch": 732,
+            "index": 732,
+            "unlatch": 732,
+            "open": 732,
+            "unload": 732,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 129,
+            "release": 63
+          },
+          "seed_successes": {
+            "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09": 16,
+            "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e": 16,
+            "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c": 16
+          },
+          "joint_successes_with_expert": 48,
+          "different_successful_order_from_expert": 47,
+          "paired_delta_vs_retrieval": {
+            "micro": 0.9375,
+            "family_seed_ci95": [
+              0.8775510204081632,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 16,
+          "successes": 1,
+          "micro_success": 0.0625,
+          "family_balanced_success": 0.02040816326530612,
+          "family_seed_ci95": [
+            0.0,
+            0.09234693877550741
+          ],
+          "mean_subgoal_progress": 0.14551427277932127,
+          "dependency_violations": 15,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 15
+          },
+          "primitive_attempts": {
+            "load": 35,
+            "close": 35,
+            "latch": 35,
+            "index": 35,
+            "unlatch": 35,
+            "open": 35,
+            "unload": 35,
+            "read_load": 7,
+            "read": 7,
+            "read_return": 7,
+            "reject": 6,
+            "release": 1
+          },
+          "primitive_successes": {
+            "load": 35,
+            "close": 35,
+            "latch": 35,
+            "index": 35,
+            "unlatch": 35,
+            "open": 35,
+            "unload": 35,
+            "read_load": 7,
+            "read": 7,
+            "read_return": 7,
+            "reject": 6,
+            "release": 1
+          },
+          "seed_successes": {
+            "retrieval": 1
+          }
+        },
+        "symbolic": {
+          "rollouts": 16,
+          "successes": 16,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 244,
+            "close": 244,
+            "latch": 244,
+            "index": 244,
+            "unlatch": 244,
+            "open": 244,
+            "unload": 244,
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "reject": 43,
+            "release": 21
+          },
+          "primitive_successes": {
+            "load": 244,
+            "close": 244,
+            "latch": 244,
+            "index": 244,
+            "unlatch": 244,
+            "open": 244,
+            "unload": 244,
+            "read_load": 64,
+            "read": 64,
+            "read_return": 64,
+            "reject": 43,
+            "release": 21
+          },
+          "seed_successes": {
+            "symbolic": 16
+          }
+        }
+      },
+      "declared_starts": 256,
+      "complete": false,
+      "checkpoints": [
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09",
+          "width": 64
+        }
+      ]
+    },
+    "recovery": {
+      "split": "recovery",
+      "matched_starts": 16,
+      "families": 7,
+      "graphs": 16,
+      "layouts": 12,
+      "horizon": [
+        32,
+        74
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 16,
+          "successes": 15,
+          "micro_success": 0.9375,
+          "family_balanced_success": 0.9761904761904763,
+          "family_seed_ci95": [
+            0.8571428571428571,
+            1.0
+          ],
+          "mean_subgoal_progress": 0.9391025641025641,
+          "dependency_violations": 0,
+          "skill_failures": 1,
+          "recovery_completed": 31,
+          "recovery_goals": 32,
+          "failure_reasons": {
+            "no_admissible_action": 1
+          },
+          "primitive_attempts": {
+            "reseat": 32,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "read_load": 60,
+            "read": 60,
+            "read_return": 60,
+            "release": 28,
+            "reject": 32
+          },
+          "primitive_successes": {
+            "reseat": 31,
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "read_load": 60,
+            "read": 60,
+            "read_return": 60,
+            "release": 28,
+            "reject": 32
+          },
+          "seed_successes": {
+            "expert": 15
+          }
+        },
+        "learned-w64-n512": {
+          "rollouts": 48,
+          "successes": 45,
+          "micro_success": 0.9375,
+          "family_balanced_success": 0.9761904761904763,
+          "family_seed_ci95": [
+            0.8571428571428571,
+            1.0
+          ],
+          "mean_subgoal_progress": 0.9380341880341879,
+          "dependency_violations": 0,
+          "skill_failures": 3,
+          "recovery_completed": 91,
+          "recovery_goals": 96,
+          "failure_reasons": {
+            "seat:feed0": 3
+          },
+          "primitive_attempts": {
+            "load": 225,
+            "close": 225,
+            "latch": 225,
+            "index": 225,
+            "unlatch": 225,
+            "open": 225,
+            "unload": 225,
+            "reseat": 94,
+            "read_load": 180,
+            "read": 180,
+            "read_return": 180,
+            "release": 84,
+            "reject": 96
+          },
+          "primitive_successes": {
+            "load": 225,
+            "close": 225,
+            "latch": 225,
+            "index": 225,
+            "unlatch": 225,
+            "open": 225,
+            "unload": 225,
+            "reseat": 91,
+            "read_load": 180,
+            "read": 180,
+            "read_return": 180,
+            "release": 84,
+            "reject": 96
+          },
+          "seed_successes": {
+            "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09": 15,
+            "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e": 15,
+            "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c": 15
+          },
+          "joint_successes_with_expert": 45,
+          "different_successful_order_from_expert": 45,
+          "paired_delta_vs_retrieval": {
+            "micro": 0.875,
+            "family_seed_ci95": [
+              0.7857142857142857,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 16,
+          "successes": 1,
+          "micro_success": 0.0625,
+          "family_balanced_success": 0.023809523809523808,
+          "family_seed_ci95": [
+            0.0,
+            0.14285714285714285
+          ],
+          "mean_subgoal_progress": 0.16832008237211762,
+          "dependency_violations": 14,
+          "skill_failures": 1,
+          "recovery_completed": 14,
+          "recovery_goals": 32,
+          "failure_reasons": {
+            "dependency": 14,
+            "seat:feed0": 1
+          },
+          "primitive_attempts": {
+            "load": 11,
+            "close": 11,
+            "latch": 11,
+            "index": 11,
+            "unlatch": 11,
+            "open": 11,
+            "unload": 11,
+            "reseat": 15,
+            "read_load": 8,
+            "read": 8,
+            "read_return": 8,
+            "release": 2,
+            "reject": 2
+          },
+          "primitive_successes": {
+            "load": 11,
+            "close": 11,
+            "latch": 11,
+            "index": 11,
+            "unlatch": 11,
+            "open": 11,
+            "unload": 11,
+            "reseat": 14,
+            "read_load": 8,
+            "read": 8,
+            "read_return": 8,
+            "release": 2,
+            "reject": 2
+          },
+          "seed_successes": {
+            "retrieval": 1
+          }
+        },
+        "symbolic": {
+          "rollouts": 16,
+          "successes": 15,
+          "micro_success": 0.9375,
+          "family_balanced_success": 0.9761904761904763,
+          "family_seed_ci95": [
+            0.8571428571428571,
+            1.0
+          ],
+          "mean_subgoal_progress": 0.9375,
+          "dependency_violations": 0,
+          "skill_failures": 1,
+          "recovery_completed": 30,
+          "recovery_goals": 32,
+          "failure_reasons": {
+            "seat:feed0": 1
+          },
+          "primitive_attempts": {
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "read_load": 60,
+            "read": 60,
+            "read_return": 60,
+            "release": 28,
+            "reseat": 31,
+            "reject": 32
+          },
+          "primitive_successes": {
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 75,
+            "open": 75,
+            "unload": 75,
+            "read_load": 60,
+            "read": 60,
+            "read_return": 60,
+            "release": 28,
+            "reseat": 30,
+            "reject": 32
+          },
+          "seed_successes": {
+            "symbolic": 15
+          }
+        }
+      },
+      "declared_starts": 256,
+      "complete": false,
+      "checkpoints": [
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "6d5a306beff4d3dd0c8dac70d86fb086cbb8889929d04edc7ff5bf2b2dba979e",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "ab79e4d6f609fb7e2373ff6e85cb6f9947959b629ad66ab5f2d449be0679660c",
+          "width": 64
+        },
+        {
+          "decisions": 27364,
+          "episodes": 512,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1011b17917ba9739980ca1b3859ba25f88ccbf0a34ce1bacabdc4dc16fa41e09",
+          "width": 64
+        }
+      ]
+    }
+  }
+}

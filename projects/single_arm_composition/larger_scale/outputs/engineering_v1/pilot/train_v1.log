@@ -1,0 +1,30 @@
+{"episodes": 16, "successes": 16, "decisions": 888, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 32, "successes": 32, "decisions": 1769, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 48, "successes": 48, "decisions": 2581, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 64, "successes": 64, "decisions": 3485, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 80, "successes": 80, "decisions": 4270, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 96, "successes": 96, "decisions": 5069, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 112, "successes": 112, "decisions": 5920, "elapsed_seconds": 48.27, "target": 384}
+{"episodes": 128, "successes": 128, "decisions": 6724, "elapsed_seconds": 80.69, "target": 384}
+{"episodes": 144, "successes": 144, "decisions": 7578, "elapsed_seconds": 82.05, "target": 384}
+{"episodes": 160, "successes": 160, "decisions": 8481, "elapsed_seconds": 83.7, "target": 384}
+{"episodes": 176, "successes": 176, "decisions": 9250, "elapsed_seconds": 83.7, "target": 384}
+{"episodes": 192, "successes": 192, "decisions": 10065, "elapsed_seconds": 83.7, "target": 384}
+{"episodes": 208, "successes": 208, "decisions": 10932, "elapsed_seconds": 84.06, "target": 384}
+{"episodes": 224, "successes": 224, "decisions": 11668, "elapsed_seconds": 84.06, "target": 384}
+{"episodes": 240, "successes": 240, "decisions": 12507, "elapsed_seconds": 105.6, "target": 384}
+{"episodes": 256, "successes": 256, "decisions": 13365, "elapsed_seconds": 106.87, "target": 384}
+{"episodes": 272, "successes": 272, "decisions": 14210, "elapsed_seconds": 106.94, "target": 384}
+{"episodes": 288, "successes": 288, "decisions": 15097, "elapsed_seconds": 109.82, "target": 384}
+{"episodes": 304, "successes": 304, "decisions": 15872, "elapsed_seconds": 109.82, "target": 384}
+{"episodes": 320, "successes": 319, "decisions": 16662, "elapsed_seconds": 109.82, "target": 384}
+{"episodes": 336, "successes": 334, "decisions": 17481, "elapsed_seconds": 110.16, "target": 384}
+{"episodes": 352, "successes": 350, "decisions": 18271, "elapsed_seconds": 139.02, "target": 384}
+{"episodes": 368, "successes": 365, "decisions": 19093, "elapsed_seconds": 141.26, "target": 384}
+{"episodes": 384, "successes": 381, "decisions": 19951, "elapsed_seconds": 143.63, "target": 384}
+{
+  "episodes": 384,
+  "successes": 381,
+  "decisions": 19951,
+  "seconds": 143.70839712495217
+}

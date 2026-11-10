@@ -1,0 +1,5 @@
+2026-11-10 00:49:33 train larger_scale/outputs/large/paired/models/w64-n512-s17.log
+2026-11-10 00:50:11 train larger_scale/outputs/large/paired/models/w64-n512-s59.log
+2026-11-10 00:50:49 train larger_scale/outputs/large/paired/models/w64-n512-s101.log
+2026-11-10 00:51:28 lock larger_scale/outputs/large/paired/lock.log
+2026-11-10 00:51:29 evaluate larger_scale/outputs/large/paired/structural.log

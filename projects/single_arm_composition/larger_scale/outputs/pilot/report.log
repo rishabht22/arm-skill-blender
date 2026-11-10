@@ -1,0 +1,656 @@
+{
+  "manifest": "bd4b4c23d19a2561981b12ad97ea64c6f567d99a989b2cca8a228922e3c9b40a",
+  "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "lock": null,
+  "splits": {
+    "dev": {
+      "split": "dev",
+      "matched_starts": 48,
+      "families": 16,
+      "graphs": 37,
+      "layouts": 20,
+      "horizon": [
+        23,
+        72
+      ],
+      "methods": {
+        "expert": {
+          "rollouts": 48,
+          "successes": 48,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 263,
+            "close": 263,
+            "latch": 263,
+            "index": 263,
+            "unlatch": 263,
+            "open": 263,
+            "unload": 263,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 85,
+            "release": 107
+          },
+          "primitive_successes": {
+            "load": 263,
+            "close": 263,
+            "latch": 263,
+            "index": 263,
+            "unlatch": 263,
+            "open": 263,
+            "unload": 263,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 85,
+            "release": 107
+          },
+          "seed_successes": {
+            "expert": 48
+          }
+        },
+        "learned-w16-n384": {
+          "rollouts": 144,
+          "successes": 144,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "primitive_successes": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "seed_successes": {
+            "520b8aebc13385ca6f838ec3405203547317568c0037c65b1dc6b720894eb2a5": 48,
+            "5cd41b159cdca6f5b1f0915a280d00552b4f44f7ebc0dd418029b16f36033c00": 48,
+            "91f413c3703589d58f81f3e1e49e94b1bc9e80aa083b82aa7b51a1260ecc03d0": 48
+          },
+          "paired_delta_vs_retrieval": {
+            "micro": 0.8125,
+            "family_seed_ci95": [
+              0.7079910714285714,
+              0.9910714285714286
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "learned-w256-n384": {
+          "rollouts": 144,
+          "successes": 144,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "primitive_successes": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "seed_successes": {
+            "1e3570bbce8bb22734fc1964d649a305a3f521e787b916fc071ba3b3d792acef": 48,
+            "7606bac706c7ce0894ca7be5b883ab731ab9070e2af2d5d0d080f6f919c3427c": 48,
+            "f5812288cb097d8f5681a8e12943092454d07c473cacc7d6fd994980d4d8dec9": 48
+          },
+          "paired_delta_vs_retrieval": {
+            "micro": 0.8125,
+            "family_seed_ci95": [
+              0.7035714285714286,
+              0.9893749999999996
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "learned-w64-n32": {
+          "rollouts": 144,
+          "successes": 144,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "primitive_successes": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "seed_successes": {
+            "173f15fa06f2fde1e6a4e4b6f87e56f42bed9596434d68e36d63ba57a0ddbf75": 48,
+            "b7e3f3b7ddb4bf26f8f8ac99d8ff87e076144f7a72890e7542b5be396ef60450": 48,
+            "d4e0c343daf54665caa1e5304a3a3f4dd637060d55f2ce894bf3e2b29d875902": 48
+          },
+          "paired_delta_vs_retrieval": {
+            "micro": 0.8125,
+            "family_seed_ci95": [
+              0.6875,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "learned-w64-n384": {
+          "rollouts": 144,
+          "successes": 144,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "primitive_successes": {
+            "load": 789,
+            "close": 789,
+            "latch": 789,
+            "index": 789,
+            "unlatch": 789,
+            "open": 789,
+            "unload": 789,
+            "read_load": 576,
+            "read": 576,
+            "read_return": 576,
+            "reject": 255,
+            "release": 321
+          },
+          "seed_successes": {
+            "2227ad64e2580dadceaa43a86eb661fa2f85b48c2f0b0b1bea13df1ece8bdb6e": 48,
+            "744efef154e26e4a5ceafa8c35855aae0579723a0169b40ba54a0f160df70151": 48,
+            "d70db05922016e37e2d43b23f71922421b0c0188d55741d7af4851ac12dea9d6": 48
+          },
+          "paired_delta_vs_retrieval": {
+            "micro": 0.8125,
+            "family_seed_ci95": [
+              0.6839285714285714,
+              1.0
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": 0.0,
+            "family_seed_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "learned-w64-n4": {
+          "rollouts": 144,
+          "successes": 0,
+          "micro_success": 0.0,
+          "family_balanced_success": 0.0,
+          "family_seed_ci95": [
+            0.0,
+            0.0
+          ],
+          "mean_subgoal_progress": 0.05565654743625502,
+          "dependency_violations": 143,
+          "skill_failures": 1,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 143,
+            "precondition": 1
+          },
+          "primitive_attempts": {
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 55,
+            "open": 19,
+            "unload": 11,
+            "read_load": 29,
+            "read": 8,
+            "read_return": 8,
+            "reject": 3,
+            "release": 5
+          },
+          "primitive_successes": {
+            "load": 75,
+            "close": 75,
+            "latch": 75,
+            "index": 75,
+            "unlatch": 55,
+            "open": 19,
+            "unload": 11,
+            "read_load": 28,
+            "read": 8,
+            "read_return": 8,
+            "reject": 3,
+            "release": 5
+          },
+          "seed_successes": {
+            "54cc3817ad71fda70f105822c7e309651faf1ccd52a6d03f7e30e26a90b090a6": 0,
+            "5dd39e382fd12a5542a5e32ae381fd8b324dc18ffb2c735ea61ee04b9cb053c5": 0,
+            "6d7946e10238f64108c3ae27566ada17aad3d7da45e41545e0d92526a910f7e1": 0
+          },
+          "paired_delta_vs_retrieval": {
+            "micro": -0.1875,
+            "family_seed_ci95": [
+              -0.3120758928571429,
+              -0.008928571428571428
+            ]
+          },
+          "paired_delta_vs_symbolic": {
+            "micro": -1.0,
+            "family_seed_ci95": [
+              -1.0,
+              -1.0
+            ]
+          },
+          "paired_delta_vs_expert": {
+            "micro": -1.0,
+            "family_seed_ci95": [
+              -1.0,
+              -1.0
+            ]
+          }
+        },
+        "retrieval": {
+          "rollouts": 48,
+          "successes": 9,
+          "micro_success": 0.1875,
+          "family_balanced_success": 0.13660714285714287,
+          "family_seed_ci95": [
+            0.0,
+            0.3165401785714284
+          ],
+          "mean_subgoal_progress": 0.3613798224522274,
+          "dependency_violations": 39,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {
+            "dependency": 39
+          },
+          "primitive_attempts": {
+            "load": 112,
+            "close": 112,
+            "latch": 112,
+            "index": 112,
+            "unlatch": 112,
+            "open": 112,
+            "unload": 112,
+            "read_load": 59,
+            "read": 59,
+            "read_return": 59,
+            "release": 28,
+            "reject": 18
+          },
+          "primitive_successes": {
+            "load": 112,
+            "close": 112,
+            "latch": 112,
+            "index": 112,
+            "unlatch": 112,
+            "open": 112,
+            "unload": 112,
+            "read_load": 59,
+            "read": 59,
+            "read_return": 59,
+            "release": 28,
+            "reject": 18
+          },
+          "seed_successes": {
+            "retrieval": 9
+          }
+        },
+        "symbolic": {
+          "rollouts": 48,
+          "successes": 48,
+          "micro_success": 1.0,
+          "family_balanced_success": 1.0,
+          "family_seed_ci95": [
+            1.0,
+            1.0
+          ],
+          "mean_subgoal_progress": 1.0,
+          "dependency_violations": 0,
+          "skill_failures": 0,
+          "recovery_completed": 0,
+          "recovery_goals": 0,
+          "failure_reasons": {},
+          "primitive_attempts": {
+            "load": 263,
+            "close": 263,
+            "latch": 263,
+            "index": 263,
+            "unlatch": 263,
+            "open": 263,
+            "unload": 263,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 85,
+            "release": 107
+          },
+          "primitive_successes": {
+            "load": 263,
+            "close": 263,
+            "latch": 263,
+            "index": 263,
+            "unlatch": 263,
+            "open": 263,
+            "unload": 263,
+            "read_load": 192,
+            "read": 192,
+            "read_return": 192,
+            "reject": 85,
+            "release": 107
+          },
+          "seed_successes": {
+            "symbolic": 48
+          }
+        }
+      },
+      "declared_starts": 48,
+      "complete": true,
+      "checkpoints": [
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "744efef154e26e4a5ceafa8c35855aae0579723a0169b40ba54a0f160df70151",
+          "width": 64
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "d70db05922016e37e2d43b23f71922421b0c0188d55741d7af4851ac12dea9d6",
+          "width": 64
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "2227ad64e2580dadceaa43a86eb661fa2f85b48c2f0b0b1bea13df1ece8bdb6e",
+          "width": 64
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 1649,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "5cd41b159cdca6f5b1f0915a280d00552b4f44f7ebc0dd418029b16f36033c00",
+          "width": 16
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 1649,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "91f413c3703589d58f81f3e1e49e94b1bc9e80aa083b82aa7b51a1260ecc03d0",
+          "width": 16
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 1649,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "520b8aebc13385ca6f838ec3405203547317568c0037c65b1dc6b720894eb2a5",
+          "width": 16
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 149249,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "f5812288cb097d8f5681a8e12943092454d07c473cacc7d6fd994980d4d8dec9",
+          "width": 256
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 149249,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "7606bac706c7ce0894ca7be5b883ab731ab9070e2af2d5d0d080f6f919c3427c",
+          "width": 256
+        },
+        {
+          "decisions": 20246,
+          "episodes": 384,
+          "parameters": 149249,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "1e3570bbce8bb22734fc1964d649a305a3f521e787b916fc071ba3b3d792acef",
+          "width": 256
+        },
+        {
+          "decisions": 233,
+          "episodes": 4,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "54cc3817ad71fda70f105822c7e309651faf1ccd52a6d03f7e30e26a90b090a6",
+          "width": 64
+        },
+        {
+          "decisions": 233,
+          "episodes": 4,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 5,
+          "sha256": "5dd39e382fd12a5542a5e32ae381fd8b324dc18ffb2c735ea61ee04b9cb053c5",
+          "width": 64
+        },
+        {
+          "decisions": 233,
+          "episodes": 4,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "6d7946e10238f64108c3ae27566ada17aad3d7da45e41545e0d92526a910f7e1",
+          "width": 64
+        },
+        {
+          "decisions": 1630,
+          "episodes": 32,
+          "parameters": 12737,
+          "seed": 17,
+          "selected_epoch": 8,
+          "sha256": "b7e3f3b7ddb4bf26f8f8ac99d8ff87e076144f7a72890e7542b5be396ef60450",
+          "width": 64
+        },
+        {
+          "decisions": 1630,
+          "episodes": 32,
+          "parameters": 12737,
+          "seed": 59,
+          "selected_epoch": 8,
+          "sha256": "173f15fa06f2fde1e6a4e4b6f87e56f42bed9596434d68e36d63ba57a0ddbf75",
+          "width": 64
+        },
+        {
+          "decisions": 1630,
+          "episodes": 32,
+          "parameters": 12737,
+          "seed": 101,
+          "selected_epoch": 8,
+          "sha256": "d4e0c343daf54665caa1e5304a3a3f4dd637060d55f2ce894bf3e2b29d875902",
+          "width": 64
+        }
+      ]
+    }
+  }
+}

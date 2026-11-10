@@ -1,0 +1,209 @@
+{"epoch": 1, "fit": {"eligible_top1": 0.40609137055837563, "teacher_top1": 0.3350253807106599, "loss": 3.0452476479680404, "decisions": 197}, "dev": {"eligible_top1": 0.6357808857808858, "teacher_top1": 0.5578865578865578, "loss": 3.1272072986567214, "decisions": 5148}, "seconds": 0.7975672080065124}
+{"epoch": 2, "fit": {"eligible_top1": 0.6548223350253807, "teacher_top1": 0.5888324873096447, "loss": 3.0256795979998437, "decisions": 197}, "dev": {"eligible_top1": 0.6047008547008547, "teacher_top1": 0.5128205128205128, "loss": 3.0991700051269886, "decisions": 5148}, "seconds": 0.6473215839941986}
+{"epoch": 3, "fit": {"eligible_top1": 0.6548223350253807, "teacher_top1": 0.5786802030456852, "loss": 2.9889383775933744, "decisions": 197}, "dev": {"eligible_top1": 0.6287878787878788, "teacher_top1": 0.5378787878787878, "loss": 3.0372779786169946, "decisions": 5148}, "seconds": 0.6878781670238823}
+{"epoch": 4, "fit": {"eligible_top1": 0.6751269035532995, "teacher_top1": 0.5989847715736041, "loss": 2.9031722533521314, "decisions": 197}, "dev": {"eligible_top1": 0.6190753690753691, "teacher_top1": 0.5322455322455323, "loss": 2.9072178295627524, "decisions": 5148}, "seconds": 0.7639358339947648}
+{"epoch": 5, "fit": {"eligible_top1": 0.6548223350253807, "teacher_top1": 0.5786802030456852, "loss": 2.7302612314369474, "decisions": 197}, "dev": {"eligible_top1": 0.6493783993783994, "teacher_top1": 0.5639083139083139, "loss": 2.6717820847414218, "decisions": 5148}, "seconds": 0.6900646249996498}
+{"epoch": 6, "fit": {"eligible_top1": 0.6802030456852792, "teacher_top1": 0.5989847715736041, "loss": 2.4346814203988476, "decisions": 197}, "dev": {"eligible_top1": 0.6621989121989122, "teacher_top1": 0.578088578088578, "loss": 2.3339630736800805, "decisions": 5148}, "seconds": 0.6715481249848381}
+{"epoch": 7, "fit": {"eligible_top1": 0.7106598984771574, "teacher_top1": 0.6395939086294417, "loss": 2.0740146285991377, "decisions": 197}, "dev": {"eligible_top1": 0.7303807303807304, "teacher_top1": 0.6458818958818959, "loss": 1.9777217891295935, "decisions": 5148}, "seconds": 0.7850148339639418}
+{"epoch": 8, "fit": {"eligible_top1": 0.8020304568527918, "teacher_top1": 0.7360406091370558, "loss": 1.7116242338558139, "decisions": 197}, "dev": {"eligible_top1": 0.7525252525252525, "teacher_top1": 0.6707459207459208, "loss": 1.6938546026225412, "decisions": 5148}, "seconds": 0.6220451249973848}
+{
+  "manifest": "5337ea1e123ed8bda52476f710127391c10ce7ddbe406f51b8e2c8b21edb5007",
+  "controller": "ad290d49a7bdaec1c00d0a12c5e5357f1b306776b3ecd8cf4b26d31edbf6a5c4",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "feature_version": 1,
+  "selector_code": "a2bdc49d59eb1aa6c0859df51cf4ccd3faa1977f7cefc7fd69f59b1fdf79dc59",
+  "device": "cpu",
+  "width": 64,
+  "seed": 101,
+  "parameters": 12737,
+  "fit": {
+    "episodes": 4,
+    "successes": 4,
+    "decisions": 197,
+    "instances": 4,
+    "graphs": 4,
+    "families": 4,
+    "executed_primitives": {
+      "load": 19,
+      "close": 19,
+      "latch": 19,
+      "index": 19,
+      "unlatch": 19,
+      "open": 19,
+      "unload": 19,
+      "read_load": 16,
+      "read": 16,
+      "read_return": 16,
+      "release": 8,
+      "reject": 8
+    }
+  },
+  "dev": {
+    "episodes": 96,
+    "successes": 96,
+    "decisions": 5148,
+    "instances": 96,
+    "graphs": 63,
+    "families": 22,
+    "executed_primitives": {
+      "read_load": 384,
+      "read": 384,
+      "read_return": 384,
+      "release": 190,
+      "reject": 194,
+      "load": 516,
+      "close": 516,
+      "latch": 516,
+      "index": 516,
+      "unlatch": 516,
+      "open": 516,
+      "unload": 516
+    }
+  },
+  "fit_hashes": {
+    "00000000-00000016.jsonl.gz": "cdf8d7cc5ccd952e292fa1ca53b1ff693276ff941ae56eae801c8c525ae6c2e1"
+  },
+  "dev_hashes": {
+    "00000000-00000016.jsonl.gz": "f3df94658fcb823349ca9f69cb9b7ac3ccf1bf13c20d44272c9846c08737ca76",
+    "00000016-00000032.jsonl.gz": "141d090a7491373773348a6a46fec2224afb4a81240c9dde4e86c1fc0680940a",
+    "00000032-00000048.jsonl.gz": "310ad83faca339a8850790b7d96040481a7f380be3af215bd9a461ae74220852",
+    "00000048-00000064.jsonl.gz": "cb67e3fe47f723b16ef827ee04efc7b8984bfbecbbb2dbe30d99133dc18d5ae0",
+    "00000064-00000080.jsonl.gz": "a83e02067d2f13d9c4b20bc8e0c8f6c038f1f5722676d55d484671ee460a2959",
+    "00000080-00000096.jsonl.gz": "f4351f7a3478fb7fe4a31c46a24a500c9e33d1c6c18068a56e770feae9480d4e"
+  },
+  "epoch_budget": 8,
+  "batch": 64,
+  "checkpoint": "larger_scale/outputs/pilot/models/w64-n4-s101.pt",
+  "sha256": "c464c8735ef09e752521f283705e08357bc7053c020e3459847d1ff73d87178d",
+  "seconds": 6.969369458965957,
+  "history": [
+    {
+      "epoch": 1,
+      "fit": {
+        "eligible_top1": 0.40609137055837563,
+        "teacher_top1": 0.3350253807106599,
+        "loss": 3.0452476479680404,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6357808857808858,
+        "teacher_top1": 0.5578865578865578,
+        "loss": 3.1272072986567214,
+        "decisions": 5148
+      },
+      "seconds": 0.7975672080065124
+    },
+    {
+      "epoch": 2,
+      "fit": {
+        "eligible_top1": 0.6548223350253807,
+        "teacher_top1": 0.5888324873096447,
+        "loss": 3.0256795979998437,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6047008547008547,
+        "teacher_top1": 0.5128205128205128,
+        "loss": 3.0991700051269886,
+        "decisions": 5148
+      },
+      "seconds": 0.6473215839941986
+    },
+    {
+      "epoch": 3,
+      "fit": {
+        "eligible_top1": 0.6548223350253807,
+        "teacher_top1": 0.5786802030456852,
+        "loss": 2.9889383775933744,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6287878787878788,
+        "teacher_top1": 0.5378787878787878,
+        "loss": 3.0372779786169946,
+        "decisions": 5148
+      },
+      "seconds": 0.6878781670238823
+    },
+    {
+      "epoch": 4,
+      "fit": {
+        "eligible_top1": 0.6751269035532995,
+        "teacher_top1": 0.5989847715736041,
+        "loss": 2.9031722533521314,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6190753690753691,
+        "teacher_top1": 0.5322455322455323,
+        "loss": 2.9072178295627524,
+        "decisions": 5148
+      },
+      "seconds": 0.7639358339947648
+    },
+    {
+      "epoch": 5,
+      "fit": {
+        "eligible_top1": 0.6548223350253807,
+        "teacher_top1": 0.5786802030456852,
+        "loss": 2.7302612314369474,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6493783993783994,
+        "teacher_top1": 0.5639083139083139,
+        "loss": 2.6717820847414218,
+        "decisions": 5148
+      },
+      "seconds": 0.6900646249996498
+    },
+    {
+      "epoch": 6,
+      "fit": {
+        "eligible_top1": 0.6802030456852792,
+        "teacher_top1": 0.5989847715736041,
+        "loss": 2.4346814203988476,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.6621989121989122,
+        "teacher_top1": 0.578088578088578,
+        "loss": 2.3339630736800805,
+        "decisions": 5148
+      },
+      "seconds": 0.6715481249848381
+    },
+    {
+      "epoch": 7,
+      "fit": {
+        "eligible_top1": 0.7106598984771574,
+        "teacher_top1": 0.6395939086294417,
+        "loss": 2.0740146285991377,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.7303807303807304,
+        "teacher_top1": 0.6458818958818959,
+        "loss": 1.9777217891295935,
+        "decisions": 5148
+      },
+      "seconds": 0.7850148339639418
+    },
+    {
+      "epoch": 8,
+      "fit": {
+        "eligible_top1": 0.8020304568527918,
+        "teacher_top1": 0.7360406091370558,
+        "loss": 1.7116242338558139,
+        "decisions": 197
+      },
+      "dev": {
+        "eligible_top1": 0.7525252525252525,
+        "teacher_top1": 0.6707459207459208,
+        "loss": 1.6938546026225412,
+        "decisions": 5148
+      },
+      "seconds": 0.6220451249973848
+    }
+  ]
+}

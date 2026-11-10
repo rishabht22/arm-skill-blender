@@ -1,0 +1,18 @@
+{"episodes": 32, "successes": 32, "decisions": 1653, "elapsed_seconds": 80.61, "target": 4096}
+{"episodes": 64, "successes": 64, "decisions": 3341, "elapsed_seconds": 82.42, "target": 4096}
+{"episodes": 96, "successes": 96, "decisions": 5106, "elapsed_seconds": 145.18, "target": 4096}
+{"episodes": 128, "successes": 128, "decisions": 6822, "elapsed_seconds": 145.18, "target": 4096}
+{"episodes": 160, "successes": 160, "decisions": 8517, "elapsed_seconds": 209.78, "target": 4096}
+{"episodes": 192, "successes": 192, "decisions": 10226, "elapsed_seconds": 210.45, "target": 4096}
+{"episodes": 224, "successes": 224, "decisions": 11970, "elapsed_seconds": 280.86, "target": 4096}
+{"episodes": 256, "successes": 256, "decisions": 13651, "elapsed_seconds": 280.86, "target": 4096}
+{"episodes": 288, "successes": 288, "decisions": 15402, "elapsed_seconds": 386.31, "target": 4096}
+{"episodes": 320, "successes": 320, "decisions": 17104, "elapsed_seconds": 386.31, "target": 4096}
+{"episodes": 352, "successes": 352, "decisions": 18869, "elapsed_seconds": 487.55, "target": 4096}
+{"episodes": 384, "successes": 384, "decisions": 20683, "elapsed_seconds": 491.73, "target": 4096}
+{"episodes": 416, "successes": 416, "decisions": 22469, "elapsed_seconds": 607.82, "target": 4096}
+{"episodes": 448, "successes": 448, "decisions": 24220, "elapsed_seconds": 611.23, "target": 4096}
+{"episodes": 480, "successes": 480, "decisions": 25936, "elapsed_seconds": 773.64, "target": 4096}
+{"episodes": 512, "successes": 512, "decisions": 27722, "elapsed_seconds": 781.5, "target": 4096}
+/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

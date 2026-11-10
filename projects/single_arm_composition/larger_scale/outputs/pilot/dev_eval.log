@@ -1,0 +1,15 @@
+{"attempts": {"retrieval": 8, "symbolic": 8, "expert": 8, "learned": 120}, "seconds": 565.51}
+{"attempts": {"retrieval": 16, "symbolic": 16, "expert": 16, "learned": 240}, "seconds": 565.51}
+{"attempts": {"retrieval": 24, "symbolic": 24, "expert": 24, "learned": 360}, "seconds": 565.51}
+{"attempts": {"retrieval": 32, "symbolic": 32, "expert": 32, "learned": 480}, "seconds": 565.51}
+{"attempts": {"retrieval": 40, "symbolic": 40, "expert": 40, "learned": 600}, "seconds": 565.51}
+{"attempts": {"retrieval": 48, "symbolic": 48, "expert": 48, "learned": 720}, "seconds": 887.86}
+{
+  "attempts": {
+    "retrieval": 48,
+    "symbolic": 48,
+    "expert": 48,
+    "learned": 720
+  },
+  "seconds": 889.0701120410231
+}

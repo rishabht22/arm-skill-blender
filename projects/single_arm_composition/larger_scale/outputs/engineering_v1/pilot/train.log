@@ -1,0 +1,46 @@
+{"episodes": 16, "successes": 16, "decisions": 888, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 32, "successes": 32, "decisions": 1769, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 48, "successes": 47, "decisions": 2581, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 64, "successes": 61, "decisions": 3485, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 80, "successes": 76, "decisions": 4270, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 96, "successes": 91, "decisions": 5017, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 112, "successes": 106, "decisions": 5868, "elapsed_seconds": 53.63, "target": 640}
+{"episodes": 128, "successes": 122, "decisions": 6672, "elapsed_seconds": 89.03, "target": 640}
+{"episodes": 144, "successes": 137, "decisions": 7526, "elapsed_seconds": 91.89, "target": 640}
+{"episodes": 160, "successes": 152, "decisions": 8388, "elapsed_seconds": 92.66, "target": 640}
+{"episodes": 176, "successes": 168, "decisions": 9157, "elapsed_seconds": 92.66, "target": 640}
+{"episodes": 192, "successes": 184, "decisions": 9972, "elapsed_seconds": 92.66, "target": 640}
+{"episodes": 208, "successes": 200, "decisions": 10839, "elapsed_seconds": 93.92, "target": 640}
+{"episodes": 224, "successes": 215, "decisions": 11575, "elapsed_seconds": 93.92, "target": 640}
+{"episodes": 240, "successes": 231, "decisions": 12414, "elapsed_seconds": 117.15, "target": 640}
+{"episodes": 256, "successes": 247, "decisions": 13272, "elapsed_seconds": 119.45, "target": 640}
+{"episodes": 272, "successes": 263, "decisions": 14117, "elapsed_seconds": 120.49, "target": 640}
+{"episodes": 288, "successes": 279, "decisions": 15004, "elapsed_seconds": 121.79, "target": 640}
+{"episodes": 304, "successes": 295, "decisions": 15779, "elapsed_seconds": 121.79, "target": 640}
+{"episodes": 320, "successes": 310, "decisions": 16569, "elapsed_seconds": 121.79, "target": 640}
+{"episodes": 336, "successes": 325, "decisions": 17388, "elapsed_seconds": 121.79, "target": 640}
+{"episodes": 352, "successes": 341, "decisions": 18178, "elapsed_seconds": 143.85, "target": 640}
+{"episodes": 368, "successes": 357, "decisions": 19019, "elapsed_seconds": 147.45, "target": 640}
+{"episodes": 384, "successes": 373, "decisions": 19877, "elapsed_seconds": 148.52, "target": 640}
+{"episodes": 400, "successes": 389, "decisions": 20826, "elapsed_seconds": 151.95, "target": 640}
+{"episodes": 416, "successes": 405, "decisions": 21692, "elapsed_seconds": 151.95, "target": 640}
+{"episodes": 432, "successes": 421, "decisions": 22536, "elapsed_seconds": 151.95, "target": 640}
+{"episodes": 448, "successes": 437, "decisions": 23410, "elapsed_seconds": 151.95, "target": 640}
+{"episodes": 464, "successes": 453, "decisions": 24283, "elapsed_seconds": 186.28, "target": 640}
+{"episodes": 480, "successes": 469, "decisions": 25163, "elapsed_seconds": 193.18, "target": 640}
+{"episodes": 496, "successes": 485, "decisions": 26106, "elapsed_seconds": 196.66, "target": 640}
+{"episodes": 512, "successes": 501, "decisions": 26943, "elapsed_seconds": 196.66, "target": 640}
+{"episodes": 528, "successes": 516, "decisions": 27759, "elapsed_seconds": 196.66, "target": 640}
+{"episodes": 544, "successes": 532, "decisions": 28620, "elapsed_seconds": 199.49, "target": 640}
+{"episodes": 560, "successes": 546, "decisions": 29452, "elapsed_seconds": 199.49, "target": 640}
+{"episodes": 576, "successes": 562, "decisions": 30394, "elapsed_seconds": 236.71, "target": 640}
+{"episodes": 592, "successes": 578, "decisions": 31224, "elapsed_seconds": 236.71, "target": 640}
+{"episodes": 608, "successes": 593, "decisions": 32107, "elapsed_seconds": 238.49, "target": 640}
+{"episodes": 624, "successes": 608, "decisions": 32952, "elapsed_seconds": 238.49, "target": 640}
+{"episodes": 640, "successes": 624, "decisions": 33834, "elapsed_seconds": 239.82, "target": 640}
+{
+  "episodes": 640,
+  "successes": 624,
+  "decisions": 33834,
+  "seconds": 239.88247350003803
+}

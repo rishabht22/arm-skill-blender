@@ -1,0 +1,223 @@
+{"epoch": 1, "fit": {"eligible_top1": 0.9579257079808753, "teacher_top1": 0.8621919823464509, "loss": 0.3154254788930866, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.8966578715919086, "loss": 0.03904683801897877, "decisions": 6822}, "seconds": 4.053655249997973}
+{"epoch": 2, "fit": {"eligible_top1": 0.9999632217727106, "teacher_top1": 0.915630746598014, "loss": 0.006199922025449123, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9017883318674875, "loss": 0.003970624654021686, "decisions": 6822}, "seconds": 3.8645413750200532}
+{"epoch": 3, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9386539168812064, "loss": 0.0020714830239647645, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9259747874523601, "loss": 0.0008941617421915072, "decisions": 6822}, "seconds": 4.340649832971394}
+{"epoch": 4, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9470393527031997, "loss": 0.00030162979456450163, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9379947229551451, "loss": 0.00011394389573417356, "decisions": 6822}, "seconds": 4.197178625036031}
+{"epoch": 5, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9449062155204119, "loss": 6.013064706248197e-05, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9360891234242158, "loss": 4.248728339985377e-05, "decisions": 6822}, "seconds": 4.299202332971618}
+{"epoch": 6, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9445384332475175, "loss": 2.6248801002003536e-05, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9337437701553797, "loss": 2.1789737664645805e-05, "decisions": 6822}, "seconds": 4.2374717079801485}
+{"epoch": 7, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.9437660904744392, "loss": 1.3879377090520565e-05, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9277338024039871, "loss": 1.2904777216180227e-05, "decisions": 6822}, "seconds": 4.22272816702025}
+{"epoch": 8, "fit": {"eligible_top1": 1.0, "teacher_top1": 0.942184626700993, "loss": 8.665448708669895e-06, "decisions": 27190}, "dev": {"eligible_top1": 1.0, "teacher_top1": 0.9287598944591029, "loss": 8.30905813689157e-06, "decisions": 6822}, "seconds": 4.551342874998227}
+{
+  "manifest": "d5813c691e99b2cf9cde6a819d11642f826877127265647bba456a09041daa06",
+  "controller": "ad290d49a7bdaec1c00d0a12c5e5357f1b306776b3ecd8cf4b26d31edbf6a5c4",
+  "protocol": "f53ecefc505ef16aaad8521d561db95138d9510835d57f6961172fba31cd0a70",
+  "feature_version": 1,
+  "selector_code": "a2bdc49d59eb1aa6c0859df51cf4ccd3faa1977f7cefc7fd69f59b1fdf79dc59",
+  "device": "cpu",
+  "width": 64,
+  "seed": 17,
+  "parameters": 12737,
+  "fit": {
+    "episodes": 512,
+    "successes": 510,
+    "decisions": 27190,
+    "instances": 512,
+    "graphs": 510,
+    "families": 88,
+    "executed_primitives": {
+      "read_load": 2045,
+      "read": 2045,
+      "read_return": 2045,
+      "load": 2707,
+      "close": 2707,
+      "latch": 2707,
+      "index": 2707,
+      "unlatch": 2707,
+      "open": 2707,
+      "unload": 2707,
+      "release": 1021,
+      "reject": 1023,
+      "reseat": 60
+    }
+  },
+  "dev": {
+    "episodes": 128,
+    "successes": 128,
+    "decisions": 6822,
+    "instances": 128,
+    "graphs": 127,
+    "families": 25,
+    "executed_primitives": {
+      "read_load": 512,
+      "read": 512,
+      "read_return": 512,
+      "load": 682,
+      "close": 682,
+      "latch": 682,
+      "index": 682,
+      "unlatch": 682,
+      "open": 682,
+      "unload": 682,
+      "reject": 239,
+      "release": 273
+    }
+  },
+  "fit_hashes": {
+    "00000000-00000032.jsonl.gz": "90e677f89da9433b4c2dec2d0501cff7e350c613ef815c8c2816f980cd1721e1",
+    "00000032-00000064.jsonl.gz": "1756a1e815fe72c7c642942aac99b58885ab340730879c63c9984fa26034e439",
+    "00000064-00000096.jsonl.gz": "b3ecdad45ea33f9b15e386ffe6e47baa2e2d49bccbfa5d5dcd4dac62f54c0922",
+    "00000096-00000128.jsonl.gz": "ef1ec7d96d58cd801bb4af704550ba48bf6eb4c999cb4ee387c0ef761f4ebe1d",
+    "00000128-00000160.jsonl.gz": "72bb26bfade8d81b45fb0c95f01e6dea18c28a85c7173da1986dd34d2b79b0ed",
+    "00000160-00000192.jsonl.gz": "a7cce89f806d6d6543871c320f9f4a2237486395a3b04011a68b16837e94aa7b",
+    "00000192-00000224.jsonl.gz": "c53b0d4d407c9adbac4c89b020c70dde92d9da05de395165c7dccf9be832b3ed",
+    "00000224-00000256.jsonl.gz": "f52bbe6a658952bfd1eddf4a216ac8c587d538829b42b24fb7141b9636a1ba5a",
+    "00000256-00000288.jsonl.gz": "e9a8cfba8f45a1bf9100c2cb97003280248521460b7fbbce6801dade9e92722f",
+    "00000288-00000320.jsonl.gz": "51ec714c89ddd74be85debee5ddb8712fd5eecd164ac5bbfc52de0fbe2826770",
+    "00000320-00000352.jsonl.gz": "e5d11bb2df0bd7397398ea6f009d681737a77d16ed7f9c9e8a10cc3e5bf71fdd",
+    "00000352-00000384.jsonl.gz": "88588b4f5732975d72a88e09a679db609446b1698135b33e3f7f28c518379142",
+    "00000384-00000416.jsonl.gz": "aad3db744bc765c823f4e81ae2acd322f1944a8425712c5914ce62db7fe1dc23",
+    "00000416-00000448.jsonl.gz": "c322f2ab999757b6cd2fccd1c43ba047788bc14098d726ec18968376b43da571",
+    "00000448-00000480.jsonl.gz": "64fa7eb8c283425f845a6306c5b40754b7882a65a0f5f96e50f2ef518e1033e5",
+    "00000480-00000512.jsonl.gz": "082ec8ca8abd4a636e582e05e448da17d08171d8b5f56422905025f12751f956"
+  },
+  "dev_hashes": {
+    "00000000-00000032.jsonl.gz": "f27e461a46d476e4715543291d634f7fdbf1236fa2a1bd80a0b1e5631a6debf0",
+    "00000032-00000064.jsonl.gz": "38732ca62c073c476a7717e04734669d448551aee3250e2f457834284cbe4351",
+    "00000064-00000096.jsonl.gz": "d848574cd22f380ac448c5cb8947ee5e9b2087a47774eef2e856e9c0d2aa3a0d",
+    "00000096-00000128.jsonl.gz": "7e91c56ba7ee8a2ad42aebec697fd665d8b9390d3ec919a1239fa8dd6c1c46d0"
+  },
+  "epoch_budget": 8,
+  "batch": 64,
+  "checkpoint": "larger_scale/outputs/large/paired/models/w64-n512-s17.pt",
+  "sha256": "bee7a9b4e27ddc45587bea750a71a28463a37bf8b0204f5b2ed1840ececf7d85",
+  "seconds": 35.700168500014115,
+  "history": [
+    {
+      "epoch": 1,
+      "fit": {
+        "eligible_top1": 0.9579257079808753,
+        "teacher_top1": 0.8621919823464509,
+        "loss": 0.3154254788930866,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.8966578715919086,
+        "loss": 0.03904683801897877,
+        "decisions": 6822
+      },
+      "seconds": 4.053655249997973
+    },
+    {
+      "epoch": 2,
+      "fit": {
+        "eligible_top1": 0.9999632217727106,
+        "teacher_top1": 0.915630746598014,
+        "loss": 0.006199922025449123,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9017883318674875,
+        "loss": 0.003970624654021686,
+        "decisions": 6822
+      },
+      "seconds": 3.8645413750200532
+    },
+    {
+      "epoch": 3,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9386539168812064,
+        "loss": 0.0020714830239647645,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9259747874523601,
+        "loss": 0.0008941617421915072,
+        "decisions": 6822
+      },
+      "seconds": 4.340649832971394
+    },
+    {
+      "epoch": 4,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9470393527031997,
+        "loss": 0.00030162979456450163,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9379947229551451,
+        "loss": 0.00011394389573417356,
+        "decisions": 6822
+      },
+      "seconds": 4.197178625036031
+    },
+    {
+      "epoch": 5,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9449062155204119,
+        "loss": 6.013064706248197e-05,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9360891234242158,
+        "loss": 4.248728339985377e-05,
+        "decisions": 6822
+      },
+      "seconds": 4.299202332971618
+    },
+    {
+      "epoch": 6,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9445384332475175,
+        "loss": 2.6248801002003536e-05,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9337437701553797,
+        "loss": 2.1789737664645805e-05,
+        "decisions": 6822
+      },
+      "seconds": 4.2374717079801485
+    },
+    {
+      "epoch": 7,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9437660904744392,
+        "loss": 1.3879377090520565e-05,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9277338024039871,
+        "loss": 1.2904777216180227e-05,
+        "decisions": 6822
+      },
+      "seconds": 4.22272816702025
+    },
+    {
+      "epoch": 8,
+      "fit": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.942184626700993,
+        "loss": 8.665448708669895e-06,
+        "decisions": 27190
+      },
+      "dev": {
+        "eligible_top1": 1.0,
+        "teacher_top1": 0.9287598944591029,
+        "loss": 8.30905813689157e-06,
+        "decisions": 6822
+      },
+      "seconds": 4.551342874998227
+    }
+  ]
+}
