@@ -1,0 +1,69 @@
+<mujoco>
+<worldbody>
+    <!-- Original and replacement sensor connectors share the same polarized stem. -->
+    <body name="sensor" pos="-.182 -.174 .848">
+        <freejoint name="sensor"/>
+        <geom name="sensor" type="cylinder" size=".017 .014" rgba=".16 .38 .52 1" group="1"/>
+        <geom name="sensor_collar" type="box" pos="0 0 -.013" size=".036 .026 .004" rgba=".30 .55 .65 1" group="1"/>
+        <geom name="sensor_stem" type="box" pos="0 0 -.027" size=".014 .010 .017" rgba=".16 .18 .20 1" group="1"/>
+        <geom name="sensor_rib" type="box" pos=".017 0 -.027" size=".005 .004 .013" rgba=".78 .56 .20 1" group="1"/>
+        <geom type="cylinder" pos="0 0 .014" size=".010 .001" mass="0" contype="0" conaffinity="0" rgba=".45 .76 .86 1" group="1"/>
+    </body>
+    <body name="spare" pos="-.170 .011 .848">
+        <freejoint name="spare"/>
+        <geom name="spare" type="cylinder" size=".017 .014" rgba=".19 .52 .41 1" group="1"/>
+        <geom name="spare_collar" type="box" pos="0 0 -.013" size=".036 .026 .004" rgba=".31 .65 .51 1" group="1"/>
+        <geom name="spare_stem" type="box" pos="0 0 -.027" size=".014 .010 .017" rgba=".16 .18 .20 1" group="1"/>
+        <geom name="spare_rib" type="box" pos=".017 0 -.027" size=".005 .004 .013" rgba=".78 .56 .20 1" group="1"/>
+        <geom type="cylinder" pos="0 0 .014" size=".010 .001" mass="0" contype="0" conaffinity="0" rgba=".59 .85 .65 1" group="1"/>
+    </body>
+    <!-- A rigid power cartridge with an offset guide flange. -->
+    <body name="cartridge" pos="-.168 .206 .842">
+        <freejoint name="cartridge"/>
+        <geom name="cartridge" type="box" size=".019 .011 .013" rgba=".85 .48 .16 1" group="1"/>
+        <geom type="box" pos="0 0 -.016" size=".025 .013 .007" rgba=".71 .33 .13 1" group="1"/>
+        <geom name="cartridge_tongue" type="box" pos="0 0 -.030" size=".034 .016 .008" rgba=".24 .29 .34 1" group="1"/>
+        <geom name="cartridge_flange" type="box" pos="0 .018 -.030" size=".025 .007 .006" rgba=".58 .64 .69 1" group="1"/>
+        <geom type="box" pos="-.012 0 .0131" size=".003 .008 .0005" mass="0" contype="0" conaffinity="0" rgba=".98 .86 .57 1" group="1"/>
+    </body>
+
+    <!-- Open-top polarized sensor socket. The east wall has a notch for the rib. -->
+    <geom name="sensor_floor" type="box" pos=".145 -.082 .813" size=".048 .042 .013" rgba=".23 .28 .33 1" group="1"/>
+    <geom name="port_west" type="box" pos=".119 -.082 .838" size=".009 .029 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="box" pos=".171 -.099 .838" size=".009 .010 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="box" pos=".171 -.065 .838" size=".009 .010 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="box" pos=".176 -.082 .838" size=".007 .007 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="box" pos=".145 -.103 .838" size=".017 .008 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="box" pos=".145 -.061 .838" size=".017 .008 .012" rgba=".38 .46 .52 1" group="1"/>
+    <geom type="cylinder" pos=".088 -.145 .831" size=".018 .031" rgba=".26 .30 .34 1" group="1"/>
+
+    <!-- At zero angle the tip overlaps the sensor shoulder; the swing clears it. -->
+    <body name="keeper" pos=".088 -.145 .872">
+        <joint name="keeper" type="hinge" axis="0 0 1" limited="true" range="-1.18 .035" damping=".16" frictionloss=".12"/>
+        <geom type="capsule" fromto="0 0 0 .024 .043 0" size=".006" rgba=".53 .58 .62 1" group="1"/>
+        <geom name="keeper_tip" type="box" pos=".024 .043 -.004" size=".013 .009 .006" rgba=".77 .59 .22 1" group="1"/>
+        <geom type="capsule" fromto="0 0 0 .088 0 0" size=".005" rgba=".53 .58 .62 1" group="1"/>
+        <geom type="capsule" fromto=".088 0 0 .088 .043 0" size=".005" rgba=".53 .58 .62 1" group="1"/>
+        <geom name="keeper_far_tip" type="box" pos=".088 .043 -.004" size=".011 .009 .006" rgba=".77 .59 .22 1" group="1"/>
+        <geom type="capsule" fromto="0 0 0 .010 -.065 .025" size=".006" rgba=".53 .58 .62 1" group="1"/>
+        <geom name="keeper" type="box" pos=".010 -.065 .048" size=".014 .013 .018" rgba=".88 .65 .19 1" group="1"/>
+        <geom type="box" pos=".010 -.065 .025" size=".007 .007 .010" rgba=".53 .58 .62 1" group="1"/>
+    </body>
+
+    <!-- Horizontal keyed guide with a positive-side flange relief and a rear stop. -->
+    <geom name="rail_bed" type="box" pos=".124 .141 .809" size=".101 .038 .010" rgba=".25 .30 .36 1" group="1"/>
+    <geom name="rail_negative" type="box" pos=".118 .114 .829" size=".092 .006 .014" rgba=".49 .54 .58 1" group="1"/>
+    <geom name="rail_positive" type="box" pos=".118 .176 .829" size=".092 .006 .014" rgba=".49 .54 .58 1" group="1"/>
+    <geom name="rail_stop" type="box" pos=".215 .141 .831" size=".010 .033 .013" rgba=".38 .43 .48 1" group="1"/>
+    <geom type="box" pos=".187 .184 .846" size=".031 .006 .006" rgba=".57 .63 .69 1" group="1"/>
+
+    <!-- Quarantine and return nests, plus visual ESD pads on the feed side. -->
+    <geom name="quarantine" type="box" pos="-.053 -.255 .808" size=".041 .035 .008" rgba=".63 .35 .23 1" group="1"/>
+    <geom name="sensor_nest" type="box" pos=".013 .262 .808" size=".037 .037 .008" rgba=".25 .49 .42 1" group="1"/>
+    <geom name="cartridge_nest" type="box" pos=".136 .268 .808" size=".050 .038 .008" rgba=".52 .39 .26 1" group="1"/>
+    <geom type="box" pos="-.169 -.081 .8004" size=".057 .156 .0003" contype="0" conaffinity="0" rgba=".26 .32 .34 1" group="1"/>
+    <geom type="box" pos="-.160 .205 .8004" size=".057 .051 .0003" contype="0" conaffinity="0" rgba=".26 .32 .34 1" group="1"/>
+    <geom type="box" pos=".196 -.171 .8004" size=".071 .003 .0003" contype="0" conaffinity="0" rgba=".79 .61 .22 1" group="1"/>
+    <geom type="box" pos=".196 -.181 .8004" size=".071 .003 .0003" contype="0" conaffinity="0" rgba=".79 .61 .22 1" group="1"/>
+</worldbody>
+</mujoco>

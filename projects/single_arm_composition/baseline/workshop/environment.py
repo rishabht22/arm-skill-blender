@@ -8,7 +8,7 @@ from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
 from robosuite.models.arenas import TableArena
 from robosuite.models.tasks import ManipulationTask
 
-from individual_skill_generation.skills import make_env
+from ..individual_skill_generation.skills import make_env
 
 
 SCENES = ("tabletop", "fixtures", "assembly")
@@ -16,8 +16,10 @@ TABLE_Z = 0.8
 
 
 class PandaWorkshop(ManipulationEnv):
+    scene_files = {name: Path(__file__).with_name("scenes") / f"{name}.xml" for name in SCENES}
+
     def __init__(self, scene, **kwargs):
-        if scene not in SCENES:
+        if scene not in self.scene_files:
             raise ValueError(f"Unknown workshop scene: {scene}")
         self.scene = scene
         super().__init__(**kwargs)
@@ -27,7 +29,7 @@ class PandaWorkshop(ManipulationEnv):
         arena = TableArena(table_offset=(0, 0, TABLE_Z))
         robot = self.robots[0].robot_model
         robot.set_base_xpos(robot.base_xpos_offset["table"](arena.table_full_size[0]))
-        scene_path = Path(__file__).with_name("scenes") / f"{self.scene}.xml"
+        scene_path = self.scene_files[self.scene]
         scene = ElementTree.parse(scene_path).getroot()
         worldbody = scene.find("worldbody")
         equality = scene.find("equality")

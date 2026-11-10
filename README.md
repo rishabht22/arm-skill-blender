@@ -16,7 +16,7 @@ and training commands. The commits identify the original versions.
 | [Goal-conditioned workbench](projects/goal_composition/) | Direct versus relay routing and a three-block tower | `7658d01` |
 | [WEAVE](projects/weave/) | Native replay audit and the GPU cell smoke test | `7d052b4`–`7658d01` |
 
-[Single-arm skill composition](projects/single_arm_composition/) includes a three-workcell Panda workshop with 35 isolated skills and scripted composition tasks in robosuite.
+[Single-arm skill composition](projects/single_arm_composition/) includes the original Panda workshop, an interlocked packing cell, and a connector service bench in robosuite.
 
 ## Run the RoboFactory demos
 

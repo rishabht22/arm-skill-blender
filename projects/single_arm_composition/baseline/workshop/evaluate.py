@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-from individual_skill_generation.viewer import ViewerClosed, live_frames
+from ..individual_skill_generation.viewer import ViewerClosed, live_frames
 
 from .__main__ import run_case, start_task, view
 from .control import WorkshopArm

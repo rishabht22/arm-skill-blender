@@ -150,3 +150,24 @@ three seeds shared the same 256 starts. The evaluation reused starts from
 the existing manifest, so the results establish reproducibility across
 training seeds on this suite. A matched comparison across training data
 tiers is still needed to estimate the effect of corpus size.
+
+## Matched comparison across training data tiers
+
+The user supplied the lab server report summary for nine width-64
+checkpoints. Each tier used seeds 17, 59, and 101, and every checkpoint
+ran on the same 256 starts from the existing locked suite. The report is
+on the lab NAS at `aster-large/extra_gpu/matched-data-scaling/report.json`.
+
+| Locked slice | Matched starts | 128 episodes | 2,048 episodes | 12,544 episodes | Physical expert | Symbolic | Retrieval |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Structural | 128 | 384 / 384 | 384 / 384 | 384 / 384 | 128 / 128 | 128 / 128 | 38 / 128 |
+| Binding | 32 | 96 / 96 | 96 / 96 | 96 / 96 | 32 / 32 | 32 / 32 | 2 / 32 |
+| Layout | 32 | 96 / 96 | 96 / 96 | 96 / 96 | 32 / 32 | 32 / 32 | 7 / 32 |
+| Horizon | 32 | 96 / 96 | 96 / 96 | 96 / 96 | 32 / 32 | 32 / 32 | 5 / 32 |
+| Recovery | 32 | 96 / 96 | 96 / 96 | 96 / 96 | 32 / 32 | 32 / 32 | 2 / 32 |
+| Total | 256 | 768 / 768 | 768 / 768 | 768 / 768 | 256 / 256 | 256 / 256 | 54 / 256 |
+
+Each data tier reached the completion ceiling with zero learned dependency
+violations. The smallest tested tier, 128 episodes, was sufficient for
+every seed on this suite. The two smaller tiers were trained on CPU and the
+12,544-episode tier was trained on CUDA, so training device also varied.

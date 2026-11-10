@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from individual_skill_generation.skills import TOP_DOWN
+from ..individual_skill_generation.skills import TOP_DOWN
 
 from .control import Motion
 from .environment import TABLE_Z

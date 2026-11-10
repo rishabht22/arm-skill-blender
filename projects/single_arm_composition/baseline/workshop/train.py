@@ -3,6 +3,7 @@
 import argparse
 from collections import defaultdict
 from copy import deepcopy
+from hashlib import file_digest
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -14,7 +15,6 @@ from torch import nn
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-SPLITS = ("train", "validation", "recombination")
 STOP = '["STOP",{}]'
 OBSERVATION_KEYS = (
     "eef_position", "eef_quaternion_xyzw", "joint_position", "finger_position",
@@ -29,6 +29,11 @@ def features(observation, goals, entities, fixture_joints):
         if "xy" in goal:
             xyz = np.array([*goal["xy"], goal["z"]])
             goal_features[index, :8] = [1, 0, *xyz, *(xyz - observation["entity_position"][index])]
+            if "yaw" in goal:
+                x, y, z, w = observation["entity_quaternion_xyzw"][index]
+                yaw = np.arctan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z))
+                delta = goal["yaw"] - yaw
+                goal_features[index, 8:] = [goal["yaw"], np.arctan2(np.sin(delta), np.cos(delta))]
         elif "joint" in goal:
             target = goal["joint"]
             current = observation["fixture_position"][fixture_joints.index(obj)]
@@ -49,6 +54,8 @@ def call_label(skill, args, goals):
         args["support"] = None
     if "joint" in goal and args.get("target") == goal["joint"]:
         args["target"] = None
+    if "yaw" in goal and args.get("yaw") == goal["yaw"]:
+        args["yaw"] = None
     return json.dumps([skill, args], sort_keys=True, separators=(",", ":"))
 
 
@@ -65,11 +72,12 @@ def resolve_call(label, goals):
         args["support"] = goal["support"]
     if "target" in args and args["target"] is None:
         args["target"] = goal["joint"]
+    if "yaw" in args and args["yaw"] is None:
+        args["yaw"] = goal["yaw"]
     return skill, args
 
 
 def read_demos(path, demos_per_task):
-    rows = {split: defaultdict(list) for split in SPLITS}
     with h5py.File(path, "r") as dataset:
         if dataset.attrs.get("format") != "panda_workshop_v1":
             raise ValueError("Expected a panda_workshop_v1 HDF5 dataset")
@@ -77,7 +85,9 @@ def read_demos(path, demos_per_task):
             scene: (tuple(group.attrs["entities"]), tuple(group.attrs["fixture_joints"]))
             for scene, group in dataset["scenes"].items()
         }
-        for split in SPLITS:
+        held_out = "test" if "test" in dataset else "recombination"
+        rows = {split: defaultdict(list) for split in ("train", "validation", held_out)}
+        for split in rows:
             for task in dataset[split].values():
                 included = 0
                 for episode in task.values():
@@ -117,24 +127,37 @@ class Selector(nn.Module):
     def forward(self, values):
         return self.network((values - self.center) / self.scale)
 
-    @torch.no_grad()
-    def choose(self, observation, goal_conditions):
-        """Return a (skill, args) pair for Step, or None when the selector predicts STOP."""
+    def ranked_calls(self, observation, goal_conditions):
+        """Yield bound calls in score order, including None for STOP."""
         goals = {goal["object"]: goal for goal in goal_conditions}
         values = torch.from_numpy(features(observation, goals, self.entities, self.fixture_joints))
-        for index in self(values).argsort(descending=True).tolist():
+        with torch.no_grad():
+            ranking = self(values).argsort(descending=True).tolist()
+        for index in ranking:
             try:
-                return resolve_call(self.labels[index], goals)
+                yield resolve_call(self.labels[index], goals)
             except KeyError:
                 # A goal argument for this action is absent from the current task.
                 continue
+
+    def choose(self, observation, goal_conditions):
+        """Return a (skill, args) pair for Step, or None when the selector predicts STOP."""
+        for call in self.ranked_calls(observation, goal_conditions):
+            return call
         raise ValueError("The selector has no executable label")
 
 
-def load_selector(path, scene):
+def dataset_fingerprint(path):
+    with Path(path).open("rb") as file:
+        return file_digest(file, "sha256").hexdigest()
+
+
+def load_selector(path, scene, *, dataset_sha256=None):
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)
     if checkpoint.get("format") != "panda_workshop_selector_v1":
         raise ValueError("Expected a panda_workshop_selector_v1 checkpoint")
+    if dataset_sha256 is not None and checkpoint.get("dataset_sha256") != dataset_sha256:
+        raise ValueError("Checkpoint does not match this dataset. Train on the selected dataset first.")
     spec = checkpoint["scenes"][scene]
     selector = Selector(spec["width"], spec["labels"], spec["entities"], spec["fixture_joints"])
     selector.load_state_dict(spec["weights"])
@@ -187,6 +210,7 @@ def main():
         parser.error(f"Checkpoint already exists: {args.out}. Choose another --out path.")
 
     try:
+        dataset_sha256 = None if args.dry_run else dataset_fingerprint(args.dataset)
         rows, metadata = read_demos(args.dataset, args.demos_per_task)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
@@ -196,7 +220,8 @@ def main():
     for scene, training_rows in rows["train"].items():
         labels = sorted({label for _, label in training_rows})
         classes = {label: index for index, label in enumerate(labels)}
-        batches = {split: as_batch(rows[split][scene], classes) for split in SPLITS if rows[split][scene]}
+        batches = {split: as_batch(partition[scene], classes)
+                   for split, partition in rows.items() if partition[scene]}
         if "validation" not in batches:
             parser.error(f"No validation decisions for {scene}")
         print(f"{scene} ({len(labels)} call labels)", flush=True)
@@ -215,10 +240,13 @@ def main():
                              fixture_joints=fixture_joints, weights=model.state_dict(),
                              best_epoch=best_epoch, accuracy=metrics)
     if not args.dry_run:
+        if dataset_fingerprint(args.dataset) != dataset_sha256:
+            parser.error("Dataset changed during training")
         args.out.parent.mkdir(parents=True, exist_ok=True)
         with TemporaryDirectory(dir=args.out.parent) as temporary:
             checkpoint = Path(temporary) / args.out.name
-            torch.save({"format": "panda_workshop_selector_v1", "scenes": scenes}, checkpoint)
+            torch.save({"format": "panda_workshop_selector_v1", "scenes": scenes,
+                        "dataset_sha256": dataset_sha256}, checkpoint)
             args.out.hardlink_to(checkpoint)
         print(f"Saved {args.out}")
 

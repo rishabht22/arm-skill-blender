@@ -11,8 +11,8 @@ import mujoco
 import numpy as np
 import robosuite
 
-from individual_skill_generation.skills import Rollout
-from individual_skill_generation.viewer import ViewerClosed, live_frames, play_clips
+from ..individual_skill_generation.skills import Rollout
+from ..individual_skill_generation.viewer import ViewerClosed, live_frames, play_clips
 
 from .control import WorkshopArm
 from .environment import SCENES, make_workshop
@@ -93,10 +93,10 @@ def view(env, episode, speed, isolated):
     play_clips(env, clips, speed, env.control_freq)
 
 
-def write_episode(group, episode, case, seed):
-    group.attrs.update(scene=case.scene, seed=seed, success=episode.success, failure=episode.failure)
-    if not isinstance(case, Example):
-        group.attrs["goal"] = json.dumps(sorted(case.goals, key=lambda goal: goal["object"]))
+def write_episode(group, episode, scene, seed, goals=None):
+    group.attrs.update(scene=scene, seed=seed, success=episode.success, failure=episode.failure)
+    if goals is not None:
+        group.attrs["goal"] = json.dumps(sorted(goals, key=lambda goal: goal["object"]))
     group.create_dataset("reset_state", data=episode.reset_state)
     group.create_dataset("setup_actions", data=episode.setup_actions)
     calls = group.create_group("calls")
@@ -140,7 +140,8 @@ def generate(args, environments):
                 for index in range(count):
                     seed = np.random.SeedSequence([args.seed, split_id, case_id, index]).generate_state(1, dtype=np.uint64)[0]
                     episode = run_case(environments[case.scene], case, seed)
-                    write_episode(trials.create_group(f"{index:05d}"), episode, case, seed)
+                    goals = None if isinstance(case, Example) else case.goals
+                    write_episode(trials.create_group(f"{index:05d}"), episode, case.scene, seed, goals)
                     successes += episode.success
                 print(f"{split}/{name}: {successes}/{count} passed", flush=True)
     print(args.out)

@@ -1,0 +1,55 @@
+<mujoco>
+<worldbody>
+    <body name="red" pos="-.16 -.20 .819">
+        <freejoint name="red"/>
+        <geom name="red" type="box" size=".018 .018 .018" rgba=".83 .16 .16 1" group="1"/>
+    </body>
+    <body name="blue" pos="-.17 -.045 .819">
+        <freejoint name="blue"/>
+        <geom name="blue" type="box" size=".017 .021 .018" rgba=".19 .43 .83 1" group="1"/>
+    </body>
+    <body name="green" pos="-.17 .225 .817">
+        <freejoint name="green"/>
+        <geom name="green" type="box" size=".016 .017 .016" rgba=".23 .68 .36 1" group="1"/>
+    </body>
+    <body name="distractor" pos="-.024 -.125 .821">
+        <freejoint name="distractor"/>
+        <geom name="distractor" type="cylinder" size=".023 .020" rgba=".70 .42 .18 1" group="1"/>
+    </body>
+
+    <geom name="inspection" type="box" pos=".133 -.16 .823" size=".043 .037 .023" rgba=".32 .47 .57 1" group="1"/>
+    <geom name="buffer" type="box" pos=".13 -.052 .801" size=".040 .035 .001" rgba=".65 .55 .29 1" group="1"/>
+    <geom name="divider" type="box" pos=".044 -.195 .842" size=".009 .065 .042" rgba=".44 .47 .50 1" group="1"/>
+
+    <!-- The fixed roof covers the cargo when the drawer is shut. -->
+    <geom name="canopy" type="box" pos=".242 .112 .916" size=".068 .114 .012" rgba=".40 .49 .57 .38" group="1"/>
+    <geom type="box" pos=".288 -.003 .851" size=".009 .008 .051" rgba=".40 .49 .57 1" group="1"/>
+    <geom type="box" pos=".288 .227 .851" size=".009 .008 .051" rgba=".40 .49 .57 1" group="1"/>
+
+    <body name="drawer" pos=".224 .112 .823">
+        <joint name="drawer" type="slide" axis="-1 0 0" limited="true" range="0 .180" damping="9" frictionloss="2"/>
+        <geom name="drawer_floor" type="box" size=".052 .103 .007" rgba=".36 .53 .66 1" group="1" mass=".18" friction="1.2 .006 .0001"/>
+        <geom name="slot_a" type="box" pos="0 -.051 .0072" size=".026 .027 .0005" rgba=".54 .75 .81 1" contype="0" conaffinity="0" mass="0" group="1"/>
+        <geom name="slot_b" type="box" pos="0 .051 .0072" size=".026 .027 .0005" rgba=".70 .73 .48 1" contype="0" conaffinity="0" mass="0" group="1"/>
+        <geom type="box" pos="0 0 .009" size=".052 .004 .005" rgba=".36 .53 .66 1" group="1"/>
+        <geom type="box" pos="0 -.099 .011" size=".052 .004 .006" rgba=".36 .53 .66 1" group="1"/>
+        <geom type="box" pos="0 .099 .011" size=".052 .004 .006" rgba=".36 .53 .66 1" group="1"/>
+        <geom type="box" pos=".048 0 .017" size=".004 .101 .010" rgba=".36 .53 .66 1" group="1"/>
+        <geom type="box" pos="-.048 0 .017" size=".004 .101 .010" rgba=".36 .53 .66 1" group="1"/>
+        <geom type="box" pos="-.075 0 .028" size=".027 .007 .007" rgba=".26 .40 .56 1" group="1"/>
+        <geom name="drawer" type="box" pos="-.101 0 .068" size=".014 .016 .018" rgba=".22 .39 .55 1" group="1"/>
+        <geom type="box" pos="-.101 0 .043" size=".007 .007 .013" rgba=".26 .40 .56 1" group="1"/>
+        <geom name="stop_tab" type="box" pos="-.032 .109 .012" size=".007 .012 .009" rgba=".77 .56 .22 1" group="1"/>
+    </body>
+
+    <!-- The bolt collides with the drawer tab during travel when lowered. -->
+    <geom type="box" pos=".169 .264 .813" size=".020 .020 .017" rgba=".40 .43 .48 1" group="1"/>
+    <body name="bolt" pos=".170 .259 .850" gravcomp="1">
+        <joint name="bolt" type="slide" axis="0 0 1" limited="true" range="0 .064" damping="6" frictionloss="2"/>
+        <geom name="bolt_blocker" type="box" pos="0 -.035 -.015" size=".008 .006 .010" rgba=".85 .59 .20 1" group="1"/>
+        <geom type="box" pos="-.021 -.018 -.008" size=".028 .022 .007" rgba=".76 .51 .17 1" group="1"/>
+        <geom name="bolt" type="box" pos="-.045 .008 .050" size=".014 .015 .018" rgba=".89 .68 .21 1" group="1"/>
+        <geom type="box" pos="-.045 .008 .020" size=".007 .008 .024" rgba=".76 .51 .17 1" group="1"/>
+    </body>
+</worldbody>
+</mujoco>

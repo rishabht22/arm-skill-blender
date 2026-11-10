@@ -62,7 +62,7 @@ def generate(output, per_context, seed, contexts):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=Path("data/raw/panda_semantic_skills.h5"))
+    parser.add_argument("--out", type=Path, default=Path(__file__).resolve().parents[1] / "data/raw/panda_semantic_skills.h5")
     parser.add_argument("--per-context", type=int, default=100)
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--contexts", nargs="+", choices=CONTEXTS, default=CONTEXTS)

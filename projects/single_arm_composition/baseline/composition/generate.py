@@ -8,7 +8,7 @@ from pathlib import Path
 import h5py
 import numpy as np
 
-from individual_skill_generation.skills import PandaSkills, make_env
+from ..individual_skill_generation.skills import PandaSkills, make_env
 
 
 SPLITS = {
@@ -158,7 +158,7 @@ def generate(output, train, validation, test, recombination):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=Path("data/raw/panda_composition.h5"))
+    parser.add_argument("--out", type=Path, default=Path(__file__).resolve().parents[1] / "data/raw/panda_composition.h5")
     for name, default in (("train", 60), ("validation", 15), ("test", 20), ("recombination", 20)):
         parser.add_argument(f"--{name}", type=int, default=default, help="Episodes per task")
     args = parser.parse_args()

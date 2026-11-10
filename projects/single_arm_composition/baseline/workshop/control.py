@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 from scipy.spatial.transform import Rotation, Slerp
 
-from individual_skill_generation.skills import TOP_DOWN, PandaArm, Rollout
+from ..individual_skill_generation.skills import TOP_DOWN, PandaArm, Rollout
 
 
 @dataclass
