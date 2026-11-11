@@ -1,0 +1,82 @@
+Goal — inspect A, sort A by grade, index B 1x, return B to feed, read A before indexing B, leave the enclosure open and unlocked
+Choose read_load for carrier A | top scores read_load A (13.72) / close B (5.73) / sort A (-6.57)
+Choose read for carrier A | top scores read A (17.41) / close B (6.80) / read_return A (-8.45)
+Choose read_return for carrier A | top scores read_return A (16.23) / close B (11.84) / read A (-2.15)
+Choose close for carrier B | top scores close B (10.36) / sort A (6.33) / unload B (-3.69)
+Choose latch for carrier B | top scores latch B (10.48) / sort A (7.22) / read_load A (-1.24)
+Choose sort for carrier A | top scores sort A (9.50) / index B (7.29) / read_load A (0.33)
+Choose index for carrier B | top scores index B (7.29) / unlatch B (-8.73) / close B (-12.69)
+Choose unlatch for carrier B | top scores unlatch B (5.95) / index B (-2.16) / unload B (-11.56)
+Choose open for carrier B | top scores open B (10.40) / latch B (-2.93) / unload B (-6.66)
+Choose unload for carrier B | top scores unload B (9.47) / close B (-3.62) / open B (-17.95)
+{
+  "task": "aster-goal-user",
+  "success": true,
+  "start": "7de3a10a9feb9435b7e70a3b418695b1a7c95fdb725a9f69053917b090a4fcec",
+  "reason": "",
+  "actions": [
+    [
+      "read_load",
+      0,
+      true,
+      ""
+    ],
+    [
+      "read",
+      0,
+      true,
+      ""
+    ],
+    [
+      "read_return",
+      0,
+      true,
+      ""
+    ],
+    [
+      "close",
+      1,
+      true,
+      ""
+    ],
+    [
+      "latch",
+      1,
+      true,
+      ""
+    ],
+    [
+      "sort",
+      0,
+      true,
+      ""
+    ],
+    [
+      "index",
+      1,
+      true,
+      ""
+    ],
+    [
+      "unlatch",
+      1,
+      true,
+      ""
+    ],
+    [
+      "open",
+      1,
+      true,
+      ""
+    ],
+    [
+      "unload",
+      1,
+      true,
+      ""
+    ]
+  ],
+  "optimal_steps": null,
+  "invalid": 0,
+  "decisions": []
+}

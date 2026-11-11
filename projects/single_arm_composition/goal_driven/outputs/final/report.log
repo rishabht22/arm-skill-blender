@@ -1,0 +1,279 @@
+{
+  "novel_goal": {
+    "contract": {
+      "batch": 8,
+      "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+      "count": 256,
+      "models": {
+        "learned:1894fada2a27": "1894fada2a27411bdc6888e3c756738f76b1aed5729c7885a25d2bd531e4405a",
+        "learned:3380881d984d": "3380881d984d65ddb51aa5b1a866742e4bfa402a3c38335b5139f4bdec656899",
+        "learned:fac0345e28f2": "fac0345e28f2f62143595950ea6286252b27f9d9d9ae927e6f7df81c867a40cc"
+      },
+      "sources": {
+        "model.py": "9ac99bbeebaa22700f548b58ee8055474eca7fe2b062882728cffc66d2a2758e",
+        "planner.py": "528b665cccd3e1a7eec4dc03096abfc539b6de3a9db5a9818e467223fb14803f",
+        "sim.py": "5b2c675cffb0bfd7b84a4fdf18d3bd15a22c8d43c865044085056fb3ead60583",
+        "tasks.py": "ff2f1f8ed8d2b640175e4e0dc7e9b54175da63b38b8175aa491ded4d86e4d46e"
+      },
+      "suite": "novel_goal"
+    },
+    "starts": 256,
+    "distinct_goals": 36,
+    "methods": {
+      "fixed_feed_plan": {
+        "successes": 124,
+        "rollouts": 256,
+        "invalid_requests": 132,
+        "failures": {
+          "precondition": 132
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": -131
+      },
+      "learned:1894fada2a27": {
+        "successes": 255,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed0": 1
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:3380881d984d": {
+        "successes": 255,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed0": 1
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:fac0345e28f2": {
+        "successes": 255,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed0": 1
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "planner": {
+        "successes": 255,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed0": 1
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      }
+    }
+  },
+  "more_carriers": {
+    "contract": {
+      "batch": 8,
+      "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+      "count": 256,
+      "models": {
+        "learned:1894fada2a27": "1894fada2a27411bdc6888e3c756738f76b1aed5729c7885a25d2bd531e4405a",
+        "learned:3380881d984d": "3380881d984d65ddb51aa5b1a866742e4bfa402a3c38335b5139f4bdec656899",
+        "learned:fac0345e28f2": "fac0345e28f2f62143595950ea6286252b27f9d9d9ae927e6f7df81c867a40cc"
+      },
+      "sources": {
+        "model.py": "9ac99bbeebaa22700f548b58ee8055474eca7fe2b062882728cffc66d2a2758e",
+        "planner.py": "528b665cccd3e1a7eec4dc03096abfc539b6de3a9db5a9818e467223fb14803f",
+        "sim.py": "5b2c675cffb0bfd7b84a4fdf18d3bd15a22c8d43c865044085056fb3ead60583",
+        "tasks.py": "ff2f1f8ed8d2b640175e4e0dc7e9b54175da63b38b8175aa491ded4d86e4d46e"
+      },
+      "suite": "more_carriers"
+    },
+    "starts": 256,
+    "distinct_goals": 227,
+    "methods": {
+      "fixed_feed_plan": {
+        "successes": 115,
+        "rollouts": 256,
+        "invalid_requests": 141,
+        "failures": {
+          "precondition": 141
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": -138
+      },
+      "learned:1894fada2a27": {
+        "successes": 253,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed3": 1,
+          "seat:feed0": 2
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:3380881d984d": {
+        "successes": 253,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed3": 1,
+          "seat:feed0": 2
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:fac0345e28f2": {
+        "successes": 253,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed3": 1,
+          "seat:feed0": 2
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "planner": {
+        "successes": 253,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {
+          "seat:feed0": 3
+        },
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      }
+    }
+  },
+  "partial": {
+    "contract": {
+      "batch": 8,
+      "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+      "count": 256,
+      "models": {
+        "learned:1894fada2a27": "1894fada2a27411bdc6888e3c756738f76b1aed5729c7885a25d2bd531e4405a",
+        "learned:3380881d984d": "3380881d984d65ddb51aa5b1a866742e4bfa402a3c38335b5139f4bdec656899",
+        "learned:fac0345e28f2": "fac0345e28f2f62143595950ea6286252b27f9d9d9ae927e6f7df81c867a40cc"
+      },
+      "sources": {
+        "model.py": "9ac99bbeebaa22700f548b58ee8055474eca7fe2b062882728cffc66d2a2758e",
+        "planner.py": "528b665cccd3e1a7eec4dc03096abfc539b6de3a9db5a9818e467223fb14803f",
+        "sim.py": "5b2c675cffb0bfd7b84a4fdf18d3bd15a22c8d43c865044085056fb3ead60583",
+        "tasks.py": "ff2f1f8ed8d2b640175e4e0dc7e9b54175da63b38b8175aa491ded4d86e4d46e"
+      },
+      "suite": "partial"
+    },
+    "starts": 256,
+    "distinct_goals": 85,
+    "methods": {
+      "fixed_feed_plan": {
+        "successes": 0,
+        "rollouts": 256,
+        "invalid_requests": 256,
+        "failures": {
+          "precondition": 256
+        },
+        "mean_excess_actions": null,
+        "paired_success_difference_vs_planner": -256
+      },
+      "learned:1894fada2a27": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:3380881d984d": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:fac0345e28f2": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "planner": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      }
+    }
+  },
+  "ordering": {
+    "contract": {
+      "batch": 8,
+      "controller": "0b20e70d4f57a3844ec2e5e854fb46781bbbbc7f65e95a69a0ff9937e4d0675b",
+      "count": 256,
+      "models": {
+        "learned:1894fada2a27": "1894fada2a27411bdc6888e3c756738f76b1aed5729c7885a25d2bd531e4405a",
+        "learned:3380881d984d": "3380881d984d65ddb51aa5b1a866742e4bfa402a3c38335b5139f4bdec656899",
+        "learned:fac0345e28f2": "fac0345e28f2f62143595950ea6286252b27f9d9d9ae927e6f7df81c867a40cc"
+      },
+      "sources": {
+        "model.py": "9ac99bbeebaa22700f548b58ee8055474eca7fe2b062882728cffc66d2a2758e",
+        "planner.py": "528b665cccd3e1a7eec4dc03096abfc539b6de3a9db5a9818e467223fb14803f",
+        "sim.py": "5b2c675cffb0bfd7b84a4fdf18d3bd15a22c8d43c865044085056fb3ead60583",
+        "tasks.py": "ff2f1f8ed8d2b640175e4e0dc7e9b54175da63b38b8175aa491ded4d86e4d46e"
+      },
+      "suite": "ordering"
+    },
+    "starts": 256,
+    "distinct_goals": 36,
+    "methods": {
+      "fixed_feed_plan": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:1894fada2a27": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:3380881d984d": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "learned:fac0345e28f2": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      },
+      "planner": {
+        "successes": 256,
+        "rollouts": 256,
+        "invalid_requests": 0,
+        "failures": {},
+        "mean_excess_actions": 0.0,
+        "paired_success_difference_vs_planner": 0
+      }
+    }
+  }
+}

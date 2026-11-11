@@ -1,0 +1,54 @@
+Goal — index B 1x, return B to feed, leave the enclosure open and unlocked
+Choose close for carrier B | top scores close B (10.29) / unload B (-4.08) / reseat B (-12.55)
+Choose latch for carrier B | top scores latch B (9.62) / open B (-5.37) / close B (-11.89)
+Choose index for carrier B | top scores index B (8.19) / unlatch B (-8.10) / close B (-10.99)
+Choose unlatch for carrier B | top scores unlatch B (5.93) / index B (-2.11) / unload B (-10.54)
+Choose open for carrier B | top scores open B (9.43) / latch B (-4.64) / unload B (-7.39)
+Choose unload for carrier B | top scores unload B (8.44) / close B (-4.74) / open B (-20.50)
+{
+  "task": "showcase-loaded",
+  "success": true,
+  "start": "7de3a10a9feb9435b7e70a3b418695b1a7c95fdb725a9f69053917b090a4fcec",
+  "reason": "",
+  "actions": [
+    [
+      "close",
+      1,
+      true,
+      ""
+    ],
+    [
+      "latch",
+      1,
+      true,
+      ""
+    ],
+    [
+      "index",
+      1,
+      true,
+      ""
+    ],
+    [
+      "unlatch",
+      1,
+      true,
+      ""
+    ],
+    [
+      "open",
+      1,
+      true,
+      ""
+    ],
+    [
+      "unload",
+      1,
+      true,
+      ""
+    ]
+  ],
+  "optimal_steps": null,
+  "invalid": 0,
+  "decisions": []
+}
